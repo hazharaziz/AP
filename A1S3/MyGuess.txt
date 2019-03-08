@@ -1,0 +1,19 @@
+AfsharMahnaz.txt : Mahnaz Afshar : Social : -1.5
+alimotahari_ir.txt : Ali Motahari : Political : -2
+azarijahromi.txt : MohammadJavad AzariJahromi : Communication : -1
+BBCBastani.txt : Hossein Bastani : Political : -0.5
+BehnoudMasoud.txt : Masoud Behnoud : Political : 0
+Eshaq_jahangiri.txt : Eshaq Jahangiri : Political : -1
+HaddadAdel_ir.txt : Haddad Adel : Political : -1.5
+hesamodin1.txt : Hesamoddin Ashna : Political : -1
+ir_aref.txt : MohammadReza Aref : Political : -1
+ir_rezaee.txt : Mohsen Rezaee : Political : -1
+IsraelPersian.txt : IsraelPersian : Political : -1
+Jedaaal.txt : Ali Alizadeh : Political : -1
+Khamenei_fa.txt : Ali Khamenei : Political : -0.5
+mah_sadeghi.txt : Mahmood Sadeghi : Political : -1
+MohajeraniSayed.txt : Ataollah Mohajerani : Political : -0.5 
+mostafatajzade.txt : Mostafa Tajzade : Political : 1
+Rouhani_ir.txt : Hassan Rouahni : Political : -1
+t_alidoosti.txt : Taraneh Alidoosti : Political : 0
+USAdarFarsi.txt : USA Persian : Political : 1
