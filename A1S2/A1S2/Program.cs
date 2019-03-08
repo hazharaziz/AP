@@ -20,7 +20,7 @@ namespace A1S2
         public static long size = 0; 
 
         public static long totalDirectorySize(string path)  
-        {
+        {   
             string[] dirs = Directory.GetDirectories(path);
             string[] files = Directory.GetFiles(path);
 

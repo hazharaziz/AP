@@ -15,7 +15,7 @@ namespace A1S3.Tests
         [TestMethod()]
         public void Q1_GetWordsTest()
         {
-            string posWordsPath = @"C:\git\AP97982\A1S3\A1S3\TwitterData\Words\positive.txt";
+            string posWordsPath = @"..\..\..\positive.txt";
             string[] expectedList = File.ReadAllLines(posWordsPath,Encoding.UTF8);
             string[] functionList = Program.Q1_GetWords(posWordsPath);
             CollectionAssert.AreEqual(expectedList, functionList);
