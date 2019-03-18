@@ -10,10 +10,8 @@ namespace A3
     {
         static void Main(string[] args)
         {
-            City a = new City("Mahabad");
-            Console.WriteLine(a.Name);
-
-
+            
+        
             Console.ReadKey();
         }
     }
