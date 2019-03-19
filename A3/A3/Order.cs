@@ -8,35 +8,21 @@ namespace A3
 {
     public class Order
     {
-        public List<Product> products;
-        public bool isDelivered;
+        public List<Product> Products { get; set; }
+        public bool IsDelivered { get; set; }
 
         public Order(List<Product> productsList, bool isDeliveredProduct)
         {
-            products = productsList;
-            isDelivered = isDeliveredProduct;
+            Products = productsList;
+            IsDelivered = isDeliveredProduct;
 
         }
-
-        public List<Product> Products
-        {
-            get { return products;}
-            set { products = value; }
-        }
-
-        public bool IsDelivered
-        {
-            get { return isDelivered; }
-            set { isDelivered = value; }
-        }
-
-
 
         public float CalculateTotalPrice()
         {
             float totalPrice = 0;
 
-            foreach (Product p in products)
+            foreach (Product p in Products)
             {
                 totalPrice += p.Price;
             }

@@ -7,31 +7,23 @@ namespace A3
 {
     public class Product
     {
-        public string name = null;
-        public float price;
-
-        public Product(string productName, float productPrice)
-        {
-            name = productName;
-            price = productPrice;
-        }
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
+        public string Name { get; set; }
         public float Price
         {
-            get { return price; }
+            get { return Price; }
             set
             {
                 if (value > 0)
                 {
-                    price = value;
+                    Price = value;
                 }
             }
+        }
+
+        public Product(string productName, float productPrice)
+        {
+            Name = productName;
+            Price = productPrice;
         }
     }
 }
