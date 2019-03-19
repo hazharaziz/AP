@@ -20,14 +20,14 @@ namespace A3
 
         public List<City> CitiesCustomersAreFrom()
         {
-            List<City> CustomersCities = new List<City>();
+            HashSet<City> CustomersCities = new HashSet<City>();
 
             {
             foreach (Customer customer in Customers)
                 CustomersCities.Add(customer.City);
             }
 
-            return CustomersCities;
+            return CustomersCities.ToList();
         }
 
         public List<Customer> CustomersFromCity(City city)
