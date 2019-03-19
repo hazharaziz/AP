@@ -65,7 +65,7 @@ namespace A3
             return mostOrderedProduct;
         }
 
-        public int Max(Dictionary<Product,int>.ValueCollection counts)
+        private int Max(Dictionary<Product,int>.ValueCollection counts)
         {
             int max = 0;
 
@@ -79,7 +79,7 @@ namespace A3
             return max;
         }
 
-        public int Count(Product product, Order order)
+        private int Count(Product product, Order order)
         {
             int count = 0;
 

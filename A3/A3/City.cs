@@ -14,7 +14,5 @@ namespace A3
         {
             Name = cityName;
         }
-
-        
     }
 }

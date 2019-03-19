@@ -15,7 +15,6 @@ namespace A3
         {
             Products = productsList;
             IsDelivered = isDeliveredProduct;
-
         }
 
         public float CalculateTotalPrice()
