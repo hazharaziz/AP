@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace L1
 {
     public class Ticket
     {
@@ -23,7 +23,7 @@ namespace ConsoleApp1
         }
 
         public bool IsSold()
-        {
+        {           
             if (this.Buyer != null)
                 return true;
             return false;

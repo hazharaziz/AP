@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace L1
 {
     public class DB
     {
@@ -15,6 +15,7 @@ namespace ConsoleApp1
         public static List<Ticket> Tickets = new List<Ticket>();
 
         public static List<Flight> Flights = new List<Flight>();
+
 
         public static void AddAirline(Airline airline)
         {
@@ -62,7 +63,19 @@ namespace ConsoleApp1
         /// <returns></returns>
         public static Ticket MostExpensiveTicket()
         {
-            throw new NotImplementedException();
+            Ticket mostExpensiveTicket = null;
+            double maxPrice = 0;
+            
+            for (int i = 0; i < Tickets.Count; i++)
+            {
+                if (Tickets[i].Price > maxPrice)
+                {
+                    maxPrice = Tickets[i].Price;
+                    mostExpensiveTicket = Tickets[i];
+                }
+            }
+
+            return mostExpensiveTicket;
         }
 
         /// <summary>
@@ -71,7 +84,38 @@ namespace ConsoleApp1
         /// <returns></returns>
         public static Airline FavouriteAirline()
         {
-            throw new NotImplementedException();
+            Dictionary<Airline, int> airlineCount = new Dictionary<Airline, int>();
+            var airlines = new HashSet<Airline>(Airlines);
+
+            foreach (Airline airline in airlines)
+            {
+                airlineCount[airline] = 0;
+            }
+
+            foreach (Ticket ticket in Tickets)
+            {
+                if (!airlineCount.Keys.Contains(ticket.Flight.Airline))
+                {
+                    continue;
+                }
+                else
+                {
+                    airlineCount[ticket.Flight.Airline]++;
+                }
+                
+            }
+
+            int max = airlineCount.Values.Max();
+            Airline favouriteAirline = null;
+            foreach (Airline airline in airlineCount.Keys)
+            {
+                if (airlineCount[airline] == max)
+                {
+                    favouriteAirline = airline;
+                }
+            }
+
+            return favouriteAirline;
         }
 
         /// <summary>
@@ -80,7 +124,17 @@ namespace ConsoleApp1
         /// <returns></returns>
         public static double UsersDebts()
         {
-            throw new NotImplementedException();
+            double debts = 0;
+
+            foreach (Ticket ticket in Tickets)
+            {
+                if (ticket.IsSold())
+                {
+                    debts += ticket.Price;
+                }
+            }
+
+            return debts;
         }
 
         /// <summary>
@@ -89,8 +143,36 @@ namespace ConsoleApp1
         /// <returns></returns>
         public static string FavouriteDestination()
         {
-            throw new NotImplementedException();
-        }
+            Dictionary<string, int> destCount = new Dictionary<string, int>();
+            var dests = new HashSet<string>();
 
+            foreach (Flight flight in Flights)
+            {
+                dests.Add(flight.Destination);
+            }
+
+            foreach (string dest in dests)
+            {
+                destCount[dest] = 0;
+            }
+
+            foreach (Flight flight in Flights)
+            {
+                destCount[flight.Destination]++;
+            }
+
+            int max = destCount.Values.Max();
+            string favouriteDestination = null;
+
+            foreach (string dest in destCount.Keys)
+            {
+                if (destCount[dest] == max)
+                {
+                    favouriteDestination = dest;
+                }
+            }
+
+            return favouriteDestination;
+        }
     }
 }

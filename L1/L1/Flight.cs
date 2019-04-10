@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace L1
 {
-    public class Flight
+    public class Flight 
     {
         //Properties:
         //FlightID: string
@@ -15,6 +15,14 @@ namespace ConsoleApp1
         //Source: string
         //Destination: string
         //FlyDate: DateTime
+
+        
+        public string FlightID { get; set; }
+        public Airline Airline { get; set; }
+        public int Capacity { get; set; }
+        public string Source { get; set; }
+        public string Destination { get; set; }
+        public DateTime FlyDate { get; set; }
 
 
         /// <summary>
@@ -26,16 +34,31 @@ namespace ConsoleApp1
         /// <param name="source"></param>
         /// <param name="dest"></param>
         /// <param name="dateTime"></param>
+
         public Flight(string id, Airline airline, int capacity, string source, string dest,
             DateTime dateTime)
         {
-            //TODO
+            FlightID = id;
+            Airline = airline;
+            Capacity = capacity;
+            Source = source;
+            Destination = dest;
+            FlyDate = dateTime;
+            DB.AddFlight(this);
         }
 
         public bool IsFull()
         {
-            //TODO
-            throw new NotImplementedException();
+            if (Capacity > 0)
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
         }
+
     }
 }

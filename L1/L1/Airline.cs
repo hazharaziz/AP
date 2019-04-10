@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace L1
 {
     public class Airline
     {
@@ -13,6 +13,7 @@ namespace ConsoleApp1
         public Airline(string name)
         {
             Name = name;
+            DB.AddAirline(this);
         }
     }
 }
