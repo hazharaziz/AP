@@ -81,11 +81,8 @@ namespace A1S3
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
 
+            return false;
         }
 
         public static string[] Q3_GetWordsOfTweet(string tweet)
