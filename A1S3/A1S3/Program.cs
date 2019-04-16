@@ -99,14 +99,13 @@ namespace A1S3
 
         public static int Q4_GetPopChargeOfTweet(string tweetString, string[] posWords, string[] negWords)
         {
-            int posCharge = 0;
-            int negCharge = 0;
+            int charge = 0;
 
             foreach (string posWord in posWords)
             {
                 if (tweetString.Contains(posWord))
                 {
-                    posCharge += 1;
+                    charge += 1;
                 }
                 
             }
@@ -115,13 +114,11 @@ namespace A1S3
             {
                 if (tweetString.Contains(negWord))
                 {
-                    negCharge += -1;
+                    charge += -1;
                 }
             }
 
-            int finalCharge = posCharge + negCharge;
-
-            return finalCharge;
+            return charge;
         }
 
         public static double Q5_GetAvgPopChargeOfTweets(string[] tweets, string[] posWords, string[] negWords)
