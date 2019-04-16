@@ -19,20 +19,15 @@ namespace A1S1
             Console.ReadKey();
         }
 
-        public static long CalculateLength(string str)
-        {
-            long stringLength = str.Length;
-
-            return stringLength;
-        }
-
+        public static long CalculateLength(string str) => str.Length;
+    
         public static long LetterCount(string str)
         {
             long count = 0;
 
-            foreach (char item in str)
+            foreach (char chr in str)
             {
-                if (Char.IsLetter(item) == true)
+                if (Char.IsLetter(chr))
                 {
                     count += 1;
                 }
