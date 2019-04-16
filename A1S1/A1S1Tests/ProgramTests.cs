@@ -71,8 +71,8 @@ namespace A1S1.Tests
             string[] expectedFiles2 = GetTestDir(out string dir2);
             string[] functionalResult2 = Program.ListFiles(dir2);
             
-            CollectionAssert.AreEqual(expectedFiles1, functionalResult1);
-            CollectionAssert.AreEqual(expectedFiles2, functionalResult2);
+            CollectionAssert.Equals(expectedFiles1, functionalResult1);
+            CollectionAssert.Equals(expectedFiles2, functionalResult2);
             
 
         }
