@@ -43,18 +43,18 @@ namespace A1S1
 
         public static int LineCount(string str)
         {
-            int count = 0;
+            int lineCount = 0;
 
             foreach (char item in str)
             {
                 if (item == '\n')
                 {
-                    count += 1;
+                    lineCount += 1;
                 }
             }
             
 
-            return count;
+            return lineCount;
         }
 
         public static int FileLineCount(string path)
