@@ -33,54 +33,54 @@ namespace A6.Tests
             VerifyApproximateMatch(recursionDepth, 10);
         }
 
-        //[TestMethod]
-        //public void StackDepth100Test()
-        //{
-        //    TypeForMaxStackOfDepth100 a = new TypeForMaxStackOfDepth100();
-        //    int recursionDepth = GetMaxRecursion(0, a);
-        //    VerifyApproximateMatch(recursionDepth, 100);
-        //}
+        [TestMethod]
+        public void StackDepth100Test()
+        {
+            TypeForMaxStackOfDepth100 a = new TypeForMaxStackOfDepth100();
+            int recursionDepth = GetMaxRecursion(0, a);
+            VerifyApproximateMatch(recursionDepth, 100);
+        }
 
-        //[TestMethod]
-        //public void StackDepth1000Test()
-        //{
-        //    TypeForMaxStackOfDepth1000 a = new TypeForMaxStackOfDepth1000();
-        //    int recursionDepth = GetMaxRecursion(0, a);
-        //    VerifyApproximateMatch(recursionDepth, 1000);
-        //}
+        [TestMethod]
+        public void StackDepth1000Test()
+        {
+            TypeForMaxStackOfDepth1000 a = new TypeForMaxStackOfDepth1000();
+            int recursionDepth = GetMaxRecursion(0, a);
+            VerifyApproximateMatch(recursionDepth, 1000);
+        }
 
-        //[TestMethod]
-        //public void StackDepth3000Test()
-        //{
-        //    TypeForMaxStackOfDepth3000 a = new TypeForMaxStackOfDepth3000();
-        //    int recursionDepth = GetMaxRecursion(0, a);
-        //    VerifyApproximateMatch(recursionDepth, 3000);
-        //}
+        [TestMethod]
+        public void StackDepth3000Test()
+        {
+            TypeForMaxStackOfDepth3000 a = new TypeForMaxStackOfDepth3000();
+            int recursionDepth = GetMaxRecursion(0, a);
+            VerifyApproximateMatch(recursionDepth, 3000);
+        }
 
-        //private static void VerifyApproximateMatch(int actual, int expected)
-        //{
+        private static void VerifyApproximateMatch(int actual, int expected)
+        {
 
-        //    Assert.IsTrue(Math.Abs(actual - expected) <= (0.1 * expected), $"Actual:{actual} != Expected:{expected}");
-        //}
+            Assert.IsTrue(Math.Abs(actual - expected) <= (0.1 * expected), $"Actual:{actual} != Expected:{expected}");
+        }
 
-        //[TestMethod]
-        //public void HeapMemoryTest()
-        //{
-        //    GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
-        //    var memSize = GC.GetTotalMemory(true);
-        //    TypeWithMemoryOnHeap r = new TypeWithMemoryOnHeap();
-        //    r.Allocate();
+        [TestMethod]
+        public void HeapMemoryTest()
+        {
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
+            var memSize = GC.GetTotalMemory(true);
+            TypeWithMemoryOnHeap r = new TypeWithMemoryOnHeap();
+            r.Allocate();
 
-        //    GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
-        //    var memDiff1 = GC.GetTotalMemory(true) - memSize;
-        //    r.DeAllocate();
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
+            var memDiff1 = GC.GetTotalMemory(true) - memSize;
+            r.DeAllocate();
 
-        //    GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
-        //    var memDiff2 = GC.GetTotalMemory(true) - memSize;
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
+            var memDiff2 = GC.GetTotalMemory(true) - memSize;
 
-        //    Assert.IsTrue(memDiff1 < 4_100_000 && memDiff1 > 3_900_000);
-        //    Assert.IsTrue(memDiff2 < 100_000 && memDiff2 > -100_000);
-        //}
+            Assert.IsTrue(memDiff1 < 4_100_000 && memDiff1 > 3_900_000);
+            Assert.IsTrue(memDiff2 < 100_000 && memDiff2 > -100_000);
+        }
 
         //[TestMethod]
         //public void RefValueTypeCopyTest1()

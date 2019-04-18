@@ -17,6 +17,63 @@ namespace A6
 
     }
 
+
+    public class TypeWithMemoryOnHeap
+    {
+        public static List<TypeForMaxStackOfDepth1000?> objects = new List<TypeForMaxStackOfDepth1000?>();
+
+        public void Allocate()
+        {
+            TypeForMaxStackOfDepth1000? a = new TypeForMaxStackOfDepth1000();
+            TypeForMaxStackOfDepth1000? b = new TypeForMaxStackOfDepth1000();
+
+            objects.Add(a);
+            objects.Add(b);
+        }
+
+        public void DeAllocate()
+        {
+            for (int i = 0; i < objects.Count; i++)
+            {
+                objects[i] = null;
+            }
+        }
+
+
+    }
+
+
+    public struct TypeForMaxStackOfDepth10
+    {
+        TypeOfSize10240 a;
+        TypeOfSize10240 b;
+        TypeOfSize10240 c;
+        TypeOfSize10240 d;
+        TypeOfSize10240 e;
+    }
+
+    public struct TypeForMaxStackOfDepth100
+    {
+        TypeOfSize1024 a;
+        TypeOfSize1024 b;
+        TypeOfSize1024 c;
+        TypeOfSize1024 d;
+        TypeOfSize1024 e;
+    }
+
+    public struct TypeForMaxStackOfDepth1000
+    {
+        TypeOfSize125 a;
+        TypeOfSize125 b;
+        TypeOfSize125 c;
+        TypeOfSize125 d;
+    }
+
+    public struct TypeForMaxStackOfDepth3000
+    {
+        TypeOfSize125 a;
+    }
+
     public struct TypeOfSize5
     {
         private byte a;
@@ -85,4 +142,21 @@ namespace A6
         TypeOfSize1024 d;
         TypeOfSize1024 e;
     }
+
+    //public struct TypeOfSize102400
+    //{
+    //    TypeOfSize10240 a;
+    //    TypeOfSize10240 b;
+    //    TypeOfSize10240 c;
+    //    TypeOfSize10240 d;
+    //    TypeOfSize10240 e;
+    //    TypeOfSize10240 f;
+    //    TypeOfSize10240 g;
+    //    TypeOfSize10240 h;
+    //    TypeOfSize10240 i;
+    //    TypeOfSize10240 j;
+    //}
+    
+
 }
+
