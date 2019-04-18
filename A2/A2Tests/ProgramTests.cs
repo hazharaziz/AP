@@ -40,7 +40,7 @@ namespace A2.Tests
 
             int expectedA = 5;
             int expectedB = 4;
-            
+
 
             Assert.AreEqual(expectedA, a);
             Assert.AreEqual(expectedB, b);
@@ -55,7 +55,7 @@ namespace A2.Tests
             Program.Sum(out int functionalSum, arr);
 
             Assert.AreEqual(expectedSum, functionalSum);
-            
+
         }
 
         [TestMethod()]
@@ -91,6 +91,25 @@ namespace A2.Tests
             int[] arr3 = new int[] { 6, 7, 8, 9, 10, 11, 23, 45 };
             int[] arr4 = new int[] { 15, 16, 17 };
 
+            Program.ArraySwap(arr1, arr2);
+
+            int[] expectedArr1 = new int[] { 1, 2, 3, 4, 5 };
+            int[] expectedArr2 = new int[] { 5, 4, 3, 2, 1 };
+            int[] expectedArr3 = new int[] { 6, 7, 8, 9, 10, 11, 23, 45 };
+            int[] expectedArr4 = new int[] { 15, 16, 17 };
+
+            CollectionAssert.AreEqual(expectedArr1, arr1);
+            CollectionAssert.AreEqual(expectedArr2, arr2);
+        }
+
+        [TestMethod()]
+        public void ArraySwapTest1()
+        {
+            int[] arr1 = new int[] { 1, 2, 3, 4, 5 };
+            int[] arr2 = new int[] { 5, 4, 3, 2, 1 };
+            int[] arr3 = new int[] { 6, 7, 8, 9, 10, 11, 23, 45 };
+            int[] arr4 = new int[] { 15, 16, 17 };
+
             int[] expectedArr1 = new int[] { 5, 4, 3, 2, 1 };
             int[] expectedArr2 = new int[] { 1, 2, 3, 4, 5 };
             int[] expectedArr3 = new int[] { 15, 16, 17 };
@@ -103,7 +122,6 @@ namespace A2.Tests
             CollectionAssert.AreEqual(expectedArr2, arr2);
             CollectionAssert.AreEqual(expectedArr3, arr3);
             CollectionAssert.AreEqual(expectedArr4, arr4);
-
 
         }
     }

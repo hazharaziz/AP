@@ -70,65 +70,18 @@ namespace A2
 
         }
 
+        public static void ArraySwap(int[] arr1, int[] arr2)
+        {
+            int[] temp = arr1;
+            arr1 = arr2;
+            arr2 = temp;
+        }
+
         public static void ArraySwap(ref int[] arr1, ref int[] arr2)
         {
-            if (arr1.Length == arr2.Length)
-            {
-                int length = arr1.Length;
-                int temp;
-
-
-                for (int i = 0; i < length; i++)
-                {
-                    temp = arr1[i];
-                    arr1[i] = arr2[i];
-                    arr2[i] = temp;
-                }
-            }
-
-
-            else
-            {
-
-                int arr1Length = arr1.Length;
-                int arr2Length = arr2.Length;
-
-                if (arr1.Length > arr2.Length)
-                {
-
-                    Array.Resize(ref arr2, arr1Length);
-
-                    int temp;
-
-                    for (int i = 0; i < arr2.Length; i++)
-                    {
-                        temp = arr1[i];
-                        arr1[i] = arr2[i];
-                        arr2[i] = temp;
-                    }
-
-                    Array.Resize(ref arr1, arr2Length);
-                }
-
-
-                else
-                {
-                    Array.Resize(ref arr1, arr2Length);
-
-                    int temp;
-
-                    for (int i = 0; i < arr1.Length; i++)
-                    {
-                        temp = arr2[i];
-                        arr2[i] = arr1[i];
-                        arr1[i] = temp;
-                    }
-
-                    Array.Resize(ref arr2, arr1Length);
-
-                }
-            }
-
+            int[] temp = arr1;
+            arr1 = arr2;
+            arr2 = temp;
         }
 
     }
