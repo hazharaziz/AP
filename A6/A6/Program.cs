@@ -20,23 +20,19 @@ namespace A6
 
     public class TypeWithMemoryOnHeap
     {
-        public static List<TypeForMaxStackOfDepth1000?> objects = new List<TypeForMaxStackOfDepth1000?>();
+        public static List<TypeOfSize125> objects = new List<TypeOfSize125>();
 
         public void Allocate()
         {
-            TypeForMaxStackOfDepth1000? a = new TypeForMaxStackOfDepth1000();
-            TypeForMaxStackOfDepth1000? b = new TypeForMaxStackOfDepth1000();
-
-            objects.Add(a);
-            objects.Add(b);
+            for (int i = 0; i < 20000; i++)
+            {
+                objects.Add(new TypeOfSize125());
+            }
         }
 
         public void DeAllocate()
         {
-            for (int i = 0; i < objects.Count; i++)
-            {
-                objects[i] = null;
-            }
+            objects = null;
         }
 
 
@@ -49,7 +45,6 @@ namespace A6
         TypeOfSize10240 b;
         TypeOfSize10240 c;
         TypeOfSize10240 d;
-        TypeOfSize10240 e;
     }
 
     public struct TypeForMaxStackOfDepth100
@@ -105,7 +100,8 @@ namespace A6
         TypeOfSize5 h;
     }
 
-    
+
+
 
     public struct TypeOfSize1024
     {
