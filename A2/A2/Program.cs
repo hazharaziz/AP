@@ -9,22 +9,18 @@ namespace A2
     public class Program
     {
         static void Main(string[] args)
-        {
-            
+        {   
             Console.ReadKey();
         }
 
         public static void AssignPi(out double pi)
         {
-
             pi = Math.PI;
-
         }
 
         public static void Square(ref int x)
         {
             x = x * x;
-
         }
 
 
