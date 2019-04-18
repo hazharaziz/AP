@@ -105,6 +105,8 @@ namespace A6
         TypeOfSize5 h;
     }
 
+    
+
     public struct TypeOfSize1024
     {
         TypeOfSize125 a;
