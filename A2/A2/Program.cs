@@ -28,10 +28,9 @@ namespace A2
         }
 
 
-        public static void Swap(ref int x, ref int y)
+        public static void Swap(ref int x, ref int y) 
         {
-            int temp;
-            temp = x;
+            int temp = x;
             x = y;
             y = temp;
 
