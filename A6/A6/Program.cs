@@ -18,6 +18,22 @@ namespace A6
     }
 
 
+
+    public struct StructOrClass3
+    {
+        public StructOrClass2 X { get; set; }
+    }
+
+    public class StructOrClass2
+    {
+        public int X { get; set; }
+    }
+
+    public struct StructOrClass1
+    {
+        public int X { get; set; }
+    }
+
     public class TypeWithMemoryOnHeap
     {
         public static List<TypeOfSize125> objects = new List<TypeOfSize125>();

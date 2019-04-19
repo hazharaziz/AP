@@ -82,50 +82,50 @@ namespace A6.Tests
             Assert.IsTrue(memDiff2 < 100_000 && memDiff2 > -100_000);
         }
 
-        //[TestMethod]
-        //public void RefValueTypeCopyTest1()
-        //{
-        //    StructOrClass1 soc1a = new StructOrClass1();
-        //    soc1a.X = 1;
-        //    var soc1b = soc1a;
-        //    soc1a.X = 2; ;
-        //    Assert.AreNotEqual(soc1a.X, soc1b.X);
-        //}
+        [TestMethod]
+        public void RefValueTypeCopyTest1()
+        {
+            StructOrClass1 soc1a = new StructOrClass1();
+            soc1a.X = 1;
+            var soc1b = soc1a;
+            soc1a.X = 2; ;
+            Assert.AreNotEqual(soc1a.X, soc1b.X);
+        }
 
-        //[TestMethod]
-        //public void RefValueTypeCopyTest2()
-        //{
-        //    StructOrClass2 soc1a = new StructOrClass2();
-        //    soc1a.X = 1;
-        //    var soc1b = soc1a;
-        //    soc1a.X = 2; ;
-        //    Assert.AreEqual(soc1a.X, soc1b.X);
-        //}
+        [TestMethod]
+        public void RefValueTypeCopyTest2()
+        {
+            StructOrClass2 soc1a = new StructOrClass2();
+            soc1a.X = 1;
+            var soc1b = soc1a;
+            soc1a.X = 2; ;
+            Assert.AreEqual(soc1a.X, soc1b.X);
+        }
 
-        //[TestMethod]
-        //public void RefValueTypeCopyTest3()
-        //{
-        //    StructOrClass3 soc1a = new StructOrClass3();
-        //    var soc2 = new StructOrClass2();
-        //    soc2.X = 5;
-        //    soc1a.X = soc2;
-        //    var soc1b = soc1a;
-        //    soc1a.X.X = 6; ;
-        //    Assert.AreEqual(soc1a.X.X, soc1b.X.X);
-        //    Assert.AreEqual(soc2.X, soc1b.X.X);
+        [TestMethod]
+        public void RefValueTypeCopyTest3()
+        {
+            StructOrClass3 soc1a = new StructOrClass3();
+            var soc2 = new StructOrClass2();
+            soc2.X = 5;
+            soc1a.X = soc2;
+            var soc1b = soc1a;
+            soc1a.X.X = 6; 
+            Assert.AreEqual(soc1a.X.X, soc1b.X.X);
+            Assert.AreEqual(soc2.X, soc1b.X.X);
 
-        //}
+        }
 
-        //[TestMethod]
-        //public void BoxingTest()
-        //{
-        //    StructOrClass1 soc = new StructOrClass1();
-        //    soc.X = 5;
-        //    object o = soc;
-        //    soc.X = 6;
-        //    StructOrClass1 soc2 = (StructOrClass1) o;
-        //    Assert.AreEqual(5, soc2.X);
-        //}
+        [TestMethod]
+        public void BoxingTest()
+        {
+            StructOrClass1 soc = new StructOrClass1();
+            soc.X = 5;
+            object o = soc;
+            soc.X = 6;
+            StructOrClass1 soc2 = (StructOrClass1)o;
+            Assert.AreEqual(5, soc2.X);
+        }
 
         //[TestMethod]
         //public void TypeTest()
