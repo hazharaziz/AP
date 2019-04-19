@@ -10,13 +10,15 @@ namespace A6
     {
         static void Main(string[] args)
         {
-            FutureHusbandType fht = FutureHusbandType.HasBigNose | FutureHusbandType.IsShort;
-            Console.WriteLine((int)fht);
-
+            
             Console.ReadKey();
         }
 
-
+        /// <summary>
+        /// returning an integer according to the type of the object
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
         public static int GetObjectType(object o)
         {
             if (o is string)
@@ -33,6 +35,11 @@ namespace A6
             }
         }
 
+        /// <summary>
+        /// checks if the future husband is ideal or not
+        /// </summary>
+        /// <param name="fht"></param>
+        /// <returns></returns>
         public static bool IdealHusband(FutureHusbandType fht)
         {
             if (((int)fht == 1) || ((int)fht == 2) || ((int)fht == 4))
@@ -49,7 +56,10 @@ namespace A6
             }
         }
     }
-
+    
+    /// <summary>
+    /// an enum describing the adjectives of the future husband
+    /// </summary>
     public enum FutureHusbandType : int
     {
         None = 0,
@@ -57,10 +67,6 @@ namespace A6
         IsBald = 2,
         IsShort = 4
     }
-
-
-
-
 
     public struct StructOrClass3
     {
@@ -77,10 +83,14 @@ namespace A6
         public int X { get; set; }
     }
 
+    // a reference type for allocating and deallocating the heap
     public class TypeWithMemoryOnHeap
     {
         public static List<TypeOfSize125> objects = new List<TypeOfSize125>();
 
+        /// <summary>
+        /// method for allocating the heap
+        /// </summary>
         public void Allocate()
         {
             for (int i = 0; i < 20000; i++)
@@ -89,15 +99,18 @@ namespace A6
             }
         }
 
+        /// <summary>
+        /// method for deallocating the heap
+        /// </summary>
         public void DeAllocate()
         {
             objects = null;
         }
-
-
     }
 
-
+    /// <summary>
+    /// value type that takes up the entire memory space by 10 times invoking it
+    /// </summary>
     public struct TypeForMaxStackOfDepth10
     {
         TypeOfSize10240 a;
@@ -106,6 +119,9 @@ namespace A6
         TypeOfSize10240 d;
     }
 
+    /// <summary>
+    /// value type that takes up the entire memory space by 100 times invoking it
+    /// </summary>
     public struct TypeForMaxStackOfDepth100
     {
         TypeOfSize1024 a;
@@ -115,6 +131,9 @@ namespace A6
         TypeOfSize1024 e;
     }
 
+    /// <summary>
+    /// value type that takes up the entire memory space by 1000 times invoking it
+    /// </summary>
     public struct TypeForMaxStackOfDepth1000
     {
         TypeOfSize125 a;
@@ -123,11 +142,17 @@ namespace A6
         TypeOfSize125 d;
     }
 
+    /// <summary>
+    /// value type that takes up the entire memory space by 3000 times invoking it
+    /// </summary>
     public struct TypeForMaxStackOfDepth3000
     {
         TypeOfSize125 a;
     }
 
+    /// <summary>
+    /// value type of 5 bytes
+    /// </summary>
     public struct TypeOfSize5
     {
         private byte a;
@@ -137,6 +162,9 @@ namespace A6
         private byte e;
     }
 
+    /// <summary>
+    /// value type of 22 bytes
+    /// </summary>
     public struct TypeOfSize22
     {
         TypeOfSize5 a;
@@ -147,6 +175,9 @@ namespace A6
         private byte f;
     }
 
+    /// <summary>
+    /// value type of 125 bytes
+    /// </summary>
     public struct TypeOfSize125
     {
         TypeOfSize22 a;
@@ -159,9 +190,9 @@ namespace A6
         TypeOfSize5 h;
     }
 
-
-
-
+    /// <summary>
+    /// value type of 1024 bytes
+    /// </summary>
     public struct TypeOfSize1024
     {
         TypeOfSize125 a;
@@ -177,6 +208,9 @@ namespace A6
         private byte k;
     }
 
+    /// <summary>
+    /// value type of 10240 bytes
+    /// </summary>
     public struct TypeOfSize10240
     {
         TypeOfSize1024 a;
@@ -191,6 +225,9 @@ namespace A6
         TypeOfSize1024 j;
     }
 
+    /// <summary>
+    /// value type of 32768 bytes
+    /// </summary>
     public struct TypeOfSize32768
     {
         TypeOfSize10240 a;
@@ -199,21 +236,5 @@ namespace A6
         TypeOfSize1024 d;
         TypeOfSize1024 e;
     }
-
-    //public struct TypeOfSize102400
-    //{
-    //    TypeOfSize10240 a;
-    //    TypeOfSize10240 b;
-    //    TypeOfSize10240 c;
-    //    TypeOfSize10240 d;
-    //    TypeOfSize10240 e;
-    //    TypeOfSize10240 f;
-    //    TypeOfSize10240 g;
-    //    TypeOfSize10240 h;
-    //    TypeOfSize10240 i;
-    //    TypeOfSize10240 j;
-    //}
-    
-
 }
 
