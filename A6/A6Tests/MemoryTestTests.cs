@@ -127,44 +127,44 @@ namespace A6.Tests
             Assert.AreEqual(5, soc2.X);
         }
 
-        //[TestMethod]
-        //public void TypeTest()
-        //{
-        //    string str = "ThinkBig";
-        //    int value = Program.GetObjectType(str);
-        //    Assert.AreEqual(0, value);
-        //    value = Program.GetObjectType(new int[] { 2 });
-        //    Assert.AreEqual(1, value);
-        //    value = Program.GetObjectType(24434);
-        //    Assert.AreEqual(2, value);
-        //}
+        [TestMethod]
+        public void TypeTest()
+        {
+            string str = "ThinkBig";
+            int value = Program.GetObjectType(str);
+            Assert.AreEqual(0, value);
+            value = Program.GetObjectType(new int[] { 2 });
+            Assert.AreEqual(1, value);
+            value = Program.GetObjectType(24434);
+            Assert.AreEqual(2, value);
+        }
 
-        //[TestMethod]
-        //public void IdealHusbandTest()
-        //{
-        //    FutureHusbandType fht = FutureHusbandType.HasBigNose;
-        //    Assert.AreEqual(false, Program.IdealHusband(fht));
+        [TestMethod]
+        public void IdealHusbandTest()
+        {
+            FutureHusbandType fht = FutureHusbandType.HasBigNose;
+            Assert.AreEqual(false, Program.IdealHusband(fht));
 
-        //    fht = FutureHusbandType.IsBald;
-        //    Assert.AreEqual(false, Program.IdealHusband(fht));
+            fht = FutureHusbandType.IsBald;
+            Assert.AreEqual(false, Program.IdealHusband(fht));
 
-        //    fht = FutureHusbandType.IsShort;
-        //    Assert.AreEqual(false, Program.IdealHusband(fht));
+            fht = FutureHusbandType.IsShort;
+            Assert.AreEqual(false, Program.IdealHusband(fht));
 
-        //    fht = FutureHusbandType.IsBald | FutureHusbandType.IsShort;
-        //    Assert.AreEqual(true, Program.IdealHusband(fht));
+            fht = FutureHusbandType.IsBald | FutureHusbandType.IsShort;
+            Assert.AreEqual(true, Program.IdealHusband(fht));
 
-        //    fht = FutureHusbandType.IsBald | FutureHusbandType.HasBigNose;
-        //    Assert.AreEqual(true, Program.IdealHusband(fht));
+            fht = FutureHusbandType.IsBald | FutureHusbandType.HasBigNose;
+            Assert.AreEqual(true, Program.IdealHusband(fht));
 
-        //    fht = FutureHusbandType.IsShort | FutureHusbandType.HasBigNose;
-        //    Assert.AreEqual(true, Program.IdealHusband(fht));
+            fht = FutureHusbandType.IsShort | FutureHusbandType.HasBigNose;
+            Assert.AreEqual(true, Program.IdealHusband(fht));
 
-        //    fht = FutureHusbandType.IsShort | FutureHusbandType.HasBigNose | FutureHusbandType.IsBald;
-        //    Assert.AreEqual(false, Program.IdealHusband(fht));
+            fht = FutureHusbandType.IsShort | FutureHusbandType.HasBigNose | FutureHusbandType.IsBald;
+            Assert.AreEqual(false, Program.IdealHusband(fht));
 
 
-        //}
+        }
 
         #region Helper Methods
         private void VerifySize<_Type>(_Type tos, int expectedSize)

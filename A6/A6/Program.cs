@@ -10,12 +10,55 @@ namespace A6
     {
         static void Main(string[] args)
         {
+            FutureHusbandType fht = FutureHusbandType.HasBigNose | FutureHusbandType.IsShort;
+            Console.WriteLine((int)fht);
+
             Console.ReadKey();
         }
 
 
+        public static int GetObjectType(object o)
+        {
+            if (o is string)
+            {
+                return 0;
+            }
+            else if (o is int[])
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
+        }
 
+        public static bool IdealHusband(FutureHusbandType fht)
+        {
+            if (((int)fht == 1) || ((int)fht == 2) || ((int)fht == 4))
+            {
+                return false;
+            }
+            else if (((int)fht == 6) || ((int)fht == 3) || ((int)fht == 5))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
+
+    public enum FutureHusbandType : int
+    {
+        None = 0,
+        HasBigNose = 1,
+        IsBald = 2,
+        IsShort = 4
+    }
+
+
 
 
 
