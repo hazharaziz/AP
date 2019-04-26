@@ -20,15 +20,15 @@ namespace A7Tests
         }
 
 
-        /*
+
         [TestMethod]
         public void Q4KhaleTest3_Constructor()
         {
             var khale = CreateKhalleInstance(null as Khalle, "47212121", "Zahra", "http://img.co/zahra.jpg", Degree.PhD);
         }
-        */
 
-        /*
+
+
         [TestMethod]
         public void Q4KhaleTest1_ITeacher()
         {
@@ -41,9 +41,9 @@ namespace A7Tests
             Assert.AreEqual("http://img.co/zahra.jpg", khale.ImgUrl);
             Assert.AreEqual(Degree.PhD, khale.TopDegree);
         }
-        */
 
-        /*
+
+
         [TestMethod]
         public void Q4KhaleTest2_ICitizen()
         {
@@ -55,7 +55,7 @@ namespace A7Tests
             Assert.AreEqual("Zahra", citizen.Name);
 
         }
-        */
+
 
         /*
         [TestMethod]
