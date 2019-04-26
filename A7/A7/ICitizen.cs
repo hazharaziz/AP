@@ -6,6 +6,6 @@ namespace A7
     public interface ICitizen
     {
         string Name { get; set; }
-        int NationalId { get; set; }
+        string NationalId { get; set; }
     }
 }
