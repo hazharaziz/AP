@@ -133,7 +133,7 @@ namespace A7Tests
         }
 
 
-        /*
+
         [TestMethod]
         public void FinalTest()
         {
@@ -143,7 +143,7 @@ namespace A7Tests
             Assert.AreEqual("Dabir Mr. Tatil is teaching", kDabir.Teach());
             Assert.IsFalse(okReg);
         }
-        */
+
 
 
         #region Helper Methods

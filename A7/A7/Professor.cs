@@ -14,7 +14,7 @@ namespace A7
         public int ResearchCount { get; set; }
 
         /// <summary>
-        /// Professor constructor
+        /// Professor class constructor
         /// </summary>
         /// <param name="nationalId"></param>
         /// <param name="name"></param>
