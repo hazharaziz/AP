@@ -2,6 +2,9 @@ using System;
 
 namespace A7
 {
+    /// <summary>
+    /// Khalle class containing khalle properties
+    /// </summary>
     public class Khalle : ICitizen, ITeacher
     {
         public string Name { get ; set ; }
@@ -18,7 +21,6 @@ namespace A7
         /// <param name="imgUrl"></param>
         public Khalle(string nationalId, string name, string imgUrl, Degree topDegree)
         {
-
             Name = name;
             NationalId = nationalId;
             TopDegree = topDegree;
@@ -26,7 +28,7 @@ namespace A7
         }
 
         /// <summary>
-        /// Teach method for describing teacher properties
+        /// Teach method for describing khalle properties
         /// </summary>
         /// <returns></returns>
         public string Teach() => $"Khalle {Name} is teaching";        

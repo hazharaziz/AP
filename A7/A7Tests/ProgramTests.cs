@@ -57,17 +57,17 @@ namespace A7Tests
         }
 
 
-        /*
+
         [TestMethod]
         public void Q5DabirTest3_Constructor()
         {
 
             var dabir = CreateDabirInstance(null as Dabir, "47212121", "Ali", "http://img.co/Ali.jpg", Degree.Master, 10);
-            
-        }
-        */
 
-        /*
+        }
+        
+
+        
         [TestMethod]
         public void Q5DabirTest1_ITeacher()
         {
@@ -82,9 +82,9 @@ namespace A7Tests
             Assert.AreEqual("http://img.co/ali.jpg", dabir.ImgUrl);
             Assert.AreEqual(Degree.Master, dabir.TopDegree);
         }
-        */
+        
 
-        /*
+        
         [TestMethod]
         public void Q5DabirTest2_ICitizen()
         {
@@ -95,7 +95,7 @@ namespace A7Tests
             Assert.AreEqual("47212121", citizen.NationalId);
             Assert.AreEqual("Ali", citizen.Name);
         }
-        */
+        
 
         /*
         [TestMethod]
