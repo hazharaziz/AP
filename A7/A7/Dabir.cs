@@ -31,7 +31,7 @@ namespace A7
         }
 
         /// <summary>
-        /// Teach Method for describing dabir properties   
+        /// Teach Method for describing dabir
         /// </summary>
         /// <returns></returns>
         public string Teach() => $"Dabir {Name} is teaching";

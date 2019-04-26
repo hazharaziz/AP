@@ -28,7 +28,7 @@ namespace A7
         }
 
         /// <summary>
-        /// Teach method for describing khalle properties
+        /// Teach method for describing khalle
         /// </summary>
         /// <returns></returns>
         public string Teach() => $"Khalle {Name} is teaching";        

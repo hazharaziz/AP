@@ -95,18 +95,18 @@ namespace A7Tests
             Assert.AreEqual("47212121", citizen.NationalId);
             Assert.AreEqual("Ali", citizen.Name);
         }
-        
 
-        /*
+
+
         [TestMethod]
         public void Q6ProfessorTest3_Constructor()
         {
             var professor = CreateProfInstance(null as Professor, "47212121", "Sauleh", "http://img.co/sauleh.jpg",
                 Degree.PhD, 20);
         }
-        */
 
-        /*
+
+
         [TestMethod]
         public void Q6ProfessorTest1_ITeacher()
         {
@@ -119,9 +119,9 @@ namespace A7Tests
             Assert.AreEqual("http://img.co/sauleh.jpg", prof.ImgUrl);
             Assert.AreEqual(Degree.PhD, prof.TopDegree);
         }
-        */
 
-        /*
+
+
         [TestMethod]
         public void Q6ProfessorTest2_ICitizen()
         {
@@ -131,7 +131,7 @@ namespace A7Tests
             Assert.AreEqual("47212121", citizen.NationalId);
             Assert.AreEqual("Sauleh", citizen.Name);
         }
-        */
+
 
         /*
         [TestMethod]
