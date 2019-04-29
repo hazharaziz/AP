@@ -14,10 +14,10 @@ namespace E1Tests.Classes.Animals
         Snake snake1 = new Snake("Snake 1", 45, 64, 69.3);
         Snake snake2 = new Snake("Snake 2", 75, 84, 68.9);
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void EatFoodTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             string snake1Expected = $"{snake1.Name} is a {typeof(Snake).Name} and is eating";
@@ -30,12 +30,12 @@ namespace E1Tests.Classes.Animals
             // Assert
             Assert.AreEqual(snake1Expected, snake1Actual);
             Assert.AreEqual(snake2Expected, snake2Actual);
-        }*/
+        }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void ReproductionTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             string snake1And2Expected =
@@ -46,12 +46,12 @@ namespace E1Tests.Classes.Animals
 
             // Assert
             Assert.AreEqual(snake1And2Expected, snake1And2Actual);
-        }*/
+        }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void MoveTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             Snake[] snakes = new[] { snake1, snake2 };
@@ -76,12 +76,12 @@ namespace E1Tests.Classes.Animals
 
             // Assert
             CollectionAssert.AreEqual(expected, actual);
-        }*/
+        }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void CrawlTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             string snake1Expected = $"{snake1.Name} is a {typeof(Snake).Name} and is crawling";
@@ -94,6 +94,6 @@ namespace E1Tests.Classes.Animals
             // Assert
             Assert.AreEqual(snake1Expected, snake1Actual);
             Assert.AreEqual(snake2Expected, snake2Actual);
-        }*/
+        }
     }
 }
