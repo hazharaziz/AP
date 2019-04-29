@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using E1;
+using E1B;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,21 +14,21 @@ namespace E1.Tests
         [TestMethod()]
         public void HumanTest()
         {
-            //Human h = new Human("Hooman", 21);
-            //Assert.AreEqual("Hooman", h.Name);
+            Human h = new Human("Hooman", 21);
+            Assert.AreEqual("Hooman", h.Name);
 
-            //h = new Human("Mozhgan", 18);
-            //Assert.AreEqual("Mozhgan", h.Name);
+            h = new Human("Mozhgan", 18);
+            Assert.AreEqual("Mozhgan", h.Name);
         }
 
         [TestMethod()]
         public void HumanAgeTest()
         {
-            //IHasAge h = new Human("Hooman", 21);
-            //Assert.AreEqual(21, h.GetAge());
+            IHasAge h = new Human("Hooman", 21);
+            Assert.AreEqual(21, h.GetAge());
 
-            //h = new Human("Mozhgan", 18);
-            //Assert.AreEqual(18, h.GetAge());
+            h = new Human("Mozhgan", 18);
+            Assert.AreEqual(18, h.GetAge());
         }
 
         [TestMethod()]

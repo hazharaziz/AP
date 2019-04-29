@@ -10,11 +10,10 @@ namespace E1B
     {
         static void Main(string[] args)
         {
-        }
-
-        public static void m()
-        {
+            
 
         }
+
+       
     }
 }

@@ -8,6 +8,11 @@ namespace E1
 {
     public class BasicQuestions
     {
+        /// <summary>
+        /// OddSum method returning the sum of the odd numbers of an array
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
         public static int OddSum(int[] nums)
         {
             int oddSum = 0;
@@ -22,6 +27,12 @@ namespace E1
             return oddSum;
         }
 
+
+        /// <summary>
+        /// Swap method for integers
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
         public static void Swap(ref int a, ref int b)
         {
             int temp = a;
@@ -29,6 +40,11 @@ namespace E1
             b = temp;
         }
 
+        /// <summary>
+        /// Swap method for doubles 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
         public static void Swap(ref double a, ref double b)
         {
             double temp = a;
@@ -37,6 +53,11 @@ namespace E1
 
         }
 
+        /// <summary>
+        /// Swap method for long integers
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
         public static void Swap(ref long a, ref long b)
         {
             long temp = a;
