@@ -24,13 +24,24 @@ namespace E1
 
         public static void Swap(ref int a, ref int b)
         {
-
+            int temp = a;
+            a = b;
+            b = temp;
         }
 
         public static void Swap(ref double a, ref double b)
-        { }
+        {
+            double temp = a;
+            a = b;
+            b = temp;
+
+        }
 
         public static void Swap(ref long a, ref long b)
-        { }
+        {
+            long temp = a;
+            a = b;
+            b = temp;
+        }
     }
 }
