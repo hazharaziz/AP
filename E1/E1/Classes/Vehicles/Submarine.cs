@@ -15,6 +15,6 @@ namespace E1.Classes.Vehicles
             SpeedRate = speedRate;
         }
 
-        public string Swim() => $"{Model} is a Submarine and is swimming in {MaxDepthSupported} meter depth";
+        public string Swim() => $"{Model} is a {typeof(Submarine).Name} and is swimming in {MaxDepthSupported} meter depth";
     }
 }

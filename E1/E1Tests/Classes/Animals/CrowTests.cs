@@ -16,10 +16,10 @@ namespace E1Tests.Classes.Animals
         Crow crow3 = new Crow("Crow 3", 1, 92.1, 11);
         Crow crow4 = new Crow("Crow 4", 4, 18.0, 1);
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void EatFoodTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             string crow1Expected = $"{crow1.Name} is a {typeof(Crow).Name} and is eating";
@@ -40,12 +40,12 @@ namespace E1Tests.Classes.Animals
             Assert.AreEqual(crow2Expected, crow2Actual);
             Assert.AreEqual(crow3Expected, crow3Actual);
             Assert.AreEqual(crow4Expected, crow4Actual);
-        }*/
+        }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void ReproductionTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             string crow1And2Expected = $"{crow1.Name} is a {typeof(Crow).Name} and reproductive with {crow2.Name}";
@@ -58,12 +58,12 @@ namespace E1Tests.Classes.Animals
             // Assert
             Assert.AreEqual(crow1And2Expected, crow1And2Actual);
             Assert.AreEqual(crow3And4Expected, crow3And4Actual);
-        }*/
+        }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void MoveTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             Crow[] crows = new[] {crow1, crow2, crow3, crow4};
@@ -94,12 +94,12 @@ namespace E1Tests.Classes.Animals
 
             // Assert
             CollectionAssert.AreEqual(expected, actual);
-        }*/
+        }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void FlyTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             string crow1Expected = $"{crow1.Name} is a {typeof(Crow).Name} and is flying";
@@ -119,6 +119,6 @@ namespace E1Tests.Classes.Animals
             Assert.AreEqual(crow2Expected, crow2Actual);
             Assert.AreEqual(crow3Expected, crow3Actual);
             Assert.AreEqual(crow4Expected, crow4Actual);
-        }*/
+        }
     }
 }

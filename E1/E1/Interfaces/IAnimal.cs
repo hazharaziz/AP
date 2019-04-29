@@ -11,6 +11,6 @@ namespace E1.Interfaces
 
         string EatFood();
         string Reproduction(IAnimal animal);
-        string Move(Enums.Environment e);
+        string Move(Enums.Environment env);
     }
 }
