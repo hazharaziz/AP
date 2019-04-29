@@ -12,10 +12,10 @@ namespace E1Tests.Classes.Vehicles
     public class SubmarineTests
     {
         Submarine submarine = new Submarine("Turtle", 100, 40.6);
-        /*[TestMethod()]
+        [TestMethod()]
         public void SwimTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             string expected =
@@ -26,6 +26,6 @@ namespace E1Tests.Classes.Vehicles
 
             // Assert
             Assert.AreEqual(expected,actual);
-        }*/
+        }
     }
 }
