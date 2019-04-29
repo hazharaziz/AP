@@ -13,7 +13,7 @@ namespace E1Tests.Classes
     [TestClass()]
     public class GameBoardTests
     {
-        /*
+       
 
         private static IAnimal[] animals = new IAnimal[]
         {
@@ -28,7 +28,7 @@ namespace E1Tests.Classes
         [TestMethod()]
         public void MoveAnimalsTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             string[] expected = new[]
@@ -53,6 +53,6 @@ namespace E1Tests.Classes
             // Assert
 
             CollectionAssert.AreEqual(expected,actual);
-        }*/
+        }
     }
 }

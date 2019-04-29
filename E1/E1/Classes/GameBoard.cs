@@ -13,11 +13,20 @@ namespace E1.Classes
             Animals = animals.ToList();
         }
 
-        public List<IAnimal> Animals { get; set; }
+        public static List<IAnimal> Animals { get; set; }
 
         public string[] MoveAnimals()
-        {
-			return null;
+        {   
+            List<string> result = new List<string>();
+
+            foreach (IAnimal animal in Animals)
+            {
+                result.Add(animal.Move(Environment.Air));
+                result.Add(animal.Move(Environment.Land));
+                result.Add(animal.Move(Environment.Watery));
+            }
+            
+            return result.ToArray();
         }
     }
 }
