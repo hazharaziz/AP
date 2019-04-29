@@ -14,10 +14,10 @@ namespace E1Tests.Classes.Animals
         Partridge partridge1 = new Partridge("Partridge 1", 22, 44.9, 90.9);
         Partridge partridge2 = new Partridge("Partridge 1", 23, 42.9, 89.9);
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void EatFoodTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             string partridge1Expected = $"{partridge1.Name} is a {typeof(Partridge).Name} and is eating";
@@ -30,12 +30,12 @@ namespace E1Tests.Classes.Animals
             // Assert
             Assert.AreEqual(partridge1Expected, partridge1Actual);
             Assert.AreEqual(partridge2Expected, partridge2Actual);
-        }*/
+        }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void ReproductionTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             string partridge1And2Expected =
@@ -46,12 +46,12 @@ namespace E1Tests.Classes.Animals
 
             // Assert
             Assert.AreEqual(partridge1And2Expected, partridge1And2Actual);
-        }*/
+        }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void MoveTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             Partridge[] partridges = new[] { partridge1, partridge1};
@@ -76,12 +76,12 @@ namespace E1Tests.Classes.Animals
 
             // Assert
             CollectionAssert.AreEqual(expected, actual);
-        }*/
+        }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void FlyTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             string partridge1Expected = $"{partridge1.Name} is a {typeof(Partridge).Name} and is flying";
@@ -94,12 +94,12 @@ namespace E1Tests.Classes.Animals
             // Assert
             Assert.AreEqual(partridge1Expected, partridge1Actual);
             Assert.AreEqual(partridge2Expected, partridge2Actual);
-        }*/
+        }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void WalkTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             string partridge1Expected = $"{partridge1.Name} is a {typeof(Partridge).Name} and is walking";
@@ -112,6 +112,6 @@ namespace E1Tests.Classes.Animals
             // Assert
             Assert.AreEqual(partridge1Expected, partridge1Actual);
             Assert.AreEqual(partridge2Expected, partridge2Actual);
-        }*/
+        }
     }
 }

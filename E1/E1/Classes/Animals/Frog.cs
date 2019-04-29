@@ -38,8 +38,6 @@ namespace E1.Classes.Animals
             {
                 return $"{Name} is a {typeof(Frog).Name} and can't move in {Enum.GetName(typeof(Environment), Environment.Air)} environment";
             }
-
-
         }
         public string Walk() => $"{Name} is a {typeof(Frog).Name} and is walking";
 
