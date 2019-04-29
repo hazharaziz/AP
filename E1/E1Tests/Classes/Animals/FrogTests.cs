@@ -15,10 +15,10 @@ namespace E1Tests.Classes.Animals
         Frog frog1 = new Frog("Mr Goorghoori", 2, 42.2, 30);
         Frog frog2 = new Frog("Mrs Goorghoori", 1, 92.2, 20);
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void EatFoodTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             string frog1Expected = $"{frog1.Name} is a {typeof(Frog).Name} and is eating";
@@ -31,12 +31,12 @@ namespace E1Tests.Classes.Animals
             // Assert
             Assert.AreEqual(frog1Expected, frog1Actual);
             Assert.AreEqual(frog2Expected, frog2Actual);
-        }*/
+        }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void ReproductionTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             string frog1And2Expected = $"{frog1.Name} is a {typeof(Frog).Name} and reproductive with {frog2.Name}";
@@ -46,12 +46,12 @@ namespace E1Tests.Classes.Animals
 
             // Assert
             Assert.AreEqual(frog1And2Expected, frog1And2Actual);
-        }*/
+        }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void SwimTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             string frog1Expected = $"{frog1.Name} is a {typeof(Frog).Name} and is swimming";
@@ -64,12 +64,12 @@ namespace E1Tests.Classes.Animals
             //Assert 
             Assert.AreEqual(frog1Expected, frog1Actual);
             Assert.AreEqual(frog2Expected, frog2Actual);
-        }*/
+        }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void MoveTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             Frog[] frogs = new[] { frog1, frog2};
@@ -94,12 +94,12 @@ namespace E1Tests.Classes.Animals
 
             // Assert
             CollectionAssert.AreEqual(expected, actual);
-        }*/
+        }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void WalkTest()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
 
             // Arrange
             string frog1Expected = $"{frog1.Name} is a {typeof(Frog).Name} and is walking";
@@ -112,6 +112,6 @@ namespace E1Tests.Classes.Animals
             //Assert 
             Assert.AreEqual(frog1Expected, frog1Actual);
             Assert.AreEqual(frog2Expected, frog2Actual);
-        }*/
+        }
     }
 }
