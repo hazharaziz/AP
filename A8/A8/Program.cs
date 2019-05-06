@@ -23,6 +23,7 @@ namespace A8
             //Console.WriteLine(h3 == h4);
             //Console.WriteLine(h3.Equals(h4));
 
+            Console.WriteLine(h2.GetHashCode());
             Console.ReadKey();
         }
     }

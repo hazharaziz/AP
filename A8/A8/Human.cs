@@ -108,9 +108,26 @@ namespace A8
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            Human h = (Human)obj;
-            return (FirstName == h.FirstName && LastName == h.LastName
-                && BirthDate == h.BirthDate && Height == h.Height);
+            if (obj == null)
+            {
+                return false;
+            }
+            else
+            {
+                Human h = (Human)obj;
+                return (FirstName == h.FirstName && LastName == h.LastName
+                    && BirthDate == h.BirthDate && Height == h.Height);
+            }
+        }
+
+        /// <summary>
+        /// GetHashCode method overriden for returning an integration of the properties' hashcodes
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return  (FirstName.GetHashCode() | LastName.GetHashCode() |
+                BirthDate.GetHashCode() | Height.GetHashCode());
         }
 
 
