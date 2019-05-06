@@ -35,5 +35,84 @@ namespace A8
             return child;
         }
 
+        /// <summary>
+        /// less than operator overloading for comparing humans' ages 
+        /// </summary>
+        /// <param name="h1"></param>
+        /// <param name="h2"></param>
+        /// <returns></returns>
+        public static bool operator <(Human h1, Human h2)
+        {
+            return DateTime.Compare(h1.BirthDate, h2.BirthDate) > 0;
+        }
+
+        /// <summary>
+        /// greater than operator overloading for comparing humans' ages 
+        /// </summary>
+        /// <param name="h1"></param>
+        /// <param name="h2"></param>
+        /// <returns></returns>
+        public static bool operator >(Human h1, Human h2)
+        {
+            return !(h1 < h2);
+        }
+
+        /// <summary>
+        /// less than or equal operator oveerloading for comparing humans' ages 
+        /// </summary>
+        /// <param name="h1"></param>
+        /// <param name="h2"></param>
+        /// <returns></returns>
+        public static bool operator <=(Human h1, Human h2)
+        {
+            return DateTime.Compare(h1.BirthDate, h2.BirthDate) >= 0;
+        }
+
+        /// <summary>
+        /// greater than or equal operator oveerloading for comapraing humans' ages 
+        /// </summary>
+        /// <param name="h1"></param>
+        /// <param name="h2"></param>
+        /// <returns></returns>
+        public static bool operator >=(Human h1, Human h2)
+        {
+            return DateTime.Compare(h1.BirthDate, h2.BirthDate) <= 0;
+        }
+
+        /// <summary>
+        /// comparing the equality of ages
+        /// </summary>
+        /// <param name="h1"></param>
+        /// <param name="h2"></param>
+        /// <returns></returns>
+        public static bool operator ==(Human h1, Human h2)
+        {
+            return DateTime.Compare(h1.BirthDate, h2.BirthDate) == 0;
+        }
+
+        /// <summary>
+        /// comparing the unequality of ages 
+        /// </summary>
+        /// <param name="h1"></param>
+        /// <param name="h2"></param>
+        /// <returns></returns>
+        public static bool operator !=(Human h1, Human h2)
+        {
+            return !(h1 == h2);
+        }
+
+        /// <summary>
+        /// Equals method overrided for checking the equality of the properties of two Humans
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            Human h = (Human)obj;
+            return (FirstName == h.FirstName && LastName == h.LastName
+                && BirthDate == h.BirthDate && Height == h.Height);
+        }
+
+
     }
 }
