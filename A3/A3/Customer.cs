@@ -21,48 +21,36 @@ namespace A3
             Orders = customerOrders;
         }
 
+        /// <summary>
+        /// this method returns the most ordered product
+        /// </summary>
+        /// <returns></returns>
         public Product MostOrderedProduct()
-        {
-            HashSet<Product> products = new HashSet<Product>();
+        {            
             Dictionary<Product, int> productsCounts = new Dictionary<Product, int>();
 
+            //calculating the number of orders of each product
             foreach (Order order in Orders)
             {
                 foreach (Product product in order.Products)
                 {
-                    products.Add(product);
+                    productsCounts[product] = Count(product, order);
                 }
             }
 
-            foreach (Product product in products)
-            {
-                productsCounts[product] = 0;
-            }
-
-            foreach (Order order in Orders)
-            {
-                foreach (Product product in order.Products)
-                {
-                    productsCounts[product] += Count(product, order);
-                }
-            }
-
-            Dictionary<Product, int>.ValueCollection Counts = productsCounts.Values;
-            int maxCount = Max(Counts);
             List<Product> mostOrderedProducts = new List<Product>();
-
-            foreach (KeyValuePair<Product, int> kvp in productsCounts)
+            int maxCount = Max(productsCounts.Values);
+                
+            //making a list of most ordered products
+            foreach (Product product in productsCounts.Keys)
             {
-                if (kvp.Value == maxCount)
+                if (productsCounts[product] == maxCount)
                 {
-                    mostOrderedProducts.Add(kvp.Key);
+                    mostOrderedProducts.Add(product);
                 }
             }
 
-            Random rand = new Random();
-            Product mostOrderedProduct = mostOrderedProducts[rand.Next(0, mostOrderedProducts.Count - 1)];
-
-            return mostOrderedProduct;
+            return mostOrderedProducts[0];
         }
 
         private int Max(Dictionary<Product,int>.ValueCollection counts)
