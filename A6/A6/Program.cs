@@ -40,23 +40,10 @@ namespace A6
         /// </summary>
         /// <param name="fht"></param>
         /// <returns></returns>
-        public static bool IdealHusband(FutureHusbandType fht)
-        {
-            if (((int)fht == 1) || ((int)fht == 2) || ((int)fht == 4))
-            {
-                return false;
-            }
-            else if (((int)fht == 6) || ((int)fht == 3) || ((int)fht == 5))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        public static bool IdealHusband(FutureHusbandType fht) =>
+            ((int)fht == 6) || ((int)fht == 3) || ((int)fht == 5);
     }
-    
+
     /// <summary>
     /// an enum describing the adjectives of the future husband
     /// </summary>
