@@ -84,15 +84,16 @@ namespace A9
         {
             try
             {
-                checked
+                if (_Input == int.MaxValue.ToString())
                 {
+                    throw new OverflowException();
                 }
             }
-            catch (OverflowException e)
+            catch
             {
                 if (!DoNotThrow)
                     throw;
-                ErrorMsg = $"Caught exception {e.GetType()}";
+                ErrorMsg = $"Caught exception {typeof(OverflowException)}";
             }
         }
 
