@@ -117,7 +117,22 @@ namespace A9
 
         public void IndexOutOfRangeExceptionMethod()
         {
- 
+            try
+            {
+                if (_Input == "1")
+                {
+                    throw new IndexOutOfRangeException();
+                }
+            }
+            catch
+            {
+                if (!DoNotThrow)
+                {
+                    throw;
+                }
+                ErrorMsg = $"Caught exception {typeof(IndexOutOfRangeException)}";
+            }
+            
         }
 
         public void OutOfMemoryExceptionMethod()
