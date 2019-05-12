@@ -172,15 +172,33 @@ namespace A9
 
         public void MultiExceptionMethod()
         {
-            //try
-            //{
-            //}
-            //catch (IndexOutOfRangeException e)
-            //{
-            //}
-            //catch (OutOfMemoryException e)
-            //{
-            //}
+            try
+            {
+                if (_Input == int.MaxValue.ToString())
+                {
+                    throw new OutOfMemoryException();
+                }
+                if (_Input == "1")
+                {
+                    throw new IndexOutOfRangeException();
+                }
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                if (!DoNotThrow)
+                {
+                    throw;
+                }
+                ErrorMsg = $"Caught exception {e.GetType()}";
+            }
+            catch (OutOfMemoryException e)
+            {
+                if (!DoNotThrow)
+                {
+                    throw;
+                }
+                ErrorMsg = $"Caught exception {e.GetType()}";
+            }
         }
 
         public void NestedMethods()
