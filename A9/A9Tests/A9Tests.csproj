@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A41A7D0D-2472-4BF7-94AC-3B82E6F01FE5}</ProjectGuid>
+    <ProjectGuid>{77A7E96E-4E5C-4ECC-8A8F-209DE62FD65E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>A9Tests</RootNamespace>
@@ -53,17 +53,29 @@
         <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
       </ItemGroup>
     </When>
-    <Otherwise>
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
-      </ItemGroup>
-    </Otherwise>
+    <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="AdvancedExceptionTests.cs" />
+    <Compile Include="ConstructorTests.cs" />
+    <Compile Include="FileNotFoundExceptionTests.cs" />
+    <Compile Include="FormatExceptionTests.cs" />
+    <Compile Include="GetMethodTests.cs" />
+    <Compile Include="IndexOutOfRangeExceptionTests.cs" />
+    <Compile Include="MultipleExceptionTests.cs" />
+    <Compile Include="OutOfMemoryExceptionTests.cs" />
+    <Compile Include="OverflowExceptionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SetMethodTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\A9\A9.csproj">
+      <Project>{DB3038F9-0F12-4F62-B41E-AC865BBD168B}</Project>
+      <Name>A9</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

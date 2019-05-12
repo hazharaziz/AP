@@ -42,6 +42,12 @@ namespace A9
             }
         }
 
+        public string FinallyBlockStringOut { get; set; }
+
+        public void FinallyBlockMethod(string keyword)
+        {
+            throw new NotImplementedException();
+        }
 
         public ExceptionHandler(
             string input,
@@ -119,6 +125,19 @@ namespace A9
             }
             catch (OutOfMemoryException e)
             {
+            }
+        }
+
+        public void NestedMethods()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void ThrowIfOdd(int v)
+        {
+            if (v % 2 != 0)
+            {
+                throw new InvalidDataException();
             }
         }
     }
