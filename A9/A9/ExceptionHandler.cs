@@ -98,11 +98,12 @@ namespace A9
 
         public void FormatExceptionMethod()
         {
-			try
+            try
             {
                 int i = int.Parse(Input);
             }
-            catch(FormatException e)
+
+            catch (FormatException e)
             {
                 if (!DoNotThrow)
                     throw;
@@ -151,20 +152,34 @@ namespace A9
 
         public void OutOfMemoryExceptionMethod()
         {
-            int[] a = new int[int.MaxValue];
+            try
+            {
+                if (_Input == int.MaxValue.ToString())
+                {
+                    throw new OutOfMemoryException();
+                }
+            }
+            catch
+            {
+                if (!DoNotThrow)
+                {
+                    throw;
+                }
+                ErrorMsg = $"Caught exception {typeof(OutOfMemoryException)}";
+            }
         }
 
         public void MultiExceptionMethod()
         {
-            try
-            {
-            }
-            catch (IndexOutOfRangeException e)
-            {
-            }
-            catch (OutOfMemoryException e)
-            {
-            }
+            //try
+            //{
+            //}
+            //catch (IndexOutOfRangeException e)
+            //{
+            //}
+            //catch (OutOfMemoryException e)
+            //{
+            //}
         }
 
         public void NestedMethods()
