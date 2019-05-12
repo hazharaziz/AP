@@ -119,7 +119,7 @@ namespace A9
                     throw new FileNotFoundException();
                 }
             }
-            catch
+            catch 
             {
                 if (!DoNotThrow)
                 {
