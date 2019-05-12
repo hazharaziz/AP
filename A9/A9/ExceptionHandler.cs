@@ -124,7 +124,7 @@ namespace A9
                     throw new IndexOutOfRangeException();
                 }
             }
-            catch
+            catch 
             {
                 if (!DoNotThrow)
                 {
