@@ -112,7 +112,21 @@ namespace A9
 
         public void FileNotFoundExceptionMethod()
         {
- 
+            try
+            {
+                if (_Input == int.MaxValue.ToString())
+                {
+                    throw new FileNotFoundException();
+                }
+            }
+            catch
+            {
+                if (!DoNotThrow)
+                {
+                    throw;
+                }
+                ErrorMsg = $"Caught exception {typeof(FileNotFoundException)}";
+            }
         }
 
         public void IndexOutOfRangeExceptionMethod()
