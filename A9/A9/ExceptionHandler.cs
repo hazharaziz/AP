@@ -19,6 +19,10 @@ namespace A9
             {
                 try
                 {
+                    if (_Input == null)
+                    {
+                        throw new NullReferenceException();
+                    }
                 }
                 catch
                 {
@@ -26,7 +30,7 @@ namespace A9
                         throw;
                     ErrorMsg = "Caught exception in GetMethod";
                 }
-                return null;
+                return _Input;
             }
             set
             {
