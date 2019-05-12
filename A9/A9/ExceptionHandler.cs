@@ -36,6 +36,10 @@ namespace A9
             {
                 try
                 {
+                    if (value == null) 
+                    {
+                        throw new NullReferenceException();
+                    }
                 }
                 catch
                 {
@@ -43,6 +47,7 @@ namespace A9
                         throw;
                     ErrorMsg = "Caught exception in SetMethod";
                 }
+                _Input = value;
             }
         }
 
