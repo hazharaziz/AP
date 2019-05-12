@@ -60,6 +60,7 @@ namespace A9
             {
                 if (causeExceptionInConstructor)
                 {
+                    throw new NullReferenceException();
                 }
             }
             catch
