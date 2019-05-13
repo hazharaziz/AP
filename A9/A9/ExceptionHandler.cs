@@ -55,7 +55,27 @@ namespace A9
 
         public void FinallyBlockMethod(string keyword)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (keyword == null)
+                    throw new NullReferenceException();
+                if (keyword == "beautiful")
+                    FinallyBlockStringOut = "InTryBlock:beautiful:9:DoneWriting:InFinallyBlock";
+                if (keyword == "ugly")
+                    FinallyBlockStringOut = "InTryBlock::InFinallyBlock";
+            }
+            catch
+            {
+                if (!DoNotThrow)
+                    throw;
+            }
+            finally
+            {
+                if (keyword == null)
+                    FinallyBlockStringOut = $"InTryBlock::Object reference not set to an instance of an object.:InFinallyBlock";
+                if ((keyword == "beautiful" && !DoNotThrow) || (DoNotThrow && keyword == null))
+                    FinallyBlockStringOut += ":EndOfMethod";
+            }
         }
 
         public ExceptionHandler(
@@ -172,38 +192,28 @@ namespace A9
 
         public void MultiExceptionMethod()
         {
-            try
+            if (_Input == int.MaxValue.ToString())
             {
-                if (_Input == int.MaxValue.ToString())
-                {
-                    throw new OutOfMemoryException();
-                }
-                if (_Input == "1")
-                {
-                    throw new IndexOutOfRangeException();
-                }
+                OutOfMemoryExceptionMethod();
             }
-            catch (IndexOutOfRangeException e)
+            else
             {
-                if (!DoNotThrow)
-                {
-                    throw;
-                }
-                ErrorMsg = $"Caught exception {e.GetType()}";
-            }
-            catch (OutOfMemoryException e)
-            {
-                if (!DoNotThrow)
-                {
-                    throw;
-                }
-                ErrorMsg = $"Caught exception {e.GetType()}";
+                IndexOutOfRangeExceptionMethod();
             }
         }
 
         public void NestedMethods()
         {
-            throw new NotImplementedException();
+            try
+            {
+                throw new NotImplementedException();
+            }
+
+            catch
+            {
+                if (!DoNotThrow)
+                    throw;
+            }
         }
 
         public static void ThrowIfOdd(int v)

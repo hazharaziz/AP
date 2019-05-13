@@ -36,7 +36,6 @@ namespace A9Tests
             Assert.AreEqual(
                 $"InTryBlock::InFinallyBlock",
                 eh.FinallyBlockStringOut);
-
         }
 
 
@@ -72,7 +71,6 @@ namespace A9Tests
                 throw;
             }
         }
-
         #endregion
 
         #region Nested
@@ -93,6 +91,7 @@ namespace A9Tests
                 eh.NestedMethods();
                 Assert.Fail("NestedExceptionTest did not throw exception.");
             }
+
             catch (NotImplementedException e)
             {
                 string[] methods = GetMethods(e.StackTrace);
