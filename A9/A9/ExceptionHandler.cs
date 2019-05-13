@@ -202,17 +202,61 @@ namespace A9
             }
         }
 
-        public void NestedMethods()
+        public void MethodA()
+        {
+            try
+            {
+                MethodB();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        public void MethodB()
+        {
+            try
+            {
+                MethodC();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        public void MethodC()
+        {
+            try
+            {
+                MethodD();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        public void MethodD()
         {
             try
             {
                 throw new NotImplementedException();
             }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public void NestedMethods()
+        {
+            try
+            {
+                MethodA();
+            }
 
             catch
             {
-                if (!DoNotThrow)
-                    throw;
+                throw;
             }
         }
 
