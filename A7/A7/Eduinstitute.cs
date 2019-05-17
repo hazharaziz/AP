@@ -6,7 +6,7 @@ namespace A7
     /// <summary>
     /// EduInstitute class for checking the validation of an educational institute
     /// </summary>
-    /// <typeparam name="TTeacher"></typeparam>
+    /// <typeparam name="TTeacher"></typeparam> TTeacher is an ITeacher or ICitizen interface
     public class EduInstitute<TTeacher> where TTeacher : ITeacher, ICitizen
     {
         public string Title { get; set; }
@@ -42,7 +42,7 @@ namespace A7
         /// <summary>
         /// IsEligible method for checking the validation of a teacher degree
         /// </summary>
-        /// <param name="teacher"></param>
+        /// <param name="teacher"></param> 
         /// <returns></returns>
         public bool IsEligible(TTeacher teacher)
         {
