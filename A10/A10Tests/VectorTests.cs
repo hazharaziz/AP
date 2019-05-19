@@ -11,23 +11,23 @@ namespace A10Tests
     [TestClass()]
     public class VectorTests
     {
-        //[TestMethod()]
-        //public void InitTest()
-        //{
-        //    Vector<int> v = new Vector<int>(5) { 0, 1, 2, 3, 4 };
-        //    for (int i = 0; i < v.Size; i++)
-        //        Assert.AreEqual(i, v[i]);
-        //}
+        [TestMethod()]
+        public void InitTest()
+        {
+            Vector<int> v = new Vector<int>(5) { 0, 1, 2, 3, 4 };
+            for (int i = 0; i < v.Size; i++)
+                Assert.AreEqual(i, v[i]);
+        }
 
-        //[TestMethod()]
-        //public void CopyConstructorTest()
-        //{
-        //    Vector<int> v = new Vector<int>(5) { 0, 1, 2, 3, 4 };
-        //    Vector<int> vCopy = new Vector<int>(v);
+        [TestMethod()]
+        public void CopyConstructorTest()
+        {
+            Vector<int> v = new Vector<int>(5) { 0, 1, 2, 3, 4 };
+            Vector<int> vCopy = new Vector<int>(v);
 
-        //    for (int i = 0; i < v.Size; i++)
-        //        Assert.AreEqual(v[i], vCopy[i]);
-        //}
+            for (int i = 0; i < v.Size; i++)
+                Assert.AreEqual(v[i], vCopy[i]);
+        }
 
         [TestMethod()]
         public void IndexerTest()

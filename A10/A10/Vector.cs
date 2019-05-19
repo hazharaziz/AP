@@ -56,7 +56,7 @@ namespace A10
         public Vector(Vector<_Type> other)
             : this(other.Size)
         {
-
+            Data = other.Data;
         }
 
         /// <summary>
