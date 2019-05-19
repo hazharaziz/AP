@@ -68,25 +68,25 @@ namespace A10Tests
             Assert.AreEqual(35, p);
         }
 
-        //[TestMethod()]
-        //public void EqualsTest()
-        //{
-        //    Vector<int> v1 = new Vector<int>(5) { 1, 2, 3, 4, 5 };
-        //    Vector<int> v2 = new Vector<int>(5) { 1, 2, 0, 4, 5 };
-        //    Vector<int> v3 = new Vector<int>(5) { 1, 2, 3, 4, 5 };
-        //    Vector<int> v4 = new Vector<int>(6) { 1, 2, 3, 4, 5, 6 };
+        [TestMethod()]
+        public void EqualsTest()
+        {
+            Vector<int> v1 = new Vector<int>(5) { 1, 2, 3, 4, 5 };
+            Vector<int> v2 = new Vector<int>(5) { 1, 2, 0, 4, 5 };
+            Vector<int> v3 = new Vector<int>(5) { 1, 2, 3, 4, 5 };
+            Vector<int> v4 = new Vector<int>(6) { 1, 2, 3, 4, 5, 6 };
 
-        //    Assert.AreEqual(v1, v3);
-        //    Assert.AreNotEqual(v1, v2);
+            Assert.AreEqual(v1, v3);
+            Assert.AreNotEqual(v1, v2);
 
-        //    Assert.IsTrue(v1 == v3);
-        //    Assert.IsTrue(v1 != v2);
+            Assert.IsTrue(v1 == v3);
+            Assert.IsTrue(v1 != v2);
 
-        //    Assert.IsFalse(v1 == v2);
-        //    Assert.IsFalse(v1 != v3);
+            Assert.IsFalse(v1 == v2);
+            Assert.IsFalse(v1 != v3);
 
-        //    Assert.AreNotEqual(v1, v4);
-        //}
+            Assert.AreNotEqual(v1, v4);
+        }
 
         //[TestMethod]
         //public void IEnumerableTest()

@@ -111,6 +111,7 @@ namespace A10
             dynamic vector1 = v1;
             dynamic vector2 = v2;
             dynamic result = 0;
+
             try
             {
                 for (int i = 0; i < v1.Size; i++)
@@ -122,6 +123,7 @@ namespace A10
             {
                 Console.WriteLine(formatException.Message);
             }
+
             return result;
         }
 
@@ -134,8 +136,24 @@ namespace A10
         /// <param name="v2">vector 2</param>
         /// <returns>whether v1 is equal to v2</returns>
         public static bool operator ==(Vector<_Type> v1, Vector<_Type> v2)
-            => true; //TODO
-      
+        {
+            dynamic vector1 = v1;
+            dynamic vector2 = v2;
+
+            bool result = true;
+
+            for (int i = 0; i < v1.Size; i++)
+            {
+                if (vector1[i] != vector2[i])
+                {
+                    result = false;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
 
         /// <summary>
         /// Inequality operator
@@ -144,7 +162,7 @@ namespace A10
         /// <param name="v2">vector 2</param>
         /// <returns>v1 not equal to v2</returns>
         public static bool operator !=(Vector<_Type> v1, Vector<_Type> v2)
-            => true; //TODO
+            => !(v1 == v2);
 
         /// <summary>
         /// Override Object.Equals
@@ -153,7 +171,15 @@ namespace A10
         /// <returns>Whether this object is equal to obj</returns>
         public override bool Equals(object obj)
         {
-            return true;
+            dynamic v1 = obj;
+            bool result = true;
+
+            if (v1.Size != this.Size)
+                result = false;
+            else
+                result = (v1 == this);
+
+            return result;
         }
 
         /// <summary>
