@@ -100,22 +100,22 @@ namespace A10Tests
             }
         }
 
-        //[TestMethod]
-        //public void HashCodeTest()
-        //{
-        //    // Different vectors should have different hash codes
-        //    Vector<int> v1 = new Vector<int>(5) { 1, 2, 3, 4, 5 };
-        //    Vector<int> v2 = new Vector<int>(6) { 1, 2, 3, 4, 5, 6 };
+        [TestMethod]
+        public void HashCodeTest()
+        {
+            // Different vectors should have different hash codes
+            Vector<int> v1 = new Vector<int>(5) { 1, 2, 3, 4, 5 };
+            Vector<int> v2 = new Vector<int>(6) { 1, 2, 3, 4, 5, 6 };
 
-        //    Assert.AreNotEqual(v1.GetHashCode(), v2.GetHashCode());
+            Assert.AreNotEqual(v1.GetHashCode(), v2.GetHashCode());
 
 
-        //    // Similar vectors should have similar hash codes
-        //    Vector<int> v3 = new Vector<int>(5) { 1, 2, 3, 4, 5 };
-        //    Vector<int> v4 = new Vector<int>(5) { 1, 2, 3, 4, 5 };
+            // Similar vectors should have similar hash codes
+            Vector<int> v3 = new Vector<int>(5) { 1, 2, 3, 4, 5 };
+            Vector<int> v4 = new Vector<int>(5) { 1, 2, 3, 4, 5 };
 
-        //    Assert.AreEqual(v3.GetHashCode(), v4.GetHashCode());
-        //}
+            Assert.AreEqual(v3.GetHashCode(), v4.GetHashCode());
+        }
 
         //[TestMethod()]
         //public void ToStringTest()

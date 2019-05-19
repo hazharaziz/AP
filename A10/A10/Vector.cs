@@ -170,18 +170,8 @@ namespace A10
         /// <param name="obj"></param>
         /// <returns>Whether this object is equal to obj</returns>
         public override bool Equals(object obj)
-        {
-            dynamic v1 = obj;
-            bool result = true;
-
-            if (v1.Size != this.Size)
-                result = false;
-            else
-                result = (v1 == this);
-
-            return result;
-        }
-
+            => Enumerable.SequenceEqual<_Type>((dynamic)obj, this);
+        
         /// <summary>
         /// Implementing IEquatable interface
         /// </summary>
@@ -193,9 +183,7 @@ namespace A10
         }
 
         public override int GetHashCode()
-        {
-            return 0;
-        }
+            => ((dynamic)Data[0] * (dynamic)Data[Size - 1]);
 
         public IEnumerator<_Type> GetEnumerator()
         {
