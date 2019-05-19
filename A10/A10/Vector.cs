@@ -66,7 +66,7 @@ namespace A10
         public Vector(IEnumerable<_Type> list)
             : this(list.Count())
         {
-            
+
         }
 
         /// <summary>
@@ -199,8 +199,10 @@ namespace A10
 
         public IEnumerator<_Type> GetEnumerator()
         {
-            throw new NotImplementedException();
-            
+            foreach (_Type d in Data)
+            {
+                yield return d;
+            }            
         }
 
         IEnumerator IEnumerable.GetEnumerator()

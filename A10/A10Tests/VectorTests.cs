@@ -88,17 +88,17 @@ namespace A10Tests
             Assert.AreNotEqual(v1, v4);
         }
 
-        //[TestMethod]
-        //public void IEnumerableTest()
-        //{
-        //    Vector<int> v1 = new Vector<int>(5) { 1, 2, 3, 4, 5 };
+        [TestMethod]
+        public void IEnumerableTest()
+        {
+            Vector<int> v1 = new Vector<int>(5) { 1, 2, 3, 4, 5 };
 
-        //    int idx = 1;
-        //    foreach (var item in v1)
-        //    {
-        //        Assert.AreEqual(idx++, item);
-        //    }
-        //}
+            int idx = 1;
+            foreach (var item in v1)
+            {
+                Assert.AreEqual(idx++, item);
+            }
+        }
 
         //[TestMethod]
         //public void HashCodeTest()
