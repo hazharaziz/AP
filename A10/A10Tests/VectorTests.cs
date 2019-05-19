@@ -29,19 +29,19 @@ namespace A10Tests
         //        Assert.AreEqual(v[i], vCopy[i]);
         //}
 
-        //[TestMethod()]
-        //public void IndexerTest()
-        //{
-        //    Vector<int> v = new Vector<int>(5) { 0, 0, 0, 0, 0 };
-        //    for (int i = 0; i < v.Size; i++)
-        //        Assert.AreEqual(v[i], 0);
+        [TestMethod()]
+        public void IndexerTest()
+        {
+            Vector<int> v = new Vector<int>(5) { 0, 0, 0, 0, 0 };
+            for (int i = 0; i < v.Size; i++)
+                Assert.AreEqual(v[i], 0);
 
-        //    for (int i = 0; i < v.Size; i++)
-        //        v[i] = i;
+            for (int i = 0; i < v.Size; i++)
+                v[i] = i;
 
-        //    for (int i = 0; i < v.Size; i++)
-        //        Assert.AreEqual(v[i], i);
-        //}
+            for (int i = 0; i < v.Size; i++)
+                Assert.AreEqual(v[i], i);
+        }
 
         [TestMethod()]
         public void AddTest()
