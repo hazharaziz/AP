@@ -94,8 +94,7 @@ namespace A10
 
             for (int i = 0; i < newVector.Size; i++)
             {
-                newVector[i] += v1[i];
-                newVector[i] += v2[i];
+                newVector[i] += vector1[i] + vector2[i];
             }
 
             return newVector;
@@ -109,8 +108,21 @@ namespace A10
         /// <returns>Inner product of vector one and two</returns>
         public static _Type operator *(Vector<_Type> v1, Vector<_Type> v2)
         {
-            throw new NotImplementedException();
-           
+            dynamic vector1 = v1;
+            dynamic vector2 = v2;
+            dynamic result = 0;
+            try
+            {
+                for (int i = 0; i < v1.Size; i++)
+                {
+                    result += (vector1[i] * vector2[i]);
+                }
+            }
+            catch(FormatException formatException)
+            {
+                Console.WriteLine(formatException.Message);
+            }
+            return result;
         }
 
 

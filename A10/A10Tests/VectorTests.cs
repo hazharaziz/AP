@@ -57,16 +57,16 @@ namespace A10Tests
                 Assert.AreEqual(v[i], 6);
         }
 
-        //[TestMethod()]
-        //public void MultiplyTest()
-        //{
-        //    Vector<int> v1 = new Vector<int>(5) { 1, 2, 3, 4, 5 };
-        //    Vector<int> v2 = new Vector<int>(5) { 5, 4, 3, 2, 1 };
+        [TestMethod()]
+        public void MultiplyTest()
+        {
+            Vector<int> v1 = new Vector<int>(5) { 1, 2, 3, 4, 5 };
+            Vector<int> v2 = new Vector<int>(5) { 5, 4, 3, 2, 1 };
 
-        //    int p = v1 * v2;
+            int p = v1 * v2;
 
-        //    Assert.AreEqual(35, p);
-        //}
+            Assert.AreEqual(35, p);
+        }
 
         //[TestMethod()]
         //public void EqualsTest()
