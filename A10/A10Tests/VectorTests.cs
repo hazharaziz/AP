@@ -117,11 +117,11 @@ namespace A10Tests
             Assert.AreEqual(v3.GetHashCode(), v4.GetHashCode());
         }
 
-        //[TestMethod()]
-        //public void ToStringTest()
-        //{
-        //    Vector<int> v1 = new Vector<int>(5) { 1, 2, 3, 4, 5 };
-        //    Assert.AreEqual("[1,2,3,4,5]", v1.ToString());
-        //}
+        [TestMethod()]
+        public void ToStringTest()
+        {
+            Vector<int> v1 = new Vector<int>(5) { 1, 2, 3, 4, 5 };
+            Assert.AreEqual("[1,2,3,4,5]", v1.ToString());
+        }
     }
 }

@@ -179,7 +179,7 @@ namespace A10
         /// <returns>whether other vector is equal to this vector</returns>
         public bool Equals(Vector<_Type> other)
         {
-            return true;
+            throw new NotImplementedException();
         }
 
         public override int GetHashCode()
@@ -191,6 +191,20 @@ namespace A10
             {
                 yield return d;
             }            
+        }
+
+        public override string ToString()
+        {
+            string result = "[";
+            for (int i = 0; i < Size; i++)
+            {
+                if (i != Size - 1)
+                    result += $"{Data[i]},";
+                else
+                    result += $"{Data[i]}";
+            }
+            result += "]";
+            return result;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
