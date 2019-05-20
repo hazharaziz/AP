@@ -66,7 +66,8 @@ namespace A10
         public Vector(IEnumerable<_Type> list)
             : this(list.Count())
         {
-
+            dynamic l = list;
+            Data = l;
         }
 
         /// <summary>

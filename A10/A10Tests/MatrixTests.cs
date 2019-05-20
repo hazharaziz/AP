@@ -187,100 +187,100 @@ namespace A10Tests
         }
 
 
-        //[TestMethod]
-        //public void AccessorTest()
-        //{
-        //    Matrix<int> m = new Matrix<int>(2, 3)
-        //    {
-        //        new Vector<int>(3) { 0, 1, 2},
-        //        new Vector<int>(3) { 3, 4, 5},
-        //    };
+        [TestMethod]
+        public void AccessorTest()
+        {
+            Matrix<int> m = new Matrix<int>(2, 3)
+            {
+                new Vector<int>(3) { 0, 1, 2},
+                new Vector<int>(3) { 3, 4, 5},
+            };
 
-        //    Assert.AreEqual(new Vector<int>(3) { 0, 1, 2 }, m[0]);
-        //    Assert.AreEqual(new Vector<int>(3) { 3, 4, 5 }, m[1]);
+            Assert.AreEqual(new Vector<int>(3) { 0, 1, 2 }, m[0]);
+            Assert.AreEqual(new Vector<int>(3) { 3, 4, 5 }, m[1]);
 
-        //    for (int i = 0; i < m.RowCount; i++)
-        //        for (int j = 0; j < m.ColumnCount; j++)
-        //            Assert.AreEqual(i * 3 + j, m[i, j]);
-        //}
+            for (int i = 0; i < m.RowCount; i++)
+                for (int j = 0; j < m.ColumnCount; j++)
+                    Assert.AreEqual(i * 3 + j, m[i, j]);
+        }
 
-        //[TestMethod]
-        //public void MultiAddTest()
-        //{
-        //    Matrix<int> m1 = new Matrix<int>(2, 2)
-        //    {
-        //        new Vector<int>(2) { 0, 1},
-        //        new Vector<int>(2) { 2, -1},
-        //    };
-        //    Matrix<int> m2 = new Matrix<int>(2, 2)
-        //    {
-        //        new Vector<int>(2) { -1, 1},
-        //        new Vector<int>(2) { 1, 2},
-        //    };
+        [TestMethod]
+        public void MultiAddTest()
+        {
+            Matrix<int> m1 = new Matrix<int>(2, 2)
+            {
+                new Vector<int>(2) { 0, 1},
+                new Vector<int>(2) { 2, -1},
+            };
+            Matrix<int> m2 = new Matrix<int>(2, 2)
+            {
+                new Vector<int>(2) { -1, 1},
+                new Vector<int>(2) { 1, 2},
+            };
 
-        //    Matrix<int> m3 = new Matrix<int>(2, 2)
-        //    {
-        //        new Vector<int>(2) { 0, 1},
-        //        new Vector<int>(2) { 1, 0},
-        //    };
+            Matrix<int> m3 = new Matrix<int>(2, 2)
+            {
+                new Vector<int>(2) { 0, 1},
+                new Vector<int>(2) { 1, 0},
+            };
 
-        //    var m = m1 + m2 + m3;
+            var m = m1 + m2 + m3;
 
-        //    Assert.AreEqual(m[0], new Vector<int>(2) { -1, 3 });
-        //    Assert.AreEqual(m[1], new Vector<int>(2) { 4, 1 });
-        //}
+            Assert.AreEqual(m[0], new Vector<int>(2) { -1, 3 });
+            Assert.AreEqual(m[1], new Vector<int>(2) { 4, 1 });
+        }
 
-        //[TestMethod]
-        //public void MultiMultiplyTest()
-        //{
-        //    Matrix<int> m1 = new Matrix<int>(2, 2)
-        //    {
-        //        new Vector<int>(2) { 0, 1},
-        //        new Vector<int>(2) { 2, -1},
-        //    };
-        //    Matrix<int> m2 = new Matrix<int>(2, 2)
-        //    {
-        //        new Vector<int>(2) { -1, 1},
-        //        new Vector<int>(2) { 1, 2},
-        //    };
+        [TestMethod]
+        public void MultiMultiplyTest()
+        {
+            Matrix<int> m1 = new Matrix<int>(2, 2)
+            {
+                new Vector<int>(2) { 0, 1},
+                new Vector<int>(2) { 2, -1},
+            };
+            Matrix<int> m2 = new Matrix<int>(2, 2)
+            {
+                new Vector<int>(2) { -1, 1},
+                new Vector<int>(2) { 1, 2},
+            };
 
-        //    Matrix<int> m3 = new Matrix<int>(2, 2)
-        //    {
-        //        new Vector<int>(2) { 0, 1},
-        //        new Vector<int>(2) { 1, 0},
-        //    };
+            Matrix<int> m3 = new Matrix<int>(2, 2)
+            {
+                new Vector<int>(2) { 0, 1},
+                new Vector<int>(2) { 1, 0},
+            };
 
-        //    var m = (m1 * m2) * m3;
+            var m = (m1 * m2) * m3;
 
-        //    Assert.AreEqual(m[0], new Vector<int>(2) { 2, 1 });
-        //    Assert.AreEqual(m[1], new Vector<int>(2) { 0, -3 });
-        //}
+            Assert.AreEqual(m[0], new Vector<int>(2) { 2, 1 });
+            Assert.AreEqual(m[1], new Vector<int>(2) { 0, -3 });
+        }
 
-        //[TestMethod]
-        //public void MultiExpressionTest()
-        //{
-        //    Matrix<int> m1 = new Matrix<int>(2, 2)
-        //    {
-        //        new Vector<int>(2) { 0, 1},
-        //        new Vector<int>(2) { 2, -1},
-        //    };
-        //    Matrix<int> m2 = new Matrix<int>(2, 2)
-        //    {
-        //        new Vector<int>(2) { -1, 1},
-        //        new Vector<int>(2) { 1, 2},
-        //    };
+        [TestMethod]
+        public void MultiExpressionTest()
+        {
+            Matrix<int> m1 = new Matrix<int>(2, 2)
+            {
+                new Vector<int>(2) { 0, 1},
+                new Vector<int>(2) { 2, -1},
+            };
+            Matrix<int> m2 = new Matrix<int>(2, 2)
+            {
+                new Vector<int>(2) { -1, 1},
+                new Vector<int>(2) { 1, 2},
+            };
 
-        //    Matrix<int> m3 = new Matrix<int>(2, 2)
-        //    {
-        //        new Vector<int>(2) { 0, 1},
-        //        new Vector<int>(2) { 1, 0},
-        //    };
+            Matrix<int> m3 = new Matrix<int>(2, 2)
+            {
+                new Vector<int>(2) { 0, 1},
+                new Vector<int>(2) { 1, 0},
+            };
 
-        //    var m = ((m1 + m2) * (m3 + m1)) + (m2 + m3);
+            var m = ((m1 + m2) * (m3 + m1)) + (m2 + m3);
 
-        //    Assert.AreEqual(m[0], new Vector<int>(2) { 5, -2 });
-        //    Assert.AreEqual(m[1], new Vector<int>(2) { 5, 7 });
-        //}
+            Assert.AreEqual(m[0], new Vector<int>(2) { 5, -2 });
+            Assert.AreEqual(m[1], new Vector<int>(2) { 5, 7 });
+        }
 
         [TestMethod()]
         public void MatrixToStringTest()

@@ -39,7 +39,7 @@ namespace A10
         /// <param name="columnCount"></param>
         public Matrix(IEnumerable<Vector<_Type>> rows)
         {
-            
+            Rows = (dynamic)rows;
         }   
 
         public void Add(Vector<_Type> row)
@@ -126,9 +126,9 @@ namespace A10
                     }
                 }
             }
-            catch
+            catch(InvalidOperationException)
             {
-                
+                throw;
             }
 
             return newMatrix;
@@ -175,7 +175,7 @@ namespace A10
 
 
         public bool Equals(Matrix<_Type> other)
-            => (this == other);
+            => (this.Rows == (dynamic)other);
 
         public override bool Equals(object obj)
             => (this == (dynamic)obj);
