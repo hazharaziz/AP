@@ -23,7 +23,9 @@ namespace A10
         /// <param name="columnCount"></param>
         public Matrix(int rowCount, int columnCount)
         {
-            throw new NotImplementedException();
+            RowCount = rowCount;
+            ColumnCount = columnCount;
+            Rows = new Vector<_Type>[RowCount];
         }
 
         /// <summary>
@@ -33,7 +35,7 @@ namespace A10
         /// <param name="columnCount"></param>
         public Matrix(IEnumerable<Vector<_Type>> rows)
         {
-            throw new NotImplementedException();
+
         }
 
         public void Add(Vector<_Type> row)
@@ -41,15 +43,17 @@ namespace A10
             this.Rows[RowAddIndex++] = row;
         }
 
-        //public Vector<_Type> this[int index]
-        //{
+        public Vector<_Type> this[int index]
+        {
+            get => Rows[index];
+            set => Rows[index] = value;
+        }
 
-        //}
-
-        //public _Type this[int row, int col]
-        //{
-            
-        //}
+        public _Type this[int row, int col]
+        {
+            get => Rows[row][col];
+            set => Rows[row][col] = value;
+        }
 
         /// <summary>
         /// overloading + operator for the class Matrix customly
@@ -112,7 +116,7 @@ namespace A10
         }
 
         IEnumerator IEnumerable.GetEnumerator()
-        {
+        { 
             return ((IEnumerable<Vector<_Type>>)Rows).GetEnumerator();
         }
     }

@@ -178,12 +178,16 @@ namespace A10
         /// <param name="other">another vector</param>
         /// <returns>whether other vector is equal to this vector</returns>
         public bool Equals(Vector<_Type> other)
-        {
-            throw new NotImplementedException();
-        }
+            => Enumerable.SequenceEqual<_Type>((dynamic)other, this);
+        
 
         public override int GetHashCode()
-            => ((dynamic)Data[0] * (dynamic)Data[Size - 1]);
+        {
+            int hashCode = 0;
+            foreach (var data in Data)
+                hashCode ^= (dynamic)data;
+            return hashCode;
+        }
 
         public IEnumerator<_Type> GetEnumerator()
         {
@@ -209,7 +213,10 @@ namespace A10
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            foreach(_Type d in Data)
+            {
+                yield return d;
+            }
         }
     }
 }

@@ -11,22 +11,23 @@ namespace A10Tests
     [TestClass()]
     public class MatrixTests
     {
-        //[TestMethod()]
-        //public void MatrixTest()
-        //{
-        //    Matrix<int> m = new Matrix<int>(3, 4)
-        //    {
-        //        new Vector<int>(4) { 10, 11, 12, 13},
-        //        new Vector<int>(4) { 20, 21, 22, 23},
-        //        new Vector<int>(4) { 30, 31, 32, 33}
-        //    };
+        [TestMethod()]
+        public void MatrixTest()
+        {
 
-        //    for (int i = 0; i < m.RowCount; i++)
-        //        for (int j = 0; j < m.ColumnCount; j++)
-        //            Assert.AreEqual(
-        //                (i + 1) * 10 + j,
-        //                m[i, j]);
-        //}
+            Matrix<int> m = new Matrix<int>(3, 4)
+            {
+                new Vector<int>(4) { 10, 11, 12, 13},
+                new Vector<int>(4) { 20, 21, 22, 23},
+                new Vector<int>(4) { 30, 31, 32, 33}
+            };
+
+            for (int i = 0; i < m.RowCount; i++)
+                for (int j = 0; j < m.ColumnCount; j++)
+                    Assert.AreEqual(
+                        (i + 1) * 10 + j,
+                        m[i, j]);
+        }
 
         //[TestMethod]
         //public void MultiplyTest()
