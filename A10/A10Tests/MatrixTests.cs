@@ -282,17 +282,17 @@ namespace A10Tests
         //    Assert.AreEqual(m[1], new Vector<int>(2) { 5, 7 });
         //}
 
-        //[TestMethod()]
-        //public void MatrixToStringTest()
-        //{
-        //    Matrix<int> m = new Matrix<int>(3, 4)
-        //    {
-        //        new Vector<int>(4) { 10, 11, 12, 13},
-        //        new Vector<int>(4) { 20, 21, 22, 23},
-        //        new Vector<int>(4) { 30, 31, 32, 33}
-        //    };
+        [TestMethod()]
+        public void MatrixToStringTest()
+        {
+            Matrix<int> m = new Matrix<int>(3, 4)
+            {
+                new Vector<int>(4) { 10, 11, 12, 13},
+                new Vector<int>(4) { 20, 21, 22, 23},
+                new Vector<int>(4) { 30, 31, 32, 33}
+            };
 
-        //    Assert.AreEqual("[\n[10,11,12,13],\n[20,21,22,23],\n[30,31,32,33]\n]",m.ToString());            
-        //}
+            Assert.AreEqual("[\n[10,11,12,13],\n[20,21,22,23],\n[30,31,32,33]\n]", m.ToString());
+        }
     }
 }

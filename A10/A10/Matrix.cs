@@ -119,5 +119,20 @@ namespace A10
         { 
             return ((IEnumerable<Vector<_Type>>)Rows).GetEnumerator();
         }
+
+        public override string ToString()
+        {
+            string result = "[\n";
+            for (int i = 0; i < RowCount; i++)
+            {
+                if (i != RowCount - 1)
+                    result += $"{Rows[i]},\n";
+                else
+                    result += $"{Rows[i]}\n";
+            }
+            result += "]";
+
+            return result;
+        }
     }
 }
