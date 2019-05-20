@@ -39,8 +39,8 @@ namespace A10
         /// <param name="columnCount"></param>
         public Matrix(IEnumerable<Vector<_Type>> rows)
         {
-
-        }
+            
+        }   
 
         public void Add(Vector<_Type> row)
         {
@@ -77,6 +77,7 @@ namespace A10
                 {
                     throw new InvalidOperationException();
                 }
+                
                 for (int i = 0; i < m1.RowCount; i++)
                 {
                     for (int j = 0; j < m1.ColumnCount; j++)
@@ -111,24 +112,50 @@ namespace A10
                     throw new InvalidOperationException();
                 }
 
-                for (int i = 0; i < m1.RowCount; i++)
+                else
                 {
-                    for (int j = 0; j < m2.ColumnCount; j++)
+                    for (int i = 0; i < m1.RowCount; i++)
                     {
-                        for (int k = 0; k < m1.ColumnCount; k++)
+                        for (int j = 0; j < m2.ColumnCount; j++)
                         {
-                            newMatrix[i][j] += (matrix1[i][k] * matrix2[k][j]);
+                            for (int k = 0; k < m1.ColumnCount; k++)
+                            {
+                                newMatrix[i][j] += (matrix1[i][k] * matrix2[k][j]);
+                            }
                         }
                     }
-                }   
+                }
             }
-            catch(InvalidOperationException)
+            catch
             {
-                throw;
+                
             }
 
             return newMatrix;
         }
+
+        public static bool operator ==(Matrix<_Type> m1, Matrix<_Type> m2)
+        {
+            dynamic matrix1 = m1;
+            dynamic matrix2 = m2;
+            bool result = true;
+
+            for (int i = 0; i < m1.RowCount; i++)
+            {
+                for (int j = 0; j < m1.ColumnCount; j++)
+                {
+                    if (matrix1[i][j] != matrix2[i][j])
+                    {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+            return result;
+        }
+
+        public static bool operator !=(Matrix<_Type> m1, Matrix<_Type> m2)
+            => !(m1 == m2);
 
         /// <summary>
         /// Get an enumerator that enumerates over elements in a column
@@ -137,7 +164,10 @@ namespace A10
         /// <returns>IEnumerable</returns>
         protected IEnumerable<_Type> GetColumnEnumerator(int col)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < RowCount; i++)
+            {
+                yield return Rows[i][col];
+            }
         }
 
         protected Vector<_Type> GetColumn(int col) =>
@@ -145,14 +175,10 @@ namespace A10
 
 
         public bool Equals(Matrix<_Type> other)
-        {
-            return true;
-        }
+            => (this == other);
 
         public override bool Equals(object obj)
-        {
-            return true;
-        }
+            => (this == (dynamic)obj);
 
         public override int GetHashCode()
         {

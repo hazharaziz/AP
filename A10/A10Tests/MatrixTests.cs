@@ -111,80 +111,80 @@ namespace A10Tests
             var m3 = m1 + m2;
         }
 
-        //[TestMethod]
-        //public void MultiplyTestLong()
-        //{
-        //    Matrix<int> m1 = new Matrix<int>(2, 100)
-        //    {
-        //        new Vector<int>(Enumerable.Repeat(1, 100)),
-        //        new Vector<int>(Enumerable.Repeat(0, 100)),
-        //    };
+        [TestMethod]
+        public void MultiplyTestLong()
+        {
+            Matrix<int> m1 = new Matrix<int>(2, 100)
+            {
+                new Vector<int>(Enumerable.Repeat(1, 100)),
+                new Vector<int>(Enumerable.Repeat(0, 100)),
+            };
 
-        //    Matrix<int> m2 = new Matrix<int>(
-        //        Enumerable.Repeat(new Vector<int>(2) { 1, 0 }, 100)
-        //        );
+            Matrix<int> m2 = new Matrix<int>(
+                Enumerable.Repeat(new Vector<int>(2) { 1, 0 }, 100)
+                );
 
-        //    var m3 = m1 * m2;
+            var m3 = m1 * m2;
 
-        //    Assert.AreEqual(100, m3[0, 0]);
-        //    Assert.AreEqual(0, m3[0, 1]);
-        //    Assert.AreEqual(0, m3[1, 0]);
-        //    Assert.AreEqual(0, m3[1, 1]);
-        //}
+            Assert.AreEqual(100, m3[0, 0]);
+            Assert.AreEqual(0, m3[0, 1]);
+            Assert.AreEqual(0, m3[1, 0]);
+            Assert.AreEqual(0, m3[1, 1]);
+        }
 
-        //[TestMethod()]
-        //public void EqualsTest()
-        //{
-        //    Matrix<int> m1 = new Matrix<int>(2, 3)
-        //    {
-        //        new Vector<int>(3) { 1, 2, 1},
-        //        new Vector<int>(3) { 2, -1, 1},
-        //    };
+        [TestMethod()]
+        public void EqualsTest()
+        {
+            Matrix<int> m1 = new Matrix<int>(2, 3)
+            {
+                new Vector<int>(3) { 1, 2, 1},
+                new Vector<int>(3) { 2, -1, 1},
+            };
 
-        //    Matrix<int> m2 = new Matrix<int>(2, 3)
-        //    {
-        //        new Vector<int>(3) { 1, 2, 1},
-        //        new Vector<int>(3) { 2, -1, 1},
-        //    };
+            Matrix<int> m2 = new Matrix<int>(2, 3)
+            {
+                new Vector<int>(3) { 1, 2, 1},
+                new Vector<int>(3) { 2, -1, 1},
+            };
 
-        //    Matrix<int> m3 = new Matrix<int>(2, 3)
-        //    {
-        //        new Vector<int>(3) { 1, 2, 1},
-        //        new Vector<int>(3) { 2, 0, 1},
-        //    };
+            Matrix<int> m3 = new Matrix<int>(2, 3)
+            {
+                new Vector<int>(3) { 1, 2, 1},
+                new Vector<int>(3) { 2, 0, 1},
+            };
 
-        //    Matrix<int> m4 = new Matrix<int>(3, 3)
-        //    {
-        //        new Vector<int>(3) { 1, 2, 1},
-        //        new Vector<int>(3) { 2, 0, 1},
-        //        new Vector<int>(3) { 2, 0, 1}
-        //    };
+            Matrix<int> m4 = new Matrix<int>(3, 3)
+            {
+                new Vector<int>(3) { 1, 2, 1},
+                new Vector<int>(3) { 2, 0, 1},
+                new Vector<int>(3) { 2, 0, 1}
+            };
 
-        //    Assert.AreEqual(m1, m2);
-        //    Assert.AreNotEqual(m1, m3);
+            Assert.AreEqual(m1, m2);
+            Assert.AreNotEqual(m1, m3);
 
-        //    Assert.IsTrue(m1 == m2);
-        //    Assert.IsTrue(m1 != m3);
+            Assert.IsTrue(m1 == m2);
+            Assert.IsTrue(m1 != m3);
 
-        //    Assert.AreNotEqual(m3, m4);
-        //    Assert.IsFalse(m3 == m4);
-        //    Assert.IsTrue(m3 != m4);
-        //}
+            Assert.AreNotEqual(m3, m4);
+            Assert.IsFalse(m3 == m4);
+            Assert.IsTrue(m3 != m4);
+        }
 
-        //[TestMethod()]
-        //public void IEnumerableTest()
-        //{
-        //    Matrix<int> m1 = new Matrix<int>(2, 3)
-        //    {
-        //        new Vector<int>(3) { 0, 1, 2},
-        //        new Vector<int>(3) { 3, 4, 5},
-        //    };
+        [TestMethod()]
+        public void IEnumerableTest()
+        {
+            Matrix<int> m1 = new Matrix<int>(2, 3)
+            {
+                new Vector<int>(3) { 0, 1, 2},
+                new Vector<int>(3) { 3, 4, 5},
+            };
 
-        //    int idx = 0;
-        //    foreach (var vec in m1)
-        //        foreach (var item in vec)
-        //            Assert.AreEqual(idx++, item);
-        //}
+            int idx = 0;
+            foreach (var vec in m1)
+                foreach (var item in vec)
+                    Assert.AreEqual(idx++, item);
+        }
 
 
         //[TestMethod]
