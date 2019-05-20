@@ -25,7 +25,11 @@ namespace A10
         {
             RowCount = rowCount;
             ColumnCount = columnCount;
-            Rows = new Vector<_Type>[RowCount];
+            Rows = new Vector<_Type>[rowCount];
+            for (int i = 0; i < rowCount; i++)
+            {
+                Rows[i] = new Vector<_Type>(columnCount);
+            }
         }
 
         /// <summary>
@@ -74,7 +78,34 @@ namespace A10
         /// <returns></returns>
         public static Matrix<_Type> operator *(Matrix<_Type> m1, Matrix<_Type> m2)
         {
-            throw new NotImplementedException();
+            dynamic matrix1 = m1;
+            dynamic matrix2 = m2;
+            dynamic newMatrix = new Matrix<_Type>(m1.RowCount, m2.ColumnCount);
+
+            try
+            {
+                if (matrix1.ColumnCount != matrix2.RowCount)
+                {
+                    throw new InvalidOperationException();
+                }
+
+                for (int i = 0; i < m1.RowCount; i++)
+                {
+                    for (int j = 0; j < m2.ColumnCount; j++)
+                    {
+                        for (int k = 0; k < m1.ColumnCount; k++)
+                        {
+                            newMatrix[i][j] += (matrix1[i][k] * matrix2[k][j]);
+                        }
+                    }
+                }   
+            }
+            catch(InvalidOperationException)
+            {
+                throw;
+            }
+
+            return newMatrix;
         }
 
         /// <summary>

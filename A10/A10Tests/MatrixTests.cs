@@ -29,48 +29,48 @@ namespace A10Tests
                         m[i, j]);
         }
 
-        //[TestMethod]
-        //public void MultiplyTest()
-        //{
-        //    Matrix<int> m1 = new Matrix<int>(2, 3)
-        //    {
-        //        new Vector<int>(3) { 1, 2, 1},
-        //        new Vector<int>(3) { 2, -1, 1},
-        //    };
+        [TestMethod]
+        public void MultiplyTest()
+        {
+            Matrix<int> m1 = new Matrix<int>(2, 3)
+            {
+                new Vector<int>(3) { 1, 2, 1},
+                new Vector<int>(3) { 2, -1, 1},
+            };
 
-        //    Matrix<int> m2 = new Matrix<int>(3, 2)
-        //    {
-        //        new Vector<int>(2) { -1, 2},
-        //        new Vector<int>(2) { 2, 1},
-        //        new Vector<int>(2) { 1, 2}
-        //    };
+            Matrix<int> m2 = new Matrix<int>(3, 2)
+            {
+                new Vector<int>(2) { -1, 2},
+                new Vector<int>(2) { 2, 1},
+                new Vector<int>(2) { 1, 2}
+            };
 
-        //    var m3 = m1 * m2;
+            var m3 = m1 * m2;
 
-        //    Assert.AreEqual(4, m3[0, 0], "wrong value [0, 0]");
-        //    Assert.AreEqual(6, m3[0, 1], "wrong value [0, 1]");
-        //    Assert.AreEqual(-3, m3[1, 0], "wrong value [1, 0]");
-        //    Assert.AreEqual(5, m3[1, 1], "wrong value [1, 1]");
-        //}
+            Assert.AreEqual(4, m3[0, 0], "wrong value [0, 0]");
+            Assert.AreEqual(6, m3[0, 1], "wrong value [0, 1]");
+            Assert.AreEqual(-3, m3[1, 0], "wrong value [1, 0]");
+            Assert.AreEqual(5, m3[1, 1], "wrong value [1, 1]");
+        }
 
-        //[TestMethod]
-        //[ExpectedException(typeof(InvalidOperationException))]
-        //public void MultiplyExceptionTest()
-        //{
-        //    Matrix<int> m1 = new Matrix<int>(2, 3)
-        //    {
-        //        new Vector<int>(3) { 1, 2, 1},
-        //        new Vector<int>(3) { 2, -1, 1},
-        //    };
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void MultiplyExceptionTest()
+        {
+            Matrix<int> m1 = new Matrix<int>(2, 3)
+            {
+                new Vector<int>(3) { 1, 2, 1},
+                new Vector<int>(3) { 2, -1, 1},
+            };
 
-        //    Matrix<int> m2 = new Matrix<int>(2, 3)
-        //    {
-        //        new Vector<int>(3) { 1, 2, 1},
-        //        new Vector<int>(3) { 2, -1, 1},
-        //    };
+            Matrix<int> m2 = new Matrix<int>(2, 3)
+            {
+                new Vector<int>(3) { 1, 2, 1},
+                new Vector<int>(3) { 2, -1, 1},
+            };
 
-        //    var m3 = m1 * m2;
-        //}
+            var m3 = m1 * m2;
+        }
 
         //[TestMethod]
         //public void AddTest()
