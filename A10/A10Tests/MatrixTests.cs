@@ -72,44 +72,44 @@ namespace A10Tests
             var m3 = m1 * m2;
         }
 
-        //[TestMethod]
-        //public void AddTest()
-        //{
-        //    Matrix<int> m1 = new Matrix<int>(2, 3)
-        //    {
-        //        new Vector<int>(3) { 1, 2, 1},
-        //        new Vector<int>(3) { 2, -1, 1},
-        //    };
+        [TestMethod]
+        public void AddTest()
+        {
+            Matrix<int> m1 = new Matrix<int>(2, 3)
+            {
+                new Vector<int>(3) { 1, 2, 1},
+                new Vector<int>(3) { 2, -1, 1},
+            };
 
-        //    Matrix<int> m2 = new Matrix<int>(2, 3)
-        //    {
-        //        new Vector<int>(3) { 0, 2, 1},
-        //        new Vector<int>(3) { 1, 4, 1},
-        //    };
+            Matrix<int> m2 = new Matrix<int>(2, 3)
+            {
+                new Vector<int>(3) { 0, 2, 1},
+                new Vector<int>(3) { 1, 4, 1},
+            };
 
-        //    var m3 = m1 + m2;
+            var m3 = m1 + m2;
 
-        //    Assert.AreEqual(new Vector<int>(3) { 1, 4, 2 }, m3[0]);
-        //    Assert.AreEqual(new Vector<int>(3) { 3, 3, 2 }, m3[1]);
-        //}
+            Assert.AreEqual(new Vector<int>(3) { 1, 4, 2 }, m3[0]);
+            Assert.AreEqual(new Vector<int>(3) { 3, 3, 2 }, m3[1]);
+        }
 
-        //[TestMethod]
-        //[ExpectedException(typeof(InvalidOperationException))]
-        //public void AddExceptionTest()
-        //{
-        //    Matrix<int> m1 = new Matrix<int>(2, 3)
-        //    {
-        //        new Vector<int>(3) { 1, 2, 1},
-        //        new Vector<int>(3) { 2, -1, 1},
-        //    };
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void AddExceptionTest()
+        {
+            Matrix<int> m1 = new Matrix<int>(2, 3)
+            {
+                new Vector<int>(3) { 1, 2, 1},
+                new Vector<int>(3) { 2, -1, 1},
+            };
 
-        //    Matrix<int> m2 = new Matrix<int>(1, 3)
-        //    {
-        //        new Vector<int>(3) { 0, 2, 1},
-        //    };
+            Matrix<int> m2 = new Matrix<int>(1, 3)
+            {
+                new Vector<int>(3) { 0, 2, 1},
+            };
 
-        //    var m3 = m1 + m2;
-        //}
+            var m3 = m1 + m2;
+        }
 
         //[TestMethod]
         //public void MultiplyTestLong()

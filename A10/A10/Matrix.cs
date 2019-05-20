@@ -67,7 +67,29 @@ namespace A10
         /// <returns>a matrix as result of the sum</returns>
         public static Matrix<_Type> operator +(Matrix<_Type> m1, Matrix<_Type> m2)
         {
-            throw new NotImplementedException();
+            dynamic matrix1 = m1;
+            dynamic matrix2 = m2;
+            dynamic newMatrix = new Matrix<_Type>(m1.RowCount, m1.ColumnCount);
+
+            try
+            {
+                if (m1.RowCount != m2.RowCount || m1.ColumnCount != m2.ColumnCount)
+                {
+                    throw new InvalidOperationException();
+                }
+                for (int i = 0; i < m1.RowCount; i++)
+                {
+                    for (int j = 0; j < m1.ColumnCount; j++)
+                    {
+                        newMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
+                    }
+                }
+            }
+            catch(InvalidOperationException)
+            {
+                throw;
+            }
+            return newMatrix;
         }
 
         /// <summary>
