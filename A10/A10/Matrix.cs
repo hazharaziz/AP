@@ -38,8 +38,12 @@ namespace A10
         /// <param name="rowCount"></param>
         /// <param name="columnCount"></param>
         public Matrix(IEnumerable<Vector<_Type>> rows)
+            : this(rows.ToArray().Length,rows.ToArray()[0].Size)
         {
-            Rows = (dynamic)rows;
+            for (int i = 0; i < rows.ToArray().Length; i++)
+            {
+                this.Add(rows.ToArray()[i]);
+            }
         }   
 
         public void Add(Vector<_Type> row)
@@ -130,28 +134,14 @@ namespace A10
             {
                 throw;
             }
+            
 
             return newMatrix;
         }
 
         public static bool operator ==(Matrix<_Type> m1, Matrix<_Type> m2)
         {
-            dynamic matrix1 = m1;
-            dynamic matrix2 = m2;
-            bool result = true;
-
-            for (int i = 0; i < m1.RowCount; i++)
-            {
-                for (int j = 0; j < m1.ColumnCount; j++)
-                {
-                    if (matrix1[i][j] != matrix2[i][j])
-                    {
-                        result = false;
-                        break;
-                    }
-                }
-            }
-            return result;
+            return m1.Equals(m2);
         }
 
         public static bool operator !=(Matrix<_Type> m1, Matrix<_Type> m2)
@@ -175,10 +165,64 @@ namespace A10
 
 
         public bool Equals(Matrix<_Type> other)
-            => (this.Rows == (dynamic)other);
+        {
+            
+            dynamic matrix2 = other;
+            bool result = true;
+
+            if (this.ToString() != matrix2.ToString())
+            {
+                result = false;
+            }
+            else
+            {
+                for (int i = 0; i < matrix2.RowCount; i++)
+                {
+                    for (int j = 0; j < matrix2.ColumnCount; j++)
+                    {
+                        if (this.Rows[i][j] != matrix2[i][j])
+                        {
+                            result = false;
+                            break;
+                        }
+                    }
+                }
+            }
+            
+
+            return result;
+        }
 
         public override bool Equals(object obj)
-            => (this == (dynamic)obj);
+        {
+            dynamic matrix2 = obj;
+            bool result = true;
+
+            if (this.ToString() != obj.ToString())
+            {
+                result = false;
+            }
+            else
+            {
+                for (int i = 0; i < matrix2.RowCount; i++)
+                {
+                    for (int j = 0; j < matrix2.ColumnCount; j++)
+                    {
+                        if (this.Rows[i][j] != matrix2[i][j])
+                        {
+                            result = false;
+                            break;
+                        }
+                    }
+                }
+                
+            }
+            return result;
+
+
+
+        }
+
 
         public override int GetHashCode()
         {

@@ -10,7 +10,7 @@ namespace A10
     {
         static void Main(string[] args)
         {
-
+            Console.ReadKey();
         }
 
         

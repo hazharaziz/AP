@@ -66,8 +66,7 @@ namespace A10
         public Vector(IEnumerable<_Type> list)
             : this(list.Count())
         {
-            dynamic l = list;
-            Data = l;
+            Data = list.ToArray();
         }
 
         /// <summary>
@@ -78,7 +77,7 @@ namespace A10
         public _Type this[int index]
         {
             get => Data[index];
-            set => Data[index] = value;
+            set => Data[index] = value;    
         }
 
         /// <summary>
@@ -195,7 +194,7 @@ namespace A10
             foreach (_Type d in Data)
             {
                 yield return d;
-            }            
+            }
         }
 
         public override string ToString()
@@ -212,9 +211,11 @@ namespace A10
             return result;
         }
 
+
+
         IEnumerator IEnumerable.GetEnumerator()
         {
-            foreach(_Type d in Data)
+            foreach (_Type d in Data)
             {
                 yield return d;
             }
