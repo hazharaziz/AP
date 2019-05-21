@@ -7,24 +7,21 @@ namespace A10
     public class SquareMatrix<_Type> : Matrix<_Type>
          where _Type : IEquatable<_Type>
     {
-        public SquareMatrix(int rowCount, int columnCount) : base(rowCount, columnCount)
-        {
-
-        }
+        public SquareMatrix(int rowCount, int columnCount) : base(rowCount, columnCount) { }
 
         public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
+            => base.Equals(obj);
 
         public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+            => base.GetHashCode();
 
         public override string ToString()
-        {
-            return base.ToString();
-        }
+            => base.ToString();
+
+
+
+
+
+
     }
 }
