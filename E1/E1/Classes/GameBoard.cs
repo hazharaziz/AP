@@ -8,13 +8,21 @@ namespace E1.Classes
 {
     public class GameBoard<_Type> where  _Type : IAnimal
     {
+        public static List<IAnimal> Animals { get; set; }
+
+        /// <summary>
+        /// GameBoard Class Constructor
+        /// </summary>
+        /// <param name="animals"></param>
         public GameBoard(IEnumerable<IAnimal> animals)
         {
             Animals = animals.ToList();
         }
 
-        public static List<IAnimal> Animals { get; set; }
-
+        /// <summary>
+        /// MoveAnimal Method talking about the movements of the animals
+        /// </summary>
+        /// <returns></returns>
         public string[] MoveAnimals()
         {   
             List<string> result = new List<string>();
