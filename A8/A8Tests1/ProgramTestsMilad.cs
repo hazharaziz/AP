@@ -71,11 +71,11 @@ namespace A8.Tests
                     321);
 
             // Assert
-            Assert.AreEqual(true, human1 > human2);
-            Assert.AreEqual(true, human1 >= human2);
+            Assert.AreEqual(true, human1 < human2);
+            Assert.AreEqual(true, human1 <= human2);
 
-            Assert.AreEqual(false, human1 < human2);
-            Assert.AreEqual(false, human1 <= human2);
+            Assert.AreEqual(false, human1 > human2);
+            Assert.AreEqual(false, human1 >= human2);
         }
 
         [TestMethod()]
