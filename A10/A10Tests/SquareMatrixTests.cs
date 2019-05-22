@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace A10.Tests
+namespace A10Tests
 {
     [TestClass()]
     public class SquareMatrixTests

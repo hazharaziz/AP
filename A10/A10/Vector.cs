@@ -45,9 +45,8 @@ namespace A10
         /// <param name="length">Vector length</param>
         public Vector(int length)
         {
-            this.Data = new _Type[length];
+            Data = new _Type[length];
         }
-
 
         /// <summary>
         /// Copy constructor
@@ -88,15 +87,11 @@ namespace A10
         /// <returns>sum of vector 1 and 2</returns>
         public static Vector<_Type> operator +(Vector<_Type> v1, Vector<_Type> v2)
         {
-            dynamic vector1 = v1;
-            dynamic vector2 = v2;
-            dynamic newVector = new Vector<_Type>(v1.Size);
-
+            Vector<_Type> newVector = new Vector<_Type>(v1.Size);
             for (int i = 0; i < newVector.Size; i++)
             {
-                newVector[i] += vector1[i] + vector2[i];
+                newVector[i] += (dynamic)v1[i] + (dynamic)v2[i];
             }
-
             return newVector;
         }
 
@@ -108,22 +103,15 @@ namespace A10
         /// <returns>Inner product of vector one and two</returns>
         public static _Type operator *(Vector<_Type> v1, Vector<_Type> v2)
         {
-            dynamic vector1 = v1;
-            dynamic vector2 = v2;
             dynamic result = 0;
-
             try
             {
                 for (int i = 0; i < v1.Size; i++)
                 {
-                    result += (vector1[i] * vector2[i]);
+                    result += ((dynamic)v1[i] * (dynamic)v2[i]);
                 }
             }
-            catch(FormatException formatException)
-            {
-                Console.WriteLine(formatException.Message);
-            }
-
+            catch(FormatException) { }
             return result;
         }
 
@@ -137,20 +125,15 @@ namespace A10
         /// <returns>whether v1 is equal to v2</returns>
         public static bool operator ==(Vector<_Type> v1, Vector<_Type> v2)
         {
-            dynamic vector1 = v1;
-            dynamic vector2 = v2;
-
             bool result = true;
-
             for (int i = 0; i < v1.Size; i++)
             {
-                if (vector1[i] != vector2[i])
+                if ((dynamic)v1[i] != (dynamic)v2[i])
                 {
                     result = false;
                     break;
                 }
             }
-
             return result;
         }
 
@@ -179,8 +162,11 @@ namespace A10
         /// <returns>whether other vector is equal to this vector</returns>
         public bool Equals(Vector<_Type> other)
             => Enumerable.SequenceEqual<_Type>((dynamic)other, this);
-        
 
+        /// <summary>
+        /// GetHashCode Method for getting the hashcode of an object
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             int hashCode = 0;
@@ -189,6 +175,10 @@ namespace A10
             return hashCode;
         }
 
+        /// <summary>
+        /// GetEnumerator Method iterating over an IEnumerable
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<_Type> GetEnumerator()
         {
             foreach (_Type d in Data)
@@ -197,6 +187,10 @@ namespace A10
             }
         }
 
+        /// <summary>
+        /// ToString Method for demonstrating the vector 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             string result = "[";
@@ -211,8 +205,10 @@ namespace A10
             return result;
         }
 
-
-
+        /// <summary>
+        /// GetEnumerator Method iterating over an IEnumerable
+        /// </summary>
+        /// <returns></returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             foreach (_Type d in Data)

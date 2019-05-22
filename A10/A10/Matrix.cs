@@ -38,13 +38,13 @@ namespace A10
         /// <param name="rowCount"></param>
         /// <param name="columnCount"></param>
         public Matrix(IEnumerable<Vector<_Type>> rows)
-            : this(rows.ToArray().Length,rows.ToArray()[0].Size)
+            : this(rows.ToArray().Length, rows.ToArray()[0].Size)
         {
             for (int i = 0; i < rows.ToArray().Length; i++)
             {
                 this.Add(rows.ToArray()[i]);
             }
-        }   
+        }
 
         public void Add(Vector<_Type> row)
         {
@@ -71,29 +71,22 @@ namespace A10
         /// <returns>a matrix as result of the sum</returns>
         public static Matrix<_Type> operator +(Matrix<_Type> m1, Matrix<_Type> m2)
         {
-            dynamic matrix1 = m1;
-            dynamic matrix2 = m2;
-            dynamic newMatrix = new Matrix<_Type>(m1.RowCount, m1.ColumnCount);
-
+            Matrix<_Type> newMatrix = new Matrix<_Type>(m1.RowCount, m1.ColumnCount);
             try
             {
                 if (m1.RowCount != m2.RowCount || m1.ColumnCount != m2.ColumnCount)
                 {
                     throw new InvalidOperationException();
                 }
-                
                 for (int i = 0; i < m1.RowCount; i++)
                 {
                     for (int j = 0; j < m1.ColumnCount; j++)
                     {
-                        newMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
+                        newMatrix[i][j] = (dynamic)m1[i][j] + (dynamic)m2[i][j];
                     }
                 }
             }
-            catch(InvalidOperationException)
-            {
-                throw;
-            }
+            catch (InvalidOperationException) { throw; }
             return newMatrix;
         }
 
@@ -105,37 +98,23 @@ namespace A10
         /// <returns></returns>
         public static Matrix<_Type> operator *(Matrix<_Type> m1, Matrix<_Type> m2)
         {
-            dynamic matrix1 = m1;
-            dynamic matrix2 = m2;
-            dynamic newMatrix = new Matrix<_Type>(m1.RowCount, m2.ColumnCount);
 
+            Matrix<_Type> newMatrix = new Matrix<_Type>(m1.RowCount, m2.ColumnCount);
             try
             {
-                if (matrix1.ColumnCount != matrix2.RowCount)
+                if (m1.ColumnCount != m2.RowCount)
                 {
                     throw new InvalidOperationException();
                 }
-
                 else
                 {
                     for (int i = 0; i < m1.RowCount; i++)
-                    {
                         for (int j = 0; j < m2.ColumnCount; j++)
-                        {
                             for (int k = 0; k < m1.ColumnCount; k++)
-                            {
-                                newMatrix[i][j] += (matrix1[i][k] * matrix2[k][j]);
-                            }
-                        }
-                    }
+                                newMatrix[i][j] += ((dynamic)m1[i][k] * (dynamic)m2[k][j]);
                 }
             }
-            catch(InvalidOperationException)
-            {
-                throw;
-            }
-            
-
+            catch (InvalidOperationException) { throw; }
             return newMatrix;
         }
 
@@ -160,89 +139,60 @@ namespace A10
             }
         }
 
+
         protected Vector<_Type> GetColumn(int col) =>
             new Vector<_Type>(GetColumnEnumerator(col));
 
-
+        /// <summary>
+        /// Equals Method for checking the equality of two matrices
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public bool Equals(Matrix<_Type> other)
-        {
-            
-            dynamic matrix2 = other;
-            bool result = true;
+            => (this.ToString() == (dynamic)other.ToString());
 
-            if (this.ToString() != matrix2.ToString())
-            {
-                result = false;
-            }
-            else
-            {
-                for (int i = 0; i < matrix2.RowCount; i++)
-                {
-                    for (int j = 0; j < matrix2.ColumnCount; j++)
-                    {
-                        if (this.Rows[i][j] != matrix2[i][j])
-                        {
-                            result = false;
-                            break;
-                        }
-                    }
-                }
-            }
-            
-
-            return result;
-        }
-
+        /// <summary>
+        /// Equals Method for checking the equality of two matrices
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
-        {
-            dynamic matrix2 = obj;
-            bool result = true;
+            => (this.ToString() == (dynamic)obj.ToString());
 
-            if (this.ToString() != obj.ToString())
-            {
-                result = false;
-            }
-            else
-            {
-                for (int i = 0; i < matrix2.RowCount; i++)
-                {
-                    for (int j = 0; j < matrix2.ColumnCount; j++)
-                    {
-                        if (this.Rows[i][j] != matrix2[i][j])
-                        {
-                            result = false;
-                            break;
-                        }
-                    }
-                }
-                
-            }
-            return result;
-
-
-
-        }
-
-
+        /// <summary>
+        /// GetHashCode Method for getting the hashcode of an object
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             int code = 0;
             foreach (var row in this.Rows)
                 code ^= row.GetHashCode();
-
             return code;
         }
 
+        /// <summary>
+        /// GetEnumerator Method iterating over an IEnumerable
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<Vector<_Type>> GetEnumerator()
         {
             return ((IEnumerable<Vector<_Type>>)Rows).GetEnumerator();
         }
 
+        /// <summary>
+        /// GetEnumerator Method iterating over an IEnumerable
+        /// </summary>
+        /// <returns></returns>
         IEnumerator IEnumerable.GetEnumerator()
-        { 
+        {
             return ((IEnumerable<Vector<_Type>>)Rows).GetEnumerator();
         }
 
+        /// <summary>
+        /// ToString Method for demonstrating the matrix 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             string result = "[\n";
