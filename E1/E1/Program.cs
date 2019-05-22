@@ -10,11 +10,7 @@ namespace E1
     {
         static void Main(string[] args)
         {
-        }
-
-        public void m()
-        {
-
+            Console.ReadKey();
         }
     }
 }

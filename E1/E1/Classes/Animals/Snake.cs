@@ -12,6 +12,13 @@ namespace E1.Classes.Animals
         public double Health { get; set; }
         public double SpeedRate { get; set; }
 
+        /// <summary>
+        /// Snake Class Constructor
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="age"></param>
+        /// <param name="health"></param>
+        /// <param name="speedRate"></param>
         public Snake(string name, int age, double health, double speedRate)
         {
             Name = name;
@@ -20,16 +27,29 @@ namespace E1.Classes.Animals
             SpeedRate = speedRate;
         }
 
-
-        public string Crawl() => $"{Name} is a {typeof(Snake).Name} and is crawling";
-
+        /// <summary>
+        /// EatFood Method demonstrating eating food for the Snake
+        /// </summary>
+        /// <returns></returns>
         public string EatFood() => $"{Name} is a {typeof(Snake).Name} and is eating";
 
+        /// <summary>
+        /// Reproduction Method for checking the reproductivity of the Snake
+        /// </summary>
+        /// <param name="animal"></param>
+        /// <returns></returns>
+        public string Reproduction(IAnimal animal) => $"{Name} is a {typeof(Snake).Name} and reproductive with {animal.Name}";
+
+        /// <summary>
+        /// Move Method talking about the movement abilities of the Snake
+        /// </summary>
+        /// <param name="env"></param>
+        /// <returns></returns>
         public string Move(Environment env)
         {
             if ((int)env == 0)
             {
-                return $"{Name} is a {typeof(Snake).Name} and is crawling";
+                return Crawl();
             }
             else if ((int)env == 1)
             {
@@ -41,6 +61,10 @@ namespace E1.Classes.Animals
             }
         }
 
-        public string Reproduction(IAnimal animal) => $"{Name} is a {typeof(Snake).Name} and reproductive with {animal.Name}";
+        /// <summary>
+        /// Crawl Method talking about the Crawling abilities of the Snake
+        /// </summary>
+        /// <returns></returns>
+        public string Crawl() => $"{Name} is a {typeof(Snake).Name} and is crawling";
     }
 }

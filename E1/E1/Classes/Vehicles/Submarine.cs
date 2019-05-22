@@ -8,6 +8,12 @@ namespace E1.Classes.Vehicles
         public double MaxDepthSupported { get; set; }
         public double SpeedRate { get; set; }
 
+        /// <summary>
+        /// Submarine Class Constructor
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="maxDepthSupported"></param>
+        /// <param name="speedRate"></param>
         public Submarine(string model, double maxDepthSupported, double speedRate)
         {
             Model = model;
@@ -15,6 +21,10 @@ namespace E1.Classes.Vehicles
             SpeedRate = speedRate;
         }
 
+        /// <summary>
+        /// Swim Method talking about the swimming abilities of the submarine
+        /// </summary>
+        /// <returns></returns>
         public string Swim() => $"{Model} is a {typeof(Submarine).Name} and is swimming in {MaxDepthSupported} meter depth";
     }
 }
