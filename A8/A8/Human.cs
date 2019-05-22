@@ -43,7 +43,7 @@ namespace A8
         /// <returns></returns>
         public static bool operator <(Human h1, Human h2)
         {
-            return DateTime.Compare(h1.BirthDate, h2.BirthDate) > 0;
+            return DateTime.Compare(h2.BirthDate, h1.BirthDate) < 0;
         }
 
         /// <summary>
@@ -76,7 +76,8 @@ namespace A8
         /// <returns></returns>
         public static bool operator >=(Human h1, Human h2)
         {
-            return DateTime.Compare(h1.BirthDate, h2.BirthDate) <= 0;
+            return !(h1 <= h2);
+            //return DateTime.Compare(h1.BirthDate, h2.BirthDate) <= 0;
         }
 
         /// <summary>
