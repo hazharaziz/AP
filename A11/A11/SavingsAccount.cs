@@ -4,15 +4,15 @@ namespace A11
 {
     public class SavingsAccount : Account
     {
-        public double Interest { get; set; }
+        public double InterestRate { get; set; }
 
-        public SavingsAccount(double balance, double interest) 
+        public SavingsAccount(double balance, double interestRate) 
             : base(balance)
         {
-            Interest = interest;
+            InterestRate = interestRate;
         }
 
         public double CalculateInterest()
-            => Balance - Interest;
+            => Balance - InterestRate;
     }
 }

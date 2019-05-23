@@ -10,7 +10,7 @@ namespace A11
     {
         static void Main(string[] args)
         {
-            SavingsAccount a = new SavingsAccount();
+            Console.ReadKey();
         }
     }
 }

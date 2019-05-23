@@ -13,7 +13,7 @@ namespace A11
             else
             {
                 Balance = 0;
-                Console.WriteLine($"Initial balance is invalid. Setting balance to 0.{Environment.NewLine}");
+                Console.WriteLine("Initial balance is invalid. Setting balance to 0.");
             }
         }
 
@@ -34,15 +34,17 @@ namespace A11
             }
         }
 
-        public void Debit(double amount)
+        public bool Debit(double amount)
         {
             if (amount > Balance)
             {
                 Console.WriteLine($"Debit amount exceeded account balance.{Environment.NewLine}");
+                return false;
             }
             else
             {
                 Balance -= amount;
+                return true;
             }
         }
 
