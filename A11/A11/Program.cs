@@ -10,7 +10,7 @@ namespace A11
     {
         static void Main(string[] args)
         {
-            Account a = new Account();
+            SavingsAccount a = new SavingsAccount();
         }
     }
 }

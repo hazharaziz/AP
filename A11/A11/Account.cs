@@ -4,7 +4,7 @@ namespace A11
 {
     public class Account
     {
-        private double Balance { get; set; }
+        public double Balance { get; set; }
 
         public Account(double balance)
         {
@@ -17,7 +17,7 @@ namespace A11
             }
         }
 
-        public void Credit(int amount)
+        public void Credit(double amount)
         {
             try
             {
@@ -31,6 +31,18 @@ namespace A11
             catch(ArgumentException)
             {
                 Console.WriteLine("Credit amount must be positive");
+            }
+        }
+
+        public void Debit(double amount)
+        {
+            if (amount > Balance)
+            {
+                Console.WriteLine($"Debit amount exceeded account balance.{Environment.NewLine}");
+            }
+            else
+            {
+                Balance -= amount;
             }
         }
 
