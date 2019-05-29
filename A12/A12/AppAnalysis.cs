@@ -36,7 +36,7 @@ namespace A12
 
         public void AppenApp(string[] fields)
             => Apps.Add(new AppData(fields));
-
+   
         public long AllAppsCount()
             => Apps.Count;
 
@@ -44,9 +44,7 @@ namespace A12
             => Apps.Where(d => d.Rating >= x).ToList().Count;
 
         public long RecentlyUpdatedCount(DateTime boundary)
-        {
-            throw new NotImplementedException();
-        }
+            => Apps.Where(x => DateTime.Compare(x.LastUpdate, boundary) >= 0).ToList().Count;
 
         public string RecentlyUpdatedFreqCat(DateTime boundary)
         {
