@@ -20,7 +20,7 @@ namespace A12.Tests
             }
         }
 
-        
+
 
         [TestMethod()]
         public void AppAnalysisFactoryTest()
@@ -81,8 +81,8 @@ namespace A12.Tests
             var result = Instance.ExtremeMeanUpdateElapse(new DateTime(2019, 5, 27));
 
             Assert.AreEqual("37624B884AC780460806C5892EB4C2F3", CalcMD5(result.Item1));
-  
-			Assert.AreEqual("50B40F9D3C9C932AB60FB564CF9AD470", CalcMD5(result.Item2));
+
+            Assert.AreEqual("50B40F9D3C9C932AB60FB564CF9AD470", CalcMD5(result.Item2));
         }
         [TestMethod()]
         public void TopQuarterBoundaryTest()
@@ -120,10 +120,10 @@ namespace A12.Tests
                 "13D22222B77A27DEB241D398E95C043B"
             }, result);
         }
-		
-		#region HelperMethods
-		
-			private string CalcMD5(string input)
+
+        #region HelperMethods
+
+        private string CalcMD5(string input)
         {
             // step 1, calculate MD5 hash from input
             MD5 md5 = System.Security.Cryptography.MD5.Create();

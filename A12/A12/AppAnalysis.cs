@@ -2,13 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace A12
 {
     public class AppAnalysis
     {
 
-        public List<AppData> Apps { get; set; }
+        public List<AppData> Apps = new List<AppData>();
 
         private AppAnalysis() { }
 
@@ -25,19 +27,33 @@ namespace A12
                 while (!parser.EndOfData)
                 {
                     fields = parser.ReadFields();
-                    appAnalysis.AppendApp(fields);
+                    appAnalysis.AppenApp(fields);
                 }
-
             }
+
+            //File.ReadAllLines(csvAddress)
+            //    .Skip(1)
+            //    .Select(l =>
+            //    {
+            //        var regex = new Regex("\"(.*?)\"");
+            //        var newLine = regex.Replace(l, m => m.Value.Replace(',', ' '));
+            //        var fields = newLine.Split(',');
+            //        return fields;
+            //    })
+            //    .ToList()
+            //    .ForEach(fields => appAnalysis.AppenApp(fields));
 
             return appAnalysis;
         }
 
+        public void AppenApp(string[] fields)
+        {
+            AppData appData = new AppData(fields);
+            Apps.Add(appData);
+        }
 
         public long AllAppsCount()
-        {
-            throw new NotImplementedException();
-        }
+            => Apps.Count;
 
         public long AppsAboveXRatingCount(double x)
         {
