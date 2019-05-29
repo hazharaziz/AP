@@ -90,15 +90,23 @@ namespace A12
             .OrderByDescending(g => g.Count())
             .Select(g => g.Key).First();
 
+        /// <summary>
+        /// MostRatedCategories returns the n first categorires with ratings more than the rating boundary
+        /// </summary>
+        /// <param name="ratingBoundary"></param>
+        /// <param name="n"></param>
+        /// <returns></returns>
         public List<string> MostRatedCategories(double ratingBoundary, int n)
-        {
-            throw new NotImplementedException();
-        }
+            => Apps.Where(d => (d.Rating >= ratingBoundary))
+            .GroupBy(d => d.Category)
+            .OrderByDescending(g => g.Count())
+            .Take(n)
+            .Select(g => g.Key)
+            .ToList();
+
 
         public double TopQuarterBoundary()
-        {
-            throw new NotImplementedException();
-        }
+            => Apps.Where(d => d.Category == "PHOTOGRAPHY").OrderByDescending(d => d.Rating).First().Rating - 0.5;
 
         public Tuple<string, string> ExtremeMeanUpdateElapse(DateTime today)
         {

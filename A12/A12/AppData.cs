@@ -100,7 +100,7 @@ namespace A12
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static double DoubleParse(string str)
+        public double DoubleParse(string str)
         {
             string result = "0";
             str.Where(x => char.IsDigit(x)).ToList()
@@ -113,7 +113,7 @@ namespace A12
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        static long LongParse(string str)
+        public long LongParse(string str)
         {
             var result = "";
             str.Where(d => char.IsDigit(d)).ToList()
