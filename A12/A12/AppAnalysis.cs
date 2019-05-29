@@ -12,8 +12,16 @@ namespace A12
 
         public List<AppData> Apps = new List<AppData>();
 
+        /// <summary>
+        /// AppAnalysis Class Constructor
+        /// </summary>
         private AppAnalysis() { }
 
+        /// <summary>
+        /// AppAnalysisFactory Method analysing the data of a csv file 
+        /// </summary>
+        /// <param name="csvAddress"></param>
+        /// <returns></returns>
         public static AppAnalysis AppAnalysisFactory(string csvAddress)
         {
             AppAnalysis appAnalysis = new AppAnalysis();
@@ -27,29 +35,60 @@ namespace A12
                 while (!parser.EndOfData)
                 {
                     fields = parser.ReadFields();
-                    appAnalysis.AppenApp(fields);
+                    appAnalysis.AppendApp(fields);
                 }
             }
 
             return appAnalysis;
         }
 
-        public void AppenApp(string[] fields)
+        /// <summary>
+        /// AppendApp Method appending the app data to the list of the apps
+        /// </summary>
+        /// <param name="fields"></param>
+        public void AppendApp(string[] fields)
             => Apps.Add(new AppData(fields));
-   
+
+        /// <summary>
+        /// AllAppsCount Method returning the Apps list count
+        /// </summary>
+        /// <returns></returns>
         public long AllAppsCount()
             => Apps.Count;
 
+        /// <summary>
+        /// AppsAboveXRatingCount Method returning the number of apps with rating above a given number
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
         public long AppsAboveXRatingCount(double x)
             => Apps.Where(d => d.Rating >= x).ToList().Count;
 
+        /// <summary>
+        /// RecentlyUpdatedCount Method returning the number of apps updated after a given datetime
+        /// </summary>
+        /// <param name="boundary"></param>
+        /// <returns></returns>
         public long RecentlyUpdatedCount(DateTime boundary)
             => Apps.Where(x => DateTime.Compare(x.LastUpdate, boundary) >= 0).ToList().Count;
 
+        /// <summary>
+        /// RecentlyUpdatedApps Method returning the apps updated after a given datetime
+        /// </summary>
+        /// <param name="boundary"></param>
+        /// <returns></returns>
+        public List<AppData> RecentlyUpdatedApps(DateTime boundary)
+            => Apps.Where(x => DateTime.Compare(x.LastUpdate, boundary) >= 0).ToList();
+
+        /// <summary>
+        /// RecentlyUpdatedFreqCat Method returning the most repeated app category after a given datetime
+        /// </summary>
+        /// <param name="boundary"></param>
+        /// <returns></returns>
         public string RecentlyUpdatedFreqCat(DateTime boundary)
-        {
-            throw new NotImplementedException();
-        }
+            => RecentlyUpdatedApps(boundary).GroupBy(d => d.Category)
+            .OrderByDescending(g => g.Count())
+            .Select(g => g.Key).First();
 
         public List<string> MostRatedCategories(double ratingBoundary, int n)
         {
@@ -61,7 +100,7 @@ namespace A12
             throw new NotImplementedException();
         }
 
-        public Tuple<string,string> ExtremeMeanUpdateElapse(DateTime today)
+        public Tuple<string, string> ExtremeMeanUpdateElapse(DateTime today)
         {
             throw new NotImplementedException();
         }
@@ -71,7 +110,7 @@ namespace A12
             throw new NotImplementedException();
         }
 
-        public List<string> XCoolestApps(int x, Func<AppData,double> criteria)
+        public List<string> XCoolestApps(int x, Func<AppData, double> criteria)
         {
             throw new NotImplementedException();
         }
