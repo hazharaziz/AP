@@ -31,34 +31,17 @@ namespace A12
                 }
             }
 
-            //File.ReadAllLines(csvAddress)
-            //    .Skip(1)
-            //    .Select(l =>
-            //    {
-            //        var regex = new Regex("\"(.*?)\"");
-            //        var newLine = regex.Replace(l, m => m.Value.Replace(',', ' '));
-            //        var fields = newLine.Split(',');
-            //        return fields;
-            //    })
-            //    .ToList()
-            //    .ForEach(fields => appAnalysis.AppenApp(fields));
-
             return appAnalysis;
         }
 
         public void AppenApp(string[] fields)
-        {
-            AppData appData = new AppData(fields);
-            Apps.Add(appData);
-        }
+            => Apps.Add(new AppData(fields));
 
         public long AllAppsCount()
             => Apps.Count;
 
         public long AppsAboveXRatingCount(double x)
-        {
-            throw new NotImplementedException();
-        }
+            => Apps.Where(d => d.Rating >= x).ToList().Count;
 
         public long RecentlyUpdatedCount(DateTime boundary)
         {
