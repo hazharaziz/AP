@@ -97,7 +97,7 @@ namespace A12
         /// <param name="n"></param>
         /// <returns></returns>
         public List<string> MostRatedCategories(double ratingBoundary, int n)
-            => Apps.Where(d => (d.Rating >= ratingBoundary))
+            => Apps.Where(d => (d.Rating > ratingBoundary))
             .GroupBy(d => d.Category)
             .OrderByDescending(g => g.Count())
             .Take(n)
@@ -111,15 +111,18 @@ namespace A12
         public double TopQuarterBoundary()
             => Apps.Where(d => d.Category == "PHOTOGRAPHY").OrderByDescending(d => d.Rating).First().Rating - 0.5;
 
-        //Tuple<string, string>
+        /// <summary>
+        /// ExtremeMeanUpdateElapse Method returning the average of the max and min of the elapsed update times
+        /// </summary>
+        /// <param name="today"></param>
+        /// <returns></returns>
         public Tuple<string, string> ExtremeMeanUpdateElapse(DateTime today)
         {
-            //return Apps.GroupBy(d => today - d.LastUpdate)
-            //    .OrderByDescending(g => g.Key.Days)
-            //    .Select(g => int.Parse(g.Key))
-            //    .ToList();
-
-            throw new NotImplementedException();
+            var data = Apps.GroupBy(d => d.Name)
+                .OrderByDescending(g => g.Average(a => a.LastUpdate.Ticks - today.Ticks))
+                .Select(g => g.Key)
+                .ToList();
+            return new Tuple<string, string>(data[0],data[data.Count -1]);   
         }
 
         /// <summary>
@@ -134,17 +137,21 @@ namespace A12
             .Take(x)
             .ToList();
 
-        public delegate double Criteria(AppData appData);
+        /// <summary>
+        /// Criteria Delegate returning the criteria of the given app
+        /// </summary>
+        /// <param name="appData"></param>
+        /// <returns></returns>
+        Func<AppData, double> criteria = (app) => (app.Installs * app.Rating) / 1000;
 
-        public double criteria(AppData appData)
-            => appData.Rating * appData.Installs / 1000;
-
+        /// <summary>
+        /// XCoolestApps Method returning x coolest apps
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="criteria"></param>
+        /// <returns></returns>
         public List<string> XCoolestApps(int x, Func<AppData, double> criteria)
             => Apps.Where(d => d.Installs * d.Rating == criteria(d))
             .Select(d => d.Name).Take(x).ToList();
-        
-
-
-
     }
 }
