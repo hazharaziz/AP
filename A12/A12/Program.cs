@@ -14,8 +14,10 @@ namespace A12
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(File.ReadAllLines(@"C:\git\AP97982\A12\A12Tests\googleplaystore.csv")
+            var today = new DateTime(2019, 5, 27);
+            var a = File.ReadAllLines(@"C:\git\AP97982\A12\A12Tests\googleplaystore.csv")
                 .Skip(1)
+                //.Take(20)
                 .Select(l =>
                 {
                     var regex = new Regex("\"(.*?)\"");
@@ -38,14 +40,22 @@ namespace A12
                         AndroidVer = toks[12]
                     };
                 })
-                .Where(x => x.Category == "PHOTOGRAPHY")
-                .OrderByDescending(d => d.Rating)
-                .ToList()
-                .First().Rating);
-                //.ForEach(d => Console.WriteLine(d.Rating));
+                .GroupBy(d => d.Category)
+                .OrderByDescending(g => g.Count())
+                .Select(g => g.Key).First();
+            //.OrderByDescending(d => d.Installs)
+            //.OrderByDescending(d => d.Price)
+            //.Select(g => $"{g.App}")
+            //.Take(4)
+            //.ToList()
+            //.ForEach(l => Console.WriteLine(l));
+
+            Console.WriteLine(a);
 
             Console.ReadKey();
         }
+
+
 
         /// <summary>
         /// RatingParse Method for checking the rating of the app

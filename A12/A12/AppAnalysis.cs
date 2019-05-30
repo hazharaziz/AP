@@ -104,19 +104,32 @@ namespace A12
             .Select(g => g.Key)
             .ToList();
 
-
+        /// <summary>
+        /// TopQuarterBoundary Method returns the top quarter boundary of the "PHOTOGRAPHY" category
+        /// </summary>
+        /// <returns></returns>
         public double TopQuarterBoundary()
             => Apps.Where(d => d.Category == "PHOTOGRAPHY").OrderByDescending(d => d.Rating).First().Rating - 0.5;
 
+        //Tuple<string, string>
         public Tuple<string, string> ExtremeMeanUpdateElapse(DateTime today)
         {
+            //return Apps.GroupBy(d => today - d.LastUpdate)
+            //    .OrderByDescending(g => g.Key.Days)
+            //    .Select(g => int.Parse(g.Key))
+            //    .ToList();
+
             throw new NotImplementedException();
         }
 
+
         public List<string> XMostProfitables(int x)
-        {
-            throw new NotImplementedException();
-        }
+            => Apps.Where(d => d.IsFree == 0)
+            .OrderByDescending(d => d.Price * d.Installs)
+            .Select(g => $"{g.Name}")
+            .Take(x)
+            .ToList();
+
 
         public List<string> XCoolestApps(int x, Func<AppData, double> criteria)
         {

@@ -32,7 +32,7 @@ namespace A12
             Reviews = long.Parse(fields[3]);
             Size = SizeParse(fields[4]);
             Installs = LongParse(fields[5]);
-            IsFree = CheckIsFreeOrPaid(fields[6]);
+            IsFree = CheckIsFree(fields[6]);
             Price = CheckPrice(fields[7]);
             ContentRating = fields[8];
             Genres = fields[9].Split('&').ToList();
@@ -87,12 +87,12 @@ namespace A12
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public long CheckIsFreeOrPaid(string str)
+        public long CheckIsFree(string str)
         {
             if (str == "Free")
-                return 0;
-            else
                 return 1;
+            else
+                return 0;
         }
 
         /// <summary>
