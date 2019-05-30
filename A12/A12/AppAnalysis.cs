@@ -122,7 +122,11 @@ namespace A12
             throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// XMostProfitables Method returning the most installed apps
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
         public List<string> XMostProfitables(int x)
             => Apps.Where(d => d.IsFree == 0)
             .OrderByDescending(d => d.Price * d.Installs)
@@ -130,12 +134,15 @@ namespace A12
             .Take(x)
             .ToList();
 
+        public delegate double Criteria(AppData appData);
+
+        public double criteria(AppData appData)
+            => appData.Rating * appData.Installs / 1000;
 
         public List<string> XCoolestApps(int x, Func<AppData, double> criteria)
-        {
-            throw new NotImplementedException();
-        }
-
+            => Apps.Where(d => d.Installs * d.Rating == criteria(d))
+            .Select(d => d.Name).Take(x).ToList();
+        
 
 
 
