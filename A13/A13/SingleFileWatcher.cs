@@ -20,7 +20,12 @@ namespace EventDelegateThread
             Watcher.Changed += Watcher_Changed;
         }
 
-        private void Watcher_Changed(object sender, FileSystemEventArgs e)
+        /// <summary>
+        /// Watcher_Changed Method combining the changed event to the Watcher.Changed event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void Watcher_Changed(object sender, FileSystemEventArgs e)
         {
             if (register != null)
                 register();
@@ -33,12 +38,9 @@ namespace EventDelegateThread
         {
             Watcher.Dispose();
         }
-
-        /// <summary>
-        /// register action delegate
-        /// </summary>
+        
+        // register action delegate
         Action register;
-
 
         /// <summary>
         /// Register Method for invoking the action when changes occured

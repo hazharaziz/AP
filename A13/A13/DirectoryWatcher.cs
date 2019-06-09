@@ -10,27 +10,73 @@ namespace EventDelegateThread
         private FileSystemWatcher Watcher;
         public string FilePath { get; set; }
 
+        /// <summary>
+        /// DirectoryWatcher Class Constructor
+        /// </summary>
+        /// <param name="filePath"></param>
         public DirectoryWatcher(string filePath)
         {
             FilePath = filePath;
-            Watcher = new FileSystemWatcher(Path.GetDirectoryName(filePath));
+            Watcher = new FileSystemWatcher(filePath);
+            Watcher.EnableRaisingEvents = true;
+            Watcher.Created += Watcher_Created;
+            Watcher.Deleted += Watcher_Deleted;
         }
 
+        /// <summary>
+        /// Watcher_Deleted Method combining the deleted event to Watcher.Deleted event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void Watcher_Deleted(object sender, FileSystemEventArgs e)
+        {
+            deleteFile(e.FullPath);
+        }
+
+        /// <summary>
+        /// Watcher_Created Method combining the created event to Watcher.Created event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void Watcher_Created(object sender, FileSystemEventArgs e)
+        {
+            createFile(e.FullPath);
+        }
+
+        // createFile delegate
+        Action<string> createFile;
+
+        // deleteFile delegate
+        Action<string> deleteFile;
+
+        /// <summary>
+        /// Dispose Method for disposing the Watcher
+        /// </summary>
         public void Dispose()
         {
             Watcher.Dispose();
         }
 
-        public void Register(Action<string> notifyMe, ObserverType create)
+        /// <summary>
+        /// Register Method
+        /// </summary>
+        /// <param name="notifyMe"></param>
+        /// <param name="type"></param>
+        public void Register(Action<string> notifyMe, ObserverType type)
         {
-            Random random = new Random();
-            for (int i = 0; i < 5; i++)
-                notifyMe(Path.Combine(FilePath, $"{random.Next(10000, 99999)}.txt"));
+            if (type == ObserverType.Create)
+                createFile += notifyMe;
+            else
+                deleteFile += notifyMe;
         }
+        
 
-        public void Unregister(Action<string> notifyMe, ObserverType delete)
+        public void Unregister(Action<string> notifyMe, ObserverType type)
         {
-            
+            if (type == ObserverType.Create)
+                createFile -= notifyMe;
+            else
+                deleteFile -= notifyMe;
         }
     }
 }

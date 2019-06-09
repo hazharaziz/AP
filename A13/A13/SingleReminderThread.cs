@@ -3,19 +3,32 @@ using System.Threading;
 
 namespace EventDelegateThread
 {
-    //public class SingleReminderThread : ISingleReminder
-    //{
-    //    Thread ReiminderThread = null;
+    public class SingleReminderThread : ISingleReminder
+    {
+        public string Msg { get; set; }
+        public int Delay { get; set; }
 
-    //    public int Delay => throw new NotImplementedException();
 
-    //    public string Msg => throw new NotImplementedException();
+        public SingleReminderThread(string msg, int delay)
+        {
+            Msg = msg;
+            Delay = delay;
+        }
 
-    //    public event Action<string> Reminder;
+        Thread ReminderThread = null;
 
-    //    public void Start()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //}
+        public event Action<string> Reminder;
+
+
+
+        public void Start()
+        {
+            foreach (var func in Reminder.GetInvocationList())
+            {
+                ReminderThread = new Thread(() => func.DynamicInvoke(Msg));
+                ReminderThread.Start();
+                ReminderThread.Join();
+            }
+        }
+    }
 }
