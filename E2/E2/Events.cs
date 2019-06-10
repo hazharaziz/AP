@@ -6,22 +6,15 @@ namespace E2
 {
     public class DuplicateNumberDetector
     {
-        public List<int> numbers = new List<int>();
-        public int count = 0;
-
-
         public void AddNumber(int n)
         {
-            if (!numbers.Contains(n))
-            {
-                DuplicateNumberAdded += (d) => numbers.Add(d);
-                DuplicateNumberAdded += (d) => count++;
-            }
+            DuplicateNumberAdded += DuplicateNumberDetector_DuplicateNumberAdded;
         }
 
-       
-
-
+        private void DuplicateNumberDetector_DuplicateNumberAdded(int n)
+        {
+            DuplicateNumberAdded(n);
+        }
 
         public event Action<int> DuplicateNumberAdded;
     }

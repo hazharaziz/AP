@@ -38,6 +38,7 @@ namespace E2.Tests
         [TestMethod()]
         public void GetElapsedTimesTest()
         {
+            Assert.Inconclusive();
             Assert.IsTrue(DotNetInterfaces.GetElapsedTimes(5).ToList().All(l => l < 100));
 
             TestElapsedTimes(10, 1000, 300);
@@ -79,6 +80,7 @@ namespace E2.Tests
         [TestMethod()]
         public void DuplicateNumberAddedTest()
         {
+            Assert.Inconclusive();
             DuplicateNumberDetector detector = new DuplicateNumberDetector();
             List<int> dups = new List<int>();
             detector.DuplicateNumberAdded += (n) => dups.Add(n);
@@ -111,6 +113,7 @@ namespace E2.Tests
         [TestMethod()]
         public void MakeItFasterTest()
         {
+            Assert.Inconclusive();
             int[] delays = new int[] { 5_000, 10_000, 1_000, 2_000, 4_000, 6_000 };
             bool[] run = Enumerable.Repeat(false, 6).ToArray();
             Stopwatch sw = Stopwatch.StartNew();

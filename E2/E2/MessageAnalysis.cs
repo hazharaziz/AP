@@ -74,20 +74,7 @@ namespace E2.Linq
             }
         }
 
-        //MessageData maxReply = Messages[0];
-        //int max = (int)Messages[0].ReplyMessageId;
-
-        //for (int i = 0; i < Messages.Count; i++)
-        //{
-        //    if ((int)Messages[i].ReplyMessageId > max)
-        //    {
-        //        max = (int)Messages[i].ReplyMessageId;
-        //        maxReply = Messages[i];
-        //    }
-        //}
-
-        //return maxReply;
-
+        
 
 
         public Tuple<string, int>[] MostPostedMessagePersons()
@@ -153,7 +140,41 @@ namespace E2.Linq
 
         public string StudentWithMostUnansweredQuestions()
         {
-            throw new NotImplementedException();
+            Dictionary<MessageData, int> replyCounts = new Dictionary<MessageData, int>();
+            QuestionCounter(replyCounts);
+
+            int maxQuestionsCount = 0;
+            string studentName = null;
+            for (int i = 0; i < replyCounts.Count; i++)
+            {
+                if (replyCounts.Keys.Contains(Messages[i]))
+                {
+                    if (replyCounts[Messages[i]] > maxQuestionsCount)
+                    {
+                        maxQuestionsCount = replyCounts[Messages[i]];
+                        studentName = Messages[i].Author;
+                    }
+                }
+            }
+
+
+            return studentName;
+        }
+
+        private void QuestionCounter(Dictionary<MessageData, int> replyCounts)
+        {
+            Dictionary<MessageData, int> replyCounter = new Dictionary<MessageData, int>();
+            ReplyCounter(replyCounter);
+
+            foreach (MessageData msg in Messages)
+            {
+                
+                if ((msg.Content.Contains("?") || msg.Content.Contains("¿")) & replyCounter[msg] == 0)
+                {
+                    replyCounts[msg] = 0;
+                    replyCounts[msg]++;
+                }
+            }
         }
     }
 }

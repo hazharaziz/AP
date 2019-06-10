@@ -47,6 +47,7 @@
     <Compile Include="Basics.cs" />
     <Compile Include="DotNetInterfaces.cs" />
     <Compile Include="Events.cs" />
+    <Compile Include="IEquatable.cs" />
     <Compile Include="Inheritance.cs" />
     <Compile Include="MessageAnalysis.cs" />
     <Compile Include="MessageData.cs" />
