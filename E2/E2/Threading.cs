@@ -9,7 +9,14 @@ namespace E2
     {
         public static void MakeItFaster(params Action[] actions)
         {
-            throw new NotImplementedException();
+            Task[] tasks = new Task[actions.Length];
+
+            for (int i = 0; i < actions.Length; i++)
+            {
+                tasks[i] = Task.Run(() => actions[i].DynamicInvoke());
+            }
+            Task.WaitAll(tasks);
+
         }
     }
 }

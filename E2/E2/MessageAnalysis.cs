@@ -42,13 +42,33 @@ namespace E2.Linq
         }
 
         public MessageData MostRepliedMessage()
-        {
-            throw new NotImplementedException();
-        }
+            => Messages.OrderByDescending(d => d.ReplyMessageId).First();
+            //MessageData maxReply = Messages[0];
+            //int max = (int)Messages[0].ReplyMessageId;
+
+            //for (int i = 0; i < Messages.Count; i++)
+            //{
+            //    if ((int)Messages[i].ReplyMessageId > max)
+            //    {
+            //        max = (int)Messages[i].ReplyMessageId;
+            //        maxReply = Messages[i];
+            //    }
+            //}
+
+            //return maxReply;
+
+
 
         public Tuple<string, int>[] MostPostedMessagePersons()
         {
+            //Tuple<string, int>[] result = new Tuple<string, int>[5];
+
+            //var authors = Messages.Where(d => d.Author != "Sauleh Eetemadi" || d.Author != "Ali Heydari")
+            //    .Select(d => d.Author).Take(5).ToList();
+
             throw new NotImplementedException();
+
+
         }
 
         public Tuple<string, int>[] MostActivesAtMidNight()

@@ -64,6 +64,9 @@
     <Compile Include="ThreadsAndEvents.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="chats.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

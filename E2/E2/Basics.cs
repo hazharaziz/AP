@@ -23,6 +23,12 @@ namespace E2
             else
                 return false;
         }
+
+        public override int GetHashCode()
+        {
+            var hashCode = FirstName.GetHashCode() ^ LastName.GetHashCode();
+            return hashCode;
+        }
     }
 
 

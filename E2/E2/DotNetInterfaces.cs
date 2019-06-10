@@ -9,7 +9,18 @@ namespace E2
     {
         public static IEnumerable<long> GetElapsedTimes(int max=100)
         {
-            throw new NotImplementedException();
+            List<long> resultList = new List<long>();
+
+            Stopwatch stopWatch = Stopwatch.StartNew();
+
+            for (int i = 0; i < max; i++)
+            {
+                resultList.Add(stopWatch.ElapsedMilliseconds - i);
+            }
+
+            stopWatch.Stop();
+
+            return resultList;
         }
     }
 }
