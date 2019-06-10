@@ -92,14 +92,35 @@ namespace E2.Linq
 
         public Tuple<string, int>[] MostPostedMessagePersons()
         {
-            //Tuple<string, int>[] result = new Tuple<string, int>[5];
+            var fiveFirstPersonsMessages = Messages
+                .GroupBy(d => d.Author)
+                .OrderByDescending(g => g.Count())
+                .Select(g => g.Count())
+                .ToList();
+            var fiveFirstPersons = Messages
+                .GroupBy(d => d.Author)
+                .OrderByDescending(g => g.Count())
+                .Select(g => g.Key)
+                .ToList();
 
-            //var authors = Messages.Where(d => d.Author != "Sauleh Eetemadi" || d.Author != "Ali Heydari")
-            //    .Select(d => d.Author).Take(5).ToList();
-
-            throw new NotImplementedException();
 
 
+            Tuple<string, int>[] result = new Tuple<string, int>[5];
+
+            int idx = 0;
+            for (int i = 0; i < fiveFirstPersons.Count; i++)
+            {
+                if (fiveFirstPersons[i] != "Ali Heydari" && fiveFirstPersons[i] != "Sauleh Eetemadi")
+                {
+                    result[idx++] = new Tuple<string, int>(fiveFirstPersons[i], fiveFirstPersonsMessages[i]);
+                }               
+                if (idx >= 5)
+                {
+                    break;
+                }
+            }
+
+            return result;
         }
 
         public Tuple<string, int>[] MostActivesAtMidNight()
