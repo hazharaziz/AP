@@ -50,6 +50,7 @@
     <Compile Include="Inheritance.cs" />
     <Compile Include="MessageAnalysis.cs" />
     <Compile Include="MessageData.cs" />
+    <Compile Include="MyString.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Threading.cs" />

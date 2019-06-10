@@ -42,20 +42,51 @@ namespace E2.Linq
         }
 
         public MessageData MostRepliedMessage()
-            => Messages.OrderByDescending(d => d.ReplyMessageId).First();
-            //MessageData maxReply = Messages[0];
-            //int max = (int)Messages[0].ReplyMessageId;
+        {
+            Dictionary<MessageData, int> replyCounts = new Dictionary<MessageData, int>();
+            ReplyCounter(replyCounts);
+            MessageData result = null;
+            int max = replyCounts[Messages[0]];
+            for (int i = 0; i < Messages.Count; i++)
+            {
+                if (replyCounts[Messages[i]] > max)
+                {
+                    max = replyCounts[Messages[i]];
+                    result = Messages[i];
+                }
+            }
+            return result;
+        }
 
-            //for (int i = 0; i < Messages.Count; i++)
-            //{
-            //    if ((int)Messages[i].ReplyMessageId > max)
-            //    {
-            //        max = (int)Messages[i].ReplyMessageId;
-            //        maxReply = Messages[i];
-            //    }
-            //}
+        private void ReplyCounter(Dictionary<MessageData, int> replyCounts)
+        {
+            foreach (MessageData msg in Messages)
+            {
+                replyCounts[msg] = 0;
 
-            //return maxReply;
+                foreach (MessageData m in Messages)
+                {
+                    if (msg.Id == m.ReplyMessageId && m.ReplyMessageId != null)
+                    {
+                        replyCounts[msg]++;
+                    }
+                }
+            }
+        }
+
+        //MessageData maxReply = Messages[0];
+        //int max = (int)Messages[0].ReplyMessageId;
+
+        //for (int i = 0; i < Messages.Count; i++)
+        //{
+        //    if ((int)Messages[i].ReplyMessageId > max)
+        //    {
+        //        max = (int)Messages[i].ReplyMessageId;
+        //        maxReply = Messages[i];
+        //    }
+        //}
+
+        //return maxReply;
 
 
 

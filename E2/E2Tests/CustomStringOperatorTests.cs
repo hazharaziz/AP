@@ -29,8 +29,8 @@
 //        [TestMethod()]
 //        public void StringExplicitOperatorTest()
 //        {
-//            Assert.Inconclusive();
-//            /* UnComment
+//            //Assert.Inconclusive();
+            
 
 //            MyString s1 = (MyString) "I love you";
 //            Assert.AreEqual(s1, "I love you");
@@ -43,7 +43,7 @@
 
 //            Assert.AreNotEqual(s1, s2);
 //            Assert.IsFalse(s1 == s2);
-//            */
+            
 //        }
 
 //        /// <summary>
