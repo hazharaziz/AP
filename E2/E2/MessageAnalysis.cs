@@ -123,9 +123,32 @@ namespace E2.Linq
             return result;
         }
 
+
         public Tuple<string, int>[] MostActivesAtMidNight()
         {
-            throw new NotImplementedException();
+            Tuple<string, int>[] result = new Tuple<string, int>[5];
+
+            var fiveMostActive = Messages
+                .Where(d => d.DateTime.Hour <= 4 && d.DateTime.Hour >= 0)
+                .GroupBy(d => d.Author)
+                .OrderByDescending(g => g.Count())
+                .Select(g => g.Key)
+                .ToList();
+            var fiveMostActiveCount = Messages
+                .Where(d => d.DateTime.Hour <= 4 && d.DateTime.Hour >= 0)
+                .GroupBy(d => d.Author)
+                .OrderByDescending(g => g.Count())
+                .Select(g => g.Count())
+                .ToList();
+
+           
+            for (int i = 0; i < result.Length; i++)
+            {
+                result[i] = new Tuple<string, int>(fiveMostActive[i], fiveMostActiveCount[i]);
+            }
+
+            return result;
+
         }
 
         public string StudentWithMostUnansweredQuestions()
