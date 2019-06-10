@@ -20,16 +20,81 @@ namespace E2
     {
         public static int CalculateSum(string expression)
         {
-            int[] numbers = Array.ConvertAll(expression.Split('+'), int.Parse);
-            int sum = 0;
-            foreach (int num in numbers)
-                sum += num;
-            return sum;
+            string[] numbers = expression.Split('+');
+            try
+            {
+                if (!CalculateSumDataValidation(expression))
+                {
+                    throw new InvalidDataException();
+
+                }
+                else if (!CalculateSumFormatValidation(expression))
+                {
+                    throw new FormatException();
+                }
+                else
+                {
+                    int[] nums = Array.ConvertAll(numbers, int.Parse);
+                    int sum = 0;
+
+                    foreach (int num in nums)
+                        sum += num;
+                    return sum;
+                }
+            }
+            catch (InvalidDataException) { throw; }
+            catch (FormatException) { throw; }
+        }
+
+        public static bool CalculateSumFormatValidation(string expression)
+        {
+            string[] numbers = expression.Split('+');
+            bool format = true;
+            foreach (string str in numbers)
+                foreach (char ch in str)
+                    if (!char.IsDigit(ch))
+                        format = false;
+            return format;
+        }
+
+        public static bool CalculateSumDataValidation(string expression)
+        {
+            string[] numbers = expression.Split('+');
+            bool valid = true;
+            foreach (string str in numbers)
+            {
+                if (str == string.Empty)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         public static bool TryCalculateSum(string expression, out int value)
         {
-            throw new NotImplementedException();
+            string[] numbers = expression.Split('+');
+
+            bool result = true;
+
+            if (!CalculateSumDataValidation(expression) ||
+                !CalculateSumFormatValidation(expression))
+            {
+                value = 0;
+                result = false;
+            }
+            else
+            {
+                int[] nums = Array.ConvertAll(numbers, int.Parse);
+                int sum = 0;
+
+                foreach (int num in nums)
+                    sum += num;
+                value = sum;
+                result = true;
+            }
+            return result;
         }
 
         /// <summary>
@@ -43,7 +108,15 @@ namespace E2
 
         public static int Fibonacci(this int n)
         {
-            throw new NotImplementedException();
+            List<int> fibonacci = new List<int>() { 1, 2 };
+            if (fibonacci.Contains(n))
+            {
+                return fibonacci[n - 1];
+            }
+            else
+            {
+                return Fibonacci(n - 1) + Fibonacci(n - 2);
+            }
         }
 
         public static void RemoveDuplicates<T>(ref T[] list)

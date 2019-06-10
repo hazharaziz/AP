@@ -10,6 +10,8 @@ namespace E2
     {
         static void Main(string[] args)
         {
+            string s = "1+";
+            Console.WriteLine(s.Split('+')[0]);
             Console.ReadKey();
         }
     }
