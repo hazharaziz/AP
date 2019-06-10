@@ -8,6 +8,7 @@ namespace EventDelegateThread
     {
         private FileSystemWatcher Watcher;
         private string FilePath { get; set; }
+        
         /// <summary>
         /// SingleFileWatcher Class Constructor
         /// </summary>
@@ -15,7 +16,7 @@ namespace EventDelegateThread
         public SingleFileWatcher(string fileName)
         {
             FilePath = Path.GetDirectoryName(fileName);
-            Watcher = new FileSystemWatcher(Path.GetDirectoryName(fileName),Path.GetFileName(fileName));
+            Watcher = new FileSystemWatcher(Path.GetDirectoryName(fileName), Path.GetFileName(fileName));
             Watcher.EnableRaisingEvents = true;
             Watcher.Changed += Watcher_Changed;
         }

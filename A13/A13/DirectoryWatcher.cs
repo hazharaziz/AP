@@ -58,7 +58,7 @@ namespace EventDelegateThread
         }
 
         /// <summary>
-        /// Register Method
+        /// Register Method for Register Method for invoking the action when changes occured
         /// </summary>
         /// <param name="notifyMe"></param>
         /// <param name="type"></param>
@@ -69,8 +69,12 @@ namespace EventDelegateThread
             else
                 deleteFile += notifyMe;
         }
-        
 
+        /// <summary>
+        /// Unregister Method for deleting the changes occured in the directories
+        /// </summary>
+        /// <param name="notifyMe"></param>
+        /// <param name="type"></param>
         public void Unregister(Action<string> notifyMe, ObserverType type)
         {
             if (type == ObserverType.Create)
