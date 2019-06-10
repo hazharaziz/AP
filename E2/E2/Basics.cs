@@ -14,7 +14,17 @@ namespace E2
             FirstName = firstName;
             LastName = lastName;
         }
+
+        public override bool Equals(object other)
+        {
+            FullName fullName = (FullName)other;
+            if (FirstName == fullName.FirstName && LastName == fullName.LastName)
+                return true;
+            else
+                return false;
+        }
     }
+
 
     public static class Basics
     {
@@ -132,10 +142,14 @@ namespace E2
 
         private static bool Contains<T>(List<T> list, T lookup)
         {
+            
             foreach (var item in list)
                 if (item.Equals(lookup))
                     return true;
             return false;
         }
+
+        
+
     }
 }
