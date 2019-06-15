@@ -6,11 +6,21 @@ namespace E2
 {
     public class DuplicateNumberDetector
     {
-        public void AddNumber(int n)
+        HashSet<int> set { get; set; }
+
+        public DuplicateNumberDetector()
         {
-            throw new NotImplementedException();
+            set = new HashSet<int>();
         }
 
         public event Action<int> DuplicateNumberAdded;
+
+        public void AddNumber(int n)
+        {
+            if (!set.Contains(n))
+                set.Add(n);
+            else
+                DuplicateNumberAdded(n);
+        }
     }
 }

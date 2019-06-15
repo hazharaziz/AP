@@ -9,7 +9,16 @@ namespace E2
     {
         public static void MakeItFaster(params Action[] actions)
         {
-            throw new NotImplementedException();
+            List<Task> tasks = new List<Task>();
+
+            foreach (var func in actions)
+            {
+                Task task = new Task(() => func.DynamicInvoke());
+                task.Start();
+                tasks.Add(task);
+            }
+
+            Task.WaitAll(tasks.ToArray());
         }
     }
 }

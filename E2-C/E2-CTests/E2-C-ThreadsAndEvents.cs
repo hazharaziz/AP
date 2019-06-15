@@ -38,7 +38,7 @@ namespace E2.Tests
         [TestMethod()]
         public void GetElapsedTimesTest()
         {
-			Assert.Inconclusive();
+			//Assert.Inconclusive();
             Assert.IsTrue(DotNetInterfaces.GetElapsedTimes(5).ToList().All(l => l < 100));
 
             TestElapsedTimes(10, 1000, 300);
@@ -48,7 +48,7 @@ namespace E2.Tests
 
         private static void TestElapsedTimes(int count, int delay, int tolerance)
         {
-			Assert.Inconclusive();
+			//Assert.Inconclusive();
             var result = DotNetInterfaces.GetElapsedTimes(count);
             int idx = 0;
             foreach (var elapsed in result)
@@ -62,7 +62,7 @@ namespace E2.Tests
 
         private static bool ApproxEqual(long l1, long l2, long tolerance)
         {
-			Assert.Inconclusive();
+			//Assert.Inconclusive();
             return Math.Abs(l1 - l2) < tolerance;
         }
 
@@ -82,7 +82,7 @@ namespace E2.Tests
         [TestMethod()]
         public void DuplicateNumberAddedTest()
         {
-			Assert.Inconclusive();
+			//Assert.Inconclusive();
             DuplicateNumberDetector detector = new DuplicateNumberDetector();
             List<int> dups = new List<int>();
             detector.DuplicateNumberAdded += (n) => dups.Add(n);
@@ -115,7 +115,7 @@ namespace E2.Tests
         [TestMethod()]
         public void MakeItFasterTest()
         {
-			Assert.Inconclusive();
+			//Assert.Inconclusive();
             int[] delays = new int[] { 5_000, 10_000, 1_000, 2_000, 4_000, 6_000 };
             bool[] run = Enumerable.Repeat(false, 6).ToArray();
             Stopwatch sw = Stopwatch.StartNew();
