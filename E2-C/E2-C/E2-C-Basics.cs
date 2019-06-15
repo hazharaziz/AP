@@ -118,7 +118,20 @@ namespace E2
         /// <returns></returns>
         public static int PIPrecision()
         {
-            throw new NotImplementedException();
+            double factor = 1;
+            double denominator = 1;
+            double result = 0;
+            int count = 0;
+            
+            while (Math.Round(result * 4,7) != Math.Round(Math.PI,7))
+            {
+                result += factor / denominator;
+                factor *= -1;
+                denominator += 2;
+                count++;
+            }
+
+            return count;
         }
 
         public static int Fibonacci(this int n)
