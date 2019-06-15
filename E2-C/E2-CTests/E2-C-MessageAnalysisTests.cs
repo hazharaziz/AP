@@ -42,7 +42,7 @@ namespace E2.Tests
         [TestMethod()]
         public void MostRepliedMessageTest()
         {
-			Assert.Inconclusive();
+			//Assert.Inconclusive();
             MessageData actual = Instance.MostRepliedMessage();
 
             Assert.AreEqual(expected: 1878110358, actual: actual.Author.GetHashCode());
@@ -69,7 +69,7 @@ namespace E2.Tests
         [TestMethod()]
         public void MostPostedMessagePersonsTest()
         {
-			Assert.Inconclusive();
+			//Assert.Inconclusive();
             Tuple<string, int>[] actual = Instance.MostPostedMessagePersons();
             Tuple<int, int>[] expected = new[]
             {
@@ -108,7 +108,7 @@ namespace E2.Tests
         [TestMethod()]
         public void MostActiveAtMidNightTest()
         {
-			Assert.Inconclusive();
+			//Assert.Inconclusive();
             Tuple<string, int>[] actual = Instance.MostActivesAtMidNight();
             Tuple<int, int>[] expected = new[]
             {
@@ -144,7 +144,7 @@ namespace E2.Tests
         [TestMethod()]
         public void MostQuestionsWithNoAnswerTest()
         {
-			Assert.Inconclusive();
+			//Assert.Inconclusive();
             string actual = Instance.StudentWithMostUnansweredQuestions();
 
             Assert.AreEqual(1878110358, actual.GetHashCode());
