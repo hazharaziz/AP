@@ -13,5 +13,16 @@
         public PointState(Calculator calc) : base(calc) { }
 
         //#1 لطفا!
+        public override IState EnterZeroDigit() => EnterNonZeroDigit('0');
+        public override IState EnterNonZeroDigit(char c)
+        {
+            this.Calc.Display += c.ToString();
+            return new PointState(this.Calc);
+        }
+
+
+
+
+
     }
 }
