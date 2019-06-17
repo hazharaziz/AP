@@ -21,6 +21,13 @@
         }
 
 
+        public override IState EnterPoint()
+        {
+            this.Calc.Display += string.Empty;
+            return new PointState(this.Calc);
+        }
+
+
 
 
 

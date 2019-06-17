@@ -21,7 +21,8 @@ namespace A14
         public override IState EnterPoint()
         {
             // #10 لطفا!
-            return null;
+            this.Calc.Display += "";
+            return new AccumulateState(this.Calc);
         }
     }
 }
