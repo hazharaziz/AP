@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace A14
 {
@@ -13,18 +15,30 @@ namespace A14
         public override IState EnterEqual()
         {
             if (Calc.Display.Contains("+"))
-            {
-                int[] numbers = Array.ConvertAll(Calc.Display.Split('+'), int.Parse);
-                int result = 0;
-                foreach (int i in numbers)
-                    result += i;
-                Calc.Display = $"{result}";
-                return new ComputeState(Calc);
-            }
-            //return new ComputeState(Calc);
-
+                return SumOperation();
+            else if (Calc.Display.Contains("*"))
+                return MultiplyOperation();
+            
             Calc.DisplayError("Syntax Error");
             return new ErrorState(this.Calc);
+        }
+
+        private IState MultiplyOperation()
+        {
+            List<int> numbers = Array.ConvertAll(Calc.Display.Split('*'), int.Parse).OfType<int>().ToList();
+            double result = 1;
+            foreach (int number in numbers)
+                result *= number;
+            Calc.Display = $"{result}";
+            return new ComputeState(Calc);
+
+        }
+
+        private IState SumOperation()
+        {
+            List<int> numbers = Array.ConvertAll(Calc.Display.Split('+'), int.Parse).OfType<int>().ToList();
+            Calc.Display = $"{numbers.Sum()}";
+            return new ComputeState(Calc);
         }
 
         public override IState EnterNonZeroDigit(char c)
