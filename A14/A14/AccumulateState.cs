@@ -10,9 +10,9 @@ namespace A14
         public override IState EnterEqual() => null;
         public override IState EnterZeroDigit() => EnterNonZeroDigit('0');
         public override IState EnterNonZeroDigit(char c)
-        {
-            // #8 لطفا!
-            return null;
+        { 
+            this.Calc.Display += c.ToString();
+            return new AccumulateState(this.Calc);
         }
 
         // #9 لطفا!

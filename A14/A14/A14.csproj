@@ -43,8 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccumulateState.cs" />
+    <Compile Include="Calculator.cs" />
+    <Compile Include="CalculatorSate.cs" />
+    <Compile Include="ComputeState.cs" />
+    <Compile Include="ErrorState.cs" />
+    <Compile Include="IState.cs" />
+    <Compile Include="PointState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StartState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
