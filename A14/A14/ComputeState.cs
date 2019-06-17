@@ -21,10 +21,10 @@ namespace A14
                 Calc.Display = $"{result}";
                 return new ComputeState(Calc);
             }
-            return new ComputeState(Calc);
+            //return new ComputeState(Calc);
 
-            //Calc.DisplayError("Syntax Error");
-            //return new ErrorState(this.Calc);
+            Calc.DisplayError("Syntax Error");
+            return new ErrorState(this.Calc);
         }
 
         public override IState EnterNonZeroDigit(char c)
