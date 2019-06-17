@@ -71,7 +71,7 @@ namespace A14.Tests
         /// </summary>
         [TestMethod()]
         public void StartStateTest() => RunTest<ComputeState>(keys: "12+q", expectedDisplay: "12");
-
+            
         /// <summary>
         /// بعد از این مقدمات، لازم است که ماشین حساب یک حساب ساده را بتواند انجام دهد. به این معنی که بعد از 
         /// فشار دادن دکمه مساوی، نتیجه محاسبه نمایش داده شود.

@@ -27,7 +27,10 @@
         }
 
         // #5 لطفا
-        public override IState EnterOperator(char c) => null;
+        public override IState EnterOperator(char c)
+        {
+            return new ComputeState(this.Calc);
+        }
 
         public override IState EnterPoint()
         {

@@ -16,7 +16,7 @@ namespace A14
         }
 
         // #9 لطفا!
-        public override IState EnterOperator(char c) => null;
+        public override IState EnterOperator(char c) => new ComputeState(this.Calc).EnterOperator(c);
 
         public override IState EnterPoint()
         {
