@@ -13,6 +13,7 @@
         public PointState(Calculator calc) : base(calc) { }
 
         //#1 لطفا!
+        public override IState EnterEqual() => null;
         public override IState EnterZeroDigit() => EnterNonZeroDigit('0');
         public override IState EnterNonZeroDigit(char c)
         {
@@ -20,11 +21,20 @@
             return new PointState(this.Calc);
         }
 
+        public override IState EnterOperator(char c) => null;
 
         public override IState EnterPoint()
         {
-            this.Calc.Display += string.Empty;
-            return new PointState(this.Calc);
+            if (!this.Calc.Display.Contains("."))
+            {
+                this.Calc.Display += ".";
+                return new PointState(this.Calc);
+            }
+            else
+            {
+                this.Calc.Display += string.Empty;
+                return new PointState(this.Calc);
+            }
         }
 
 
