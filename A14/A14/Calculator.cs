@@ -60,7 +60,7 @@ namespace A14
         public void EnterOperator(char op)
         {
             State = State.EnterOperator(op);
-            PendingOperator = op;
+            PendingOperator = op;   
         }
 
         public void EnterEqual() => State = State.EnterEqual();

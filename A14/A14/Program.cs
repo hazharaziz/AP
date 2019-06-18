@@ -7,6 +7,7 @@ namespace A14
         static void Main(string[] args)
         {
             RunCalculator(() => Console.ReadKey().KeyChar, Console.Clear);
+
         }
 
         public static Calculator RunCalculator(Func<char> GetKey, Action clearScreen)

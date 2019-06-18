@@ -21,7 +21,12 @@
             return new PointState(this.Calc);
         }
 
-        public override IState EnterOperator(char c) => null;
+        public override IState EnterOperator(char c)
+        {
+            Calc.Display = Calc.Display.Substring(Calc.Accumulation.ToString().Length, Calc.Display.Length - Calc.Accumulation.ToString().Length);
+            var result = new PointState(Calc).ProcessOperator(new ComputeState(Calc),c);
+            return result;
+        }
 
         public override IState EnterPoint()
         {

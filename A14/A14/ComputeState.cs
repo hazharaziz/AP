@@ -18,19 +18,16 @@ namespace A14
 
         public override IState EnterEqual()
         {
-            if (Calc.Display.Contains("+"))
-                return SumOperation(OperatorType.Equal);
-            else if (Calc.Display.Contains("*"))
-                return MultiplyOperation(OperatorType.Equal);
-            else if (Calc.Display.Contains('.'))
+            if (Calc.PendingOperator != null)
             {
-                return new ComputeState(Calc);
+                Calc.Display = Calc.Display.Substring(Calc.Accumulation.ToString().Length, Calc.Display.Length - Calc.Accumulation.ToString().Length);
+                var result = new ComputeState(Calc).ProcessOperator(new ComputeState(Calc));
+                return result;  
             }
             else
             {
                 Calc.DisplayError("Syntax Error");
                 return new ErrorState(this.Calc);
-
             }
         }
 
@@ -63,9 +60,9 @@ namespace A14
             return new ComputeState(Calc);
         }
 
-    
 
-    
+
+
         private IState SumOperation(OperatorType t)
         {
             if (t == OperatorType.Equal)
@@ -87,8 +84,11 @@ namespace A14
             List<int> numbers = Array.ConvertAll(Calc.Display.Split('+'), int.Parse).OfType<int>().ToList();
             if (c == '=')
                 Calc.Display = $"{numbers.Sum()}";
+            else if (c == '+')
+                Calc.Display = $"{numbers.Sum()}";
             else
-                Calc.Display = $"{numbers.Sum()}{c}";
+                Calc.Display = $"{numbers.Sum()}{c}1";
+
             return new ComputeState(Calc);
         }
 
@@ -105,37 +105,41 @@ namespace A14
             return new ComputeState(this.Calc);
         }
 
+        public static double a = 0;
+
+
         // #5 لطفا
         public override IState EnterOperator(char c)
         {
-            if (Calc.Display.Contains('+'))
-                return SumOperation(OperatorType.Sum);
-            else if (Calc.Display.Contains('*'))
-                return MultiplyOperation(OperatorType.Multiply);
+            if (Calc.PendingOperator != null)
+            {
+                Calc.Display = Calc.Display.Substring(Calc.Accumulation.ToString().Length, Calc.Display.Length - Calc.Accumulation.ToString().Length); 
+                var result = new ComputeState(Calc).ProcessOperator(new ComputeState(Calc), c);
+                return result;
+            }
             else
             {
-                Calc.Display += c;
-                return new ComputeState(Calc);
+                var result = new ComputeState(Calc).ProcessOperator(new ComputeState(Calc), c);
+                return result;
             }
+           
         }
-
         public override IState EnterPoint()
         {
-            if (Calc.Display == null || Calc.Display == string.Empty)
+            if (Calc.Display != null)
+            {                
+                Calc.Display = Calc.Display.Substring(Calc.Accumulation.ToString().Length, Calc.Display.Length - Calc.Accumulation.ToString().Length);
+                var result = new ComputeState(Calc).ProcessOperator(new ComputeState(Calc), '+');
+                Calc.Display += ".";
+                return result;
+            }
+            else
             {
                 Calc.Display = "0.";
                 return new PointState(Calc);
             }
-            else if (Calc.Display.Contains('+'))
-                return SumOperation(OperatorType.Point);
-            else if (Calc.Display.Contains('*'))
-                return MultiplyOperation(OperatorType.Multiply);
-            else
-            {
-                Calc.Display += ".";
-                return new ComputeState(this.Calc);
-            }
         }
 
     }
+
 }
