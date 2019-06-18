@@ -7,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace A14
 {
+    /// <summary>
+    /// Calculator Class, intializes a new calculator for doing operations
+    /// </summary>
     public class Calculator
     {
+        /// <summary>
+        /// Calculator Class Constructor for opening a new display window
+        /// </summary>
+        /// <param name="clearScreen"></param>
         public Calculator(Action clearScreen)
         {
             this.State = new StartState(this);
@@ -21,7 +28,8 @@ namespace A14
                 ['+'] = (x, y) => x + y,
                 ['-'] = (x, y) => x - y,
                 ['/'] = (x, y) => x / y,
-                ['*'] = (x, y) => x * y
+                ['*'] = (x, y) => x * y,
+                ['^'] = (x, y) => Math.Pow(x, y)
             };
 
         public void PrintDisplay()
@@ -36,6 +44,9 @@ namespace A14
         public IState State { get; protected set; }
         public Action ClearScreen { get; }
 
+        /// <summary>
+        /// Evalute Method for evaluating the display result
+        /// </summary>
         public void Evalute()
         {
             Accumulation = PendingOperator.HasValue ? 
@@ -57,6 +68,10 @@ namespace A14
         public void EnterZeroDigit() => State = State.EnterZeroDigit();
         public void EnterNonZeroDigit(char c) => State = State.EnterNonZeroDigit(c);
 
+        /// <summary>
+        /// EnterOperator Method for processing operations
+        /// </summary>
+        /// <param name="op"></param>
         public void EnterOperator(char op)
         {
             State = State.EnterOperator(op);

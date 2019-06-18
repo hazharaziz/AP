@@ -22,6 +22,12 @@ namespace A14
         public virtual IState EnterOperator(char c) => null;
         public virtual IState EnterPoint() => null;
 
+        /// <summary>
+        /// ProcessOperator Method for Processing the operators and returning the result display
+        /// </summary>
+        /// <param name="nextState"></param>
+        /// <param name="op"></param>
+        /// <returns></returns>
         protected IState ProcessOperator(IState nextState, char? op = null)
         {
             try

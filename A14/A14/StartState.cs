@@ -8,8 +8,16 @@ namespace A14
     /// </summary>
     public class StartState : CalculatorState
     {
+        /// <summary>
+        /// StartState Class Constructor for initializing the calculator
+        /// </summary>
+        /// <param name="calc"></param>
         public StartState(Calculator calc) : base(calc) { }
 
+        /// <summary>
+        /// EnterEqual Method for calculating the final result 
+        /// </summary>
+        /// <returns></returns>
         public override IState EnterEqual() => 
             ProcessOperator(new ComputeState(this.Calc));
 
@@ -25,9 +33,18 @@ namespace A14
             return new AccumulateState(this.Calc);
         }
 
+        /// <summary>
+        /// EnterOperator Method for entering a new operator
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public override IState EnterOperator(char c) => 
             ProcessOperator(new ComputeState(this.Calc), c);
 
+        /// <summary>
+        /// EnterPoint Method for switching to the point state
+        /// </summary>
+        /// <returns></returns>
         public override IState EnterPoint()
         {
             this.Calc.Display = "0.";

@@ -8,22 +8,22 @@ namespace A14
     /// ماشین حساب وقتی که جواب یک محاسبه
     /// را نشان میدهد وارد این وضعیت میشود
     /// </summary>
-    
-    
-    public enum OperatorType { Sum,Multiply,Divide,Power,Point,Equal};
-
     public class ComputeState : CalculatorState
     {
+        /// <summary>
+        /// ComputeState Class Construtor initializing the computing state
+        /// </summary>
+        /// <param name="calc"></param>
         public ComputeState(Calculator calc) : base(calc) { }
 
+        /// <summary>
+        /// EnterEqual Method for calculating the final result
+        /// </summary>
+        /// <returns></returns>
         public override IState EnterEqual()
         {
             if (Calc.PendingOperator != null)
-            {
-                Calc.Display = Calc.Display.Substring(Calc.Accumulation.ToString().Length, Calc.Display.Length - Calc.Accumulation.ToString().Length);
-                var result = new ComputeState(Calc).ProcessOperator(new ComputeState(Calc));
-                return result;  
-            }
+                return Operation();
             else
             {
                 Calc.DisplayError("Syntax Error");
@@ -31,65 +31,18 @@ namespace A14
             }
         }
 
-        private IState MultiplyOperation(OperatorType t)
+        /// <summary>
+        /// Operation Method for processing the operation with the c operator
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        private IState Operation(char? c = null)
         {
-            if (t == OperatorType.Equal)
-                return Multiply('=');
-            else if (t == OperatorType.Sum)
-                return Multiply('+');
-            else if (t == OperatorType.Multiply)
-                return Multiply('*');
-            else if (t == OperatorType.Divide)
-                return Multiply('/');
-            else if (t == OperatorType.Power)
-                return Multiply('^');
-            else
-                return Multiply('.');
-        }
-
-        private IState Multiply(char c)
-        {
-            List<int> numbers = Array.ConvertAll(Calc.Display.Split('*'), int.Parse).OfType<int>().ToList();
-            double result = 1;
-            foreach (int number in numbers)
-                result *= number;
-            if (c == '=')
-                Calc.Display = $"{result}";
-            else
-                Calc.Display = $"{result}{c}";
-            return new ComputeState(Calc);
-        }
-
-
-
-
-        private IState SumOperation(OperatorType t)
-        {
-            if (t == OperatorType.Equal)
-                return Sum('=');
-            else if (t == OperatorType.Sum)
-                return Sum('+');
-            else if (t == OperatorType.Multiply)
-                return Sum('*');
-            else if (t == OperatorType.Divide)
-                return Sum('/');
-            else if (t == OperatorType.Power)
-                return Sum('^');
-            else
-                return Sum('.');
-        }
-
-        private IState Sum(char c)
-        {
-            List<int> numbers = Array.ConvertAll(Calc.Display.Split('+'), int.Parse).OfType<int>().ToList();
-            if (c == '=')
-                Calc.Display = $"{numbers.Sum()}";
-            else if (c == '+')
-                Calc.Display = $"{numbers.Sum()}";
-            else
-                Calc.Display = $"{numbers.Sum()}{c}1";
-
-            return new ComputeState(Calc);
+            var accumulation = Calc.Accumulation.ToString();
+            var display = Calc.Display;
+            Calc.Display = Calc.Display.Substring(accumulation.Length, display.Length - accumulation.Length);
+            var result = new ComputeState(Calc).ProcessOperator(new ComputeState(Calc),c);
+            return result;
         }
 
         public override IState EnterNonZeroDigit(char c)
@@ -100,23 +53,19 @@ namespace A14
 
         public override IState EnterZeroDigit()
         {
-            // #4 لطفا
             this.Calc.Display += "0";
             return new ComputeState(this.Calc);
         }
-
-        public static double a = 0;
-
-
-        // #5 لطفا
+        
+        /// <summary>
+        /// EnterOperator Method for entering a new operator
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public override IState EnterOperator(char c)
         {
             if (Calc.PendingOperator != null)
-            {
-                Calc.Display = Calc.Display.Substring(Calc.Accumulation.ToString().Length, Calc.Display.Length - Calc.Accumulation.ToString().Length); 
-                var result = new ComputeState(Calc).ProcessOperator(new ComputeState(Calc), c);
-                return result;
-            }
+                return Operation(c);
             else
             {
                 var result = new ComputeState(Calc).ProcessOperator(new ComputeState(Calc), c);
@@ -124,12 +73,16 @@ namespace A14
             }
            
         }
+
+        /// <summary>
+        /// EnterPoint Method for switching to the point state
+        /// </summary>
+        /// <returns></returns>
         public override IState EnterPoint()
         {
             if (Calc.Display != null)
-            {                
-                Calc.Display = Calc.Display.Substring(Calc.Accumulation.ToString().Length, Calc.Display.Length - Calc.Accumulation.ToString().Length);
-                var result = new ComputeState(Calc).ProcessOperator(new ComputeState(Calc), '+');
+            {
+                var result = Operation(Calc.PendingOperator);
                 Calc.Display += ".";
                 return result;
             }

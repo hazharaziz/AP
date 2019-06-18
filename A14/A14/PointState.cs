@@ -10,24 +10,60 @@
     /// </summary>
     public class PointState : AccumulateState
     {
+        /// <summary>
+        /// PointState Class for initializing the Point state
+        /// </summary>
+        /// <param name="calc"></param>
         public PointState(Calculator calc) : base(calc) { }
 
-        //#1 لطفا!
+
         public override IState EnterEqual() => null;
+
+        /// <summary>
+        /// EnterZeroDigit Method adds a zero to the display 
+        /// </summary>
+        /// <returns></returns>
         public override IState EnterZeroDigit() => EnterNonZeroDigit('0');
+
+        /// <summary>
+        /// EnterNonZeroDigit Method adds a character to the display
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public override IState EnterNonZeroDigit(char c)
         {
             this.Calc.Display += c.ToString();
             return new PointState(this.Calc);
         }
 
+        /// <summary>
+        /// EnterOperator Method for processing the c operator 
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public override IState EnterOperator(char c)
         {
-            Calc.Display = Calc.Display.Substring(Calc.Accumulation.ToString().Length, Calc.Display.Length - Calc.Accumulation.ToString().Length);
-            var result = new PointState(Calc).ProcessOperator(new ComputeState(Calc),c);
+            return Operation(c);
+        }
+
+        /// <summary>
+        /// Operation Method for calculating the result using the c operator
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        private IState Operation(char c)
+        {
+            var accumulation = Calc.Accumulation.ToString();
+            var display = Calc.Display;
+            Calc.Display = Calc.Display.Substring(accumulation.Length, display.Length - accumulation.Length);
+            var result = new PointState(Calc).ProcessOperator(new ComputeState(Calc), c);
             return result;
         }
 
+        /// <summary>
+        /// EnterPoint Method for adding the point to the display
+        /// </summary>
+        /// <returns></returns>
         public override IState EnterPoint()
         {
             if (!this.Calc.Display.Contains("."))
@@ -36,9 +72,7 @@
                 return new PointState(this.Calc);
             }
             else
-            {
                 return new PointState(this.Calc);
-            }
         }
 
 
