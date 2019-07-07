@@ -188,7 +188,7 @@ namespace A10
         }
 
         /// <summary>
-        /// ToString Method for demonstrating the vector 
+        /// ToString Method is for demonstrating the vector 
         /// </summary>
         /// <returns></returns>
         public override string ToString()
