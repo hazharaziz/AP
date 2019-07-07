@@ -25,7 +25,7 @@ namespace A11
         /// Credit Method for increasing the Balance 
         /// </summary>
         /// <param name="amount"></param>
-        public void Credit(double amount)
+        public virtual void Credit(double amount)
         {
             try
             {
@@ -45,21 +45,21 @@ namespace A11
         /// </summary>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public bool Debit(double amount)
+        public virtual bool Debit(double amount)
         {
-            if (amount > Balance)
-            {
-                Console.WriteLine("Debit amount exceeded account balance.");
-                return false;
-            }
-            else
+            if (amount <= Balance)
             {
                 Balance -= amount;
                 return true;
             }
+            else
+            {
+                Console.WriteLine($"Debit amount exceeded account balance.");
+                return false;
+            }
         }
 
-    
+
 
     }
 }

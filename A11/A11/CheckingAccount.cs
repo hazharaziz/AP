@@ -21,19 +21,10 @@ namespace A11
         /// Credit Method for increasing the Balance according to the transaction fee
         /// </summary>
         /// <param name="amount"></param>
-        public void Credit(double amount)
+        public override void Credit(double amount)
         {
-            try
-            {
-                if (amount < 0)
-                    throw new ArgumentException();
-                Balance += (amount - TransactionFee);
-            }
-            catch(ArgumentException)
-            {
-                Console.WriteLine("Credit amount must be positive");
-                throw;
-            }            
+            Balance -= TransactionFee;
+            base.Credit(amount);
         }
 
         /// <summary>
@@ -41,18 +32,11 @@ namespace A11
         /// </summary>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public bool Debit(double amount)
+        public override bool Debit(double amount)
         {
             if (amount <= Balance)
-            {
-                Balance -= (amount + TransactionFee);
-                return true;
-            }
-            else
-            {
-                Console.WriteLine($"Debit amount exceeded account balance.");
-                return false;
-            }
+                Balance -= TransactionFee;
+            return base.Debit(amount);
         }
 
 
