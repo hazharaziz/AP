@@ -1,0 +1,55 @@
+﻿<Window x:Name="Window" x:Class="P1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:P1"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d" Height="600" Width="1000" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    
+    <StackPanel Orientation="Vertical">
+        <Grid Height="40" Margin="0 10 0 10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock HorizontalAlignment="Left" Margin="10 10 10 10" FontSize="15" Foreground="#5A4D4C">Math Analyzer</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Uid="0" x:Name="btn1" Background="Blue" BorderBrush="LightBlue" VerticalAlignment="Center" Margin="0 0 10 0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Click="Button_Click">
+                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="#FFFFFF" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10"></materialDesign:PackIcon>
+                </Button>
+                <!--<Button Uid="1" x:Name="btn2" Background="Blue" BorderBrush="LightBlue" VerticalAlignment="Center" Margin="0,1,10,-1" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Click="Button_Click">
+                    <materialDesign:PackIcon Kind="Fullscreen" Foreground="#FFFFFF" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10"></materialDesign:PackIcon>
+                </Button>-->
+                <Button Uid="2" x:Name="btn3" Background="Blue" BorderBrush="LightBlue" VerticalAlignment="Center" Margin="0 0 10 0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Click="Button_Click">
+                    <materialDesign:PackIcon Kind="Close" Foreground="#FFFFFF" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10"></materialDesign:PackIcon>
+                </Button>
+            </StackPanel>
+        </Grid>
+                
+        <Grid Height="560">
+            <StackPanel Orientation="Horizontal">
+                <Grid Width="800">
+                    <StackPanel Orientation="Vertical">
+                        <Grid Height="60">
+                            <StackPanel Orientation="Horizontal" Margin="10 10 10 10" VerticalAlignment="Top">
+                                <Button Uid="0" Content="DRAW DIAGRAM" Width="100" Background="{x:Null}" Foreground="#5A4D4C" BorderBrush="{x:Null}" Click="Button_Click_1"/>
+                                <Button Uid="1" Content="EQUATIONS" Width="100" Background="{x:Null}" Foreground="#5A4D4C" BorderBrush="{x:Null}" Click="Button_Click_1"/>
+                                <Button Uid="2" Content="FOURIER SERIES" Width="100" Background="{x:Null}" Foreground="#5A4D4C" BorderBrush="{x:Null}" Click="Button_Click_1"/>
+                            </StackPanel>
+                            <Grid x:Name="GridCursor" Width="100" Height="5" Background="#328DAA" HorizontalAlignment="Left" Margin="10,35,10,0"/>
+                        </Grid>
+                        <Grid x:Name="GridMain" Height="480" Margin="10 10 10 10" >
+                            
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <Grid Width="200">
+                    
+                </Grid>
+            </StackPanel>
+            
+        </Grid>
+    </StackPanel>
+        
+</Window>
+
