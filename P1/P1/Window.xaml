@@ -51,7 +51,7 @@
                     <materialDesign:PackIcon Kind="WindowMinimize" Foreground="Black" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10"/>
                 </Button>
                 <Button Uid="1" x:Name="btn2" Style="{StaticResource TopWindowButtons}" Click="Button_Click">
-                    <materialDesign:PackIcon Kind="WindowMaximize" Foreground="Black" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10"></materialDesign:PackIcon>
+                    <materialDesign:PackIcon Kind="WindowMaximize" Foreground="Black" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10"/>
                 </Button>
                 <Button Uid="2" x:Name="btn3" Style="{StaticResource TopWindowButtons}" Click="Button_Click">
                     <materialDesign:PackIcon Kind="Close" Foreground="Black" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10"/>
@@ -79,7 +79,7 @@
                 </Grid>
                 <Grid Width="300" Margin="0 0 10 0">
                     <StackPanel Orientation="Vertical">
-                        <Grid x:Name="ClockGrid" Height="200" Margin="0,0,-0.2,0">
+                        <Grid x:Name="ClockGrid" Height="200" Margin="0 0 10 0">
                             <!--<Canvas Height="200" Width="300">
                                 <Line X1="63" X2="70" Y1="100" Y2="100" Stroke="Black" StrokeThickness="2" Fill="Black" Canvas.Top="2"/>
                                 <Line X1="237" X2="230" Y1="100" Y2="100" Stroke="Black" StrokeThickness="2" Fill="Black"/>
@@ -107,7 +107,7 @@
 
                         </Grid>
                         <Grid Height="360">
-                            <Button Width="100" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Button_Click_2">
+                            <Button Width="100" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="100,162,100.8,158">
                                 
                             </Button>
 

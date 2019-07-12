@@ -23,12 +23,19 @@ namespace P1
         public MainWindow()
         {
 
+        
             InitializeComponent();
+            Class1 a = new Class1();
+            a.canvas(300, 200);
+            a.pos(63, 70, 100, 100);
+            a.add();
+            ClockGrid.Children.Add(a.c);
+
 
 
         }
 
-        
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             int index = int.Parse(((Button)e.Source).Uid);
@@ -70,17 +77,6 @@ namespace P1
                     GridMain.Background = Brushes.LawnGreen;
                     break;
             }
-
-
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            Class1 a = new Class1();
-            a.canvas(300, 200);
-            a.pos(63, 70, 100, 100);
-            a.add();
-            ClockGrid.Children.Add(a.c);
 
 
         }

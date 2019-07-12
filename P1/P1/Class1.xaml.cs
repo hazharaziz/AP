@@ -33,12 +33,15 @@ namespace P1
             l.Y1 = y1;
             l.Y2 = y2;
             l.Stroke = Brushes.Black;
+            l.StrokeThickness = 4;
+            l.Fill = Brushes.Black;
         }
 
         public void canvas(int width,int height)
         {
             c.Width = width;
             c.Height = height;
+            
         }
 
         public void add()
