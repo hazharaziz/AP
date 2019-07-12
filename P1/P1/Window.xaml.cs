@@ -22,10 +22,13 @@ namespace P1
     {
         public MainWindow()
         {
+
             InitializeComponent();
+
+
         }
 
-
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             int index = int.Parse(((Button)e.Source).Uid);
@@ -33,11 +36,11 @@ namespace P1
             switch (index)
             {
                 case 0:
-                    btn1.Background = Brushes.Aquamarine;
+                    //btn1.Background = Brushes.Aquamarine;
                     break;
-                //case 1:
-                //    btn2.Background = Brushes.Aquamarine;
-                //    break;
+                case 1:
+                    //btn2.Background = Brushes.Aquamarine;
+                    break;
                 case 2:
                     Window.Close();
                     break;
@@ -52,7 +55,8 @@ namespace P1
 
             int index = int.Parse(((Button)e.Source).Uid);
 
-            GridCursor.Margin = new Thickness(10 + (100 * index), 35, 10, 0);
+            GridCursor.Margin = new Thickness((10 * (index + 1)) + (150 * index), 0, 0, 0);
+
 
             switch (index)
             {
@@ -70,5 +74,15 @@ namespace P1
 
         }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Class1 a = new Class1();
+            a.canvas(300, 200);
+            a.pos(63, 70, 100, 100);
+            a.add();
+            ClockGrid.Children.Add(a.c);
+
+
+        }
     }
 }
