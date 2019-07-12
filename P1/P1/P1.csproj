@@ -69,7 +69,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Class1.xaml.cs" />
+    <Compile Include="CircleClock.xaml.cs" />
+    <Compile Include="IDrawing.cs" />
     <Compile Include="Window.xaml.cs">
       <DependentUpon>Window.xaml</DependentUpon>
       <SubType>Code</SubType>

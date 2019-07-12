@@ -25,13 +25,17 @@ namespace P1
 
         
             InitializeComponent();
-            Class1 a = new Class1();
-            a.canvas(300, 200);
-            a.pos(63, 70, 100, 100);
-            a.add();
-            ClockGrid.Children.Add(a.c);
+            //Class1 a = new Class1();
+            //a.canvas(300, 200);
+            //a.pos(63, 70, 100, 100);
+            //a.add();
+            //ClockGrid.Children.Add(a.c);
 
+            CircleClock circleClock = new CircleClock(300, 200);
+            circleClock.Draw();
+            ClockGrid.Children.Add(circleClock.ClockCanvas);
 
+            
 
         }
 

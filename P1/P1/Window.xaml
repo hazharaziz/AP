@@ -40,7 +40,7 @@
         </Style>
 
     </Window.Resources>
-    
+
     <StackPanel Orientation="Vertical">
         <Grid Height="40" Margin="0 10 0 10">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
@@ -58,7 +58,7 @@
                 </Button>
             </StackPanel>
         </Grid>
-                
+
         <Grid Height="560">
             <StackPanel Orientation="Horizontal">
                 <Grid Width="700">
@@ -69,24 +69,26 @@
                                 <Button Uid="1" Content="EQUATIONS" Style="{StaticResource ControlTabButtons}" Click="Button_Click_1"/>
                                 <Button Uid="2" Content="FOURIER SERIES" Style="{StaticResource ControlTabButtons}" Click="Button_Click_1"/>
                             </StackPanel>
-                            
+
                             <Grid x:Name="GridCursor" Width="150" Height="5" VerticalAlignment="Bottom" Background="#EDF259" HorizontalAlignment="Left" Margin="10 0 0 0"/>
                         </Grid>
                         <Grid x:Name="GridMain" VerticalAlignment="Top" Height="480" Margin="10 0 10 10" >
-                            
+
                         </Grid>
                     </StackPanel>
                 </Grid>
                 <Grid Width="300" Margin="0 0 10 0">
                     <StackPanel Orientation="Vertical">
                         <Grid x:Name="ClockGrid" Height="200" Margin="0 0 10 0">
-                            <!--<Canvas Height="200" Width="300">
+                            <!--<Canvas Width="300" Height="200">
                                 <Line X1="63" X2="70" Y1="100" Y2="100" Stroke="Black" StrokeThickness="2" Fill="Black" Canvas.Top="2"/>
                                 <Line X1="237" X2="230" Y1="100" Y2="100" Stroke="Black" StrokeThickness="2" Fill="Black"/>
                                 <Line X1="150" X2="150" Y1="13" Y2="20" Stroke="Black" StrokeThickness="2" Fill="Black"/>
                                 <Line X1="150" X2="150" Y1="187" Y2="180" Stroke="Black" StrokeThickness="2" Fill="Black"/>
+                                <Ellipse Canvas.Left="60" Canvas.Top="10" Width="180" Height="180" Stroke="Black" Margin="0 0 0 0" StrokeThickness="2"/>
                             </Canvas>-->
-                            
+
+
                             <!--<Ellipse Width="180" Height="180"  Margin="0 0 0 0" StrokeThickness="2">
                                 <Ellipse.Stroke>
                                     <LinearGradientBrush>
@@ -108,19 +110,19 @@
                         </Grid>
                         <Grid Height="360">
                             <Button Width="100" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="100,162,100.8,158">
-                                
+
                             </Button>
 
 
                         </Grid>
-                        
+
                     </StackPanel>
-                    
+
                 </Grid>
             </StackPanel>
-            
+
         </Grid>
     </StackPanel>
-        
+
 </Window>
 
