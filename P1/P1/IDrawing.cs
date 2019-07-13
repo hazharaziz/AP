@@ -18,6 +18,5 @@ namespace P1
     public interface IDrawing
     {
         void Draw();
-        Canvas DrawCanvas(int width, int height);
     }
 }

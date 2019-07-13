@@ -17,32 +17,18 @@ namespace P1
 {
     public class CircleClock : Window, IDrawing
     {
-        public Canvas ClockCanvas;
-        private Ellipse Clock;
+        public Ellipse Clock;
 
         public CircleClock(int width, int height)
         {
-            ClockCanvas = DrawCanvas(width, height);
-            Clock = new Ellipse();
-
+            Clock = new Ellipse() { Width = width, Height = height };
         }
+
         public void Draw()
         {
-
-            Clock.Width = 180;
-            Clock.Height = 180;
             Clock.Stroke = Brushes.Black;
             Clock.StrokeThickness = 2;
-            ClockCanvas.Children.Add(Clock);
-            
-        }
-
-        public Canvas DrawCanvas(int width, int height)
-        {
-            Canvas canvas = new Canvas();
-            canvas.Width = width;
-            canvas.Height = height;
-            return canvas;
+            Clock.Margin = new Thickness(0, 20, 20, 20);
         }
     }
 }

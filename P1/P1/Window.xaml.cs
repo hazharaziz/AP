@@ -25,17 +25,12 @@ namespace P1
 
         
             InitializeComponent();
-            //Class1 a = new Class1();
-            //a.canvas(300, 200);
-            //a.pos(63, 70, 100, 100);
-            //a.add();
-            //ClockGrid.Children.Add(a.c);
 
-            CircleClock circleClock = new CircleClock(300, 200);
+            CircleClock circleClock = new CircleClock(180, 180);
             circleClock.Draw();
-            ClockGrid.Children.Add(circleClock.ClockCanvas);
-
             
+            ClockCanvas.Children.Add(circleClock.Clock);
+
 
         }
 
@@ -53,7 +48,7 @@ namespace P1
                     //btn2.Background = Brushes.Aquamarine;
                     break;
                 case 2:
-                    Window.Close();
+                    Application.Current.Shutdown();
                     break;
 
             }

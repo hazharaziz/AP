@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:P1"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        mc:Ignorable="d" Height="600" Width="1000" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        mc:Ignorable="d" Height="700" Width="1000" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
     <Window.Resources>
         <Style x:Key="WindowTitle" TargetType="TextBlock">
@@ -14,13 +14,18 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontFamily" Value="Berlin Sans FB"/>
             <Setter Property="Margin" Value="10 0 10 0"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="FontWeight" Value="Light"/>
         </Style>
+        <LinearGradientBrush x:Key="LightBlueGradientBrush" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#36688D" Offset="0"/>
+            <GradientStop Color="#0AAFF1" Offset="0.5"/>
+            <GradientStop Color="#36688D" Offset="1"/>
+        </LinearGradientBrush>
         <Style x:Key="TopWindowButtons" TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
-            <Setter Property="Background" Value="#0AAFF1"/>
-            <Setter Property="BorderBrush" Value="#EDF259"/>
+            <Setter Property="Background" Value="{StaticResource LightBlueGradientBrush}"/>
+            <Setter Property="BorderBrush" Value="#F3CD05"/>
             <Setter Property="BorderThickness" Value="10"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="Margin" Value="0 0 10 0"/>
@@ -30,23 +35,30 @@
             <Setter Property="Width" Value="150"/>
             <Setter Property="Height" Value="42"/>
             <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Background" Value="#0AAFF1"/>
-            <Setter Property="BorderBrush" Value="#B5B3BE"/>
+            <Setter Property="Background" Value="{StaticResource LightBlueGradientBrush}"/>
+            <Setter Property="BorderBrush" Value="#F3CD05"/>
+            <Setter Property="Cursor" Value="Arrow"/>
             <Setter Property="FontFamily" Value="Berlin Sans FB"/>
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Margin" Value="10 0 0 0"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#EDF259"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
     </Window.Resources>
 
     <StackPanel Orientation="Vertical">
-        <Grid Height="40" Margin="0 10 0 10">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+        <Grid Height="40" Margin="0 5 0 10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 5 0 5">
                 <TextBlock Style="{StaticResource WindowTitle}">Math Analyzer</TextBlock>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 -10">
                 <Button Uid="0" x:Name="btn1" Style="{StaticResource TopWindowButtons}" Click="Button_Click">
                     <materialDesign:PackIcon Kind="WindowMinimize" Foreground="Black" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10"/>
                 </Button>
@@ -59,34 +71,38 @@
             </StackPanel>
         </Grid>
 
-        <Grid Height="560">
+        <Grid Height="660">
             <StackPanel Orientation="Horizontal">
-                <Grid Width="700">
-                    <StackPanel Orientation="Vertical">
+                <Grid Width="800">
+                    <StackPanel Orientation="Vertical" Margin="0 0 0 10">
                         <Grid Height="50">
-                            <StackPanel Orientation="Horizontal"  VerticalAlignment="Top">
+                            <StackPanel Orientation="Horizontal"  VerticalAlignment="Center">
                                 <Button Uid="0" Content="DRAW DIAGRAM" Style="{StaticResource ControlTabButtons}" Click="Button_Click_1"/>
                                 <Button Uid="1" Content="EQUATIONS" Style="{StaticResource ControlTabButtons}" Click="Button_Click_1"/>
                                 <Button Uid="2" Content="FOURIER SERIES" Style="{StaticResource ControlTabButtons}" Click="Button_Click_1"/>
                             </StackPanel>
 
-                            <Grid x:Name="GridCursor" Width="150" Height="5" VerticalAlignment="Bottom" Background="#EDF259" HorizontalAlignment="Left" Margin="10 0 0 0"/>
-                        </Grid>
-                        <Grid x:Name="GridMain" VerticalAlignment="Top" Height="480" Margin="10 0 10 10" >
+                            <Grid x:Name="GridCursor" Width="150" Height="5" VerticalAlignment="Bottom" Background="#F3CD05" HorizontalAlignment="Left" Margin="10 0 0 0"/>
+                        </Grid> 
+                        <Grid x:Name="GridMain" VerticalAlignment="Top" Height="575" Margin="10 0 10 0">
+                            <StackPanel>
+                                
+                            </StackPanel>
+                            
 
                         </Grid>
                     </StackPanel>
                 </Grid>
-                <Grid Width="300" Margin="0 0 10 0">
-                    <StackPanel Orientation="Vertical">
+                <Grid Width="200" Margin="0 0 10 0">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Top">
                         <Grid x:Name="ClockGrid" Height="200" Margin="0 0 10 0">
-                            <!--<Canvas Width="300" Height="200">
-                                <Line X1="63" X2="70" Y1="100" Y2="100" Stroke="Black" StrokeThickness="2" Fill="Black" Canvas.Top="2"/>
+                            <Canvas x:Name="ClockCanvas" Width="200" Height="200">
+                                <!--<Line X1="63" X2="70" Y1="100" Y2="100" Stroke="Black" StrokeThickness="2" Fill="Black" Canvas.Top="2"/>
                                 <Line X1="237" X2="230" Y1="100" Y2="100" Stroke="Black" StrokeThickness="2" Fill="Black"/>
                                 <Line X1="150" X2="150" Y1="13" Y2="20" Stroke="Black" StrokeThickness="2" Fill="Black"/>
                                 <Line X1="150" X2="150" Y1="187" Y2="180" Stroke="Black" StrokeThickness="2" Fill="Black"/>
-                                <Ellipse Canvas.Left="60" Canvas.Top="10" Width="180" Height="180" Stroke="Black" Margin="0 0 0 0" StrokeThickness="2"/>
-                            </Canvas>-->
+                                <Ellipse Canvas.Left="60" Canvas.Top="10" Width="180" Height="180" Stroke="Black" Margin="0 0 0 0" StrokeThickness="2"/>-->
+                            </Canvas>
 
 
                             <!--<Ellipse Width="180" Height="180"  Margin="0 0 0 0" StrokeThickness="2">
@@ -109,9 +125,7 @@
 
                         </Grid>
                         <Grid Height="360">
-                            <Button Width="100" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="100,162,100.8,158">
 
-                            </Button>
 
 
                         </Grid>
