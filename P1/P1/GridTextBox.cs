@@ -43,7 +43,7 @@ namespace P1
         }
 
         public GridTextBox(string name, double width, double height, Thickness textBoxThickness
-            ,string labelContent, double labelWidth, double labelHeight, Thickness labelMargin)
+            ,string labelContent = "", double labelWidth = 0, double labelHeight = 0, Thickness labelMargin = new Thickness())
         {
             TextBoxLabel = new TextBoxLabel(labelContent, labelWidth, labelHeight, labelMargin);
             TextBox = new TextBox()
@@ -52,11 +52,12 @@ namespace P1
                 Width = width,
                 Height = height,
                 Margin = textBoxThickness,
-                HorizontalContentAlignment = HorizontalAlignment.Center,
-                VerticalContentAlignment = VerticalAlignment.Center,
+                HorizontalContentAlignment = HorizontalAlignment.Left,
+                VerticalContentAlignment = VerticalAlignment.Top,
                 BorderBrush = Brushes.Black,
                 BorderThickness = new Thickness(2),
-                Background = Brushes.White
+                Background = Brushes.White,
+                Padding = new Thickness(5,2,0,0)
             };
 
             binding = new Binding("TextBox");

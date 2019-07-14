@@ -39,9 +39,11 @@
 
                             <Grid x:Name="GridCursor" Width="150" Height="5" VerticalAlignment="Bottom" Background="#F3CD05" HorizontalAlignment="Left" Margin="10 0 0 0"/>
                         </Grid>
-                        <Grid x:Name="DrawDiagramGrid" VerticalAlignment="Top" Height="570" Margin="10 0 10 0">
-                            <Border CornerRadius="0 0 10 10" Width="760" Height="570" BorderBrush="#0AAFF1" BorderThickness="3"/>
+                        <Grid x:Name="MainGrid" VerticalAlignment="Top" Height="570" Margin="10 0 10 0">
                             <!--<Grid Width="780" Height="450" Background="LightBlue" Margin="10,70,10,120"/>-->
+
+                            <!--<TextBox Width="740" Height="250" Padding="5 5" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Background="LightBlue" Foreground="Black" Margin="10 60 10 230"></TextBox>
+                            <TextBlock Width="740" Height="230" Background="Beige" Margin="10,330,10,10"/>-->
 
                         </Grid>
 

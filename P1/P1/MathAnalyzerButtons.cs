@@ -47,7 +47,9 @@ namespace P1
                 HorizontalAlignment = horizontalAlignment,
                 VerticalAlignment = VerticalAlignment.Top,
                 Margin = new Thickness(10, 10, 10, 0),
-                Style = style
+                Style = style,
+                Cursor = Cursors.Hand,
+                ClickMode = ClickMode.Press
             };
             return button;
         }

@@ -17,11 +17,9 @@ using System.Runtime.CompilerServices;
 
 namespace P1
 {
-    public class Diagram : IDrawing
+    public class Diagram : IDrawing, IRemoving
     {
         public Grid ParentGrid;
-        public Button draw;
-        public Button clear;
         public Style style;
         public MathAnalyzerButtons Buttons;
         public GridTextBox MaxX;
@@ -30,6 +28,7 @@ namespace P1
         public GridTextBox MinY;
         public GridTextBox Function;
         public DiagramGrid DiagramGrid;
+        public GridBorder DiagramBorder;
 
         public GridTextBox[] textBoxes;
 
@@ -39,7 +38,7 @@ namespace P1
             style = (Style)Application.Current.Resources["ControlTabButtons"];
             Buttons = new MathAnalyzerButtons(ButtonDetector.DrawDiagramTab);
             DiagramGrid = new DiagramGrid(780, 450, new Thickness(10, 60, 10, 125));
-
+            DiagramBorder = new GridBorder();
             textBoxes = new GridTextBox[]
             {
                 new GridTextBox("MinY",107.5, 40, new Thickness(85, 460, 560, 70),"MIN Y =",60,40,new Thickness(20, 460, 690, 70)),
@@ -60,6 +59,7 @@ namespace P1
 
         public void Draw()
         {
+            ParentGrid.Children.Add(DiagramBorder.Border);
             ParentGrid.Children.Add(DiagramGrid.Grid);
 
             foreach (Button button in Buttons.buttons)
@@ -70,6 +70,12 @@ namespace P1
                 ParentGrid.Children.Add(textBox.TextBox);
                 ParentGrid.Children.Add(textBox.TextBoxLabel.Label);
             }
+
+        }
+
+        public void Remove()
+        {
+            ParentGrid.Children.Clear();
         }
     }
 }

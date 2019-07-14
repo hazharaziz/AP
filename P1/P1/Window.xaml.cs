@@ -20,7 +20,8 @@ namespace P1
     /// </summary>
     public partial class MainWindow : Window
     {
-        Diagram diagram;
+        Diagram diagramTab;
+        Equations equationsTab;
 
         public MainWindow()
         {
@@ -32,7 +33,10 @@ namespace P1
             circleClock.Draw();
             
             ClockCanvas.Children.Add(circleClock.Clock);
-            
+            equationsTab = new Equations(this.Window, MainGrid);
+            diagramTab = new Diagram(this.Window, MainGrid);
+
+
 
         }
 
@@ -49,14 +53,18 @@ namespace P1
             int buttonId = int.Parse(((Button)e.Source).Uid);
             GridCursor.Margin = new Thickness((10 * (buttonId + 1)) + (150 * buttonId), 0, 0, 0);
 
-            switch(buttonId)
+
+
+            switch (buttonId)
             {
                 case 0:
-                    diagram = new Diagram(this.Window,DrawDiagramGrid);
-                    diagram.Draw();
+                    equationsTab.Remove();
+                    diagramTab.Draw();
                     break;
                 case 1:
-                    break;
+                    diagramTab.Remove();
+                    equationsTab.Draw();
+                    break;                  
                 case 2:
                     break;
 
