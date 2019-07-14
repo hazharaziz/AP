@@ -20,6 +20,8 @@ namespace P1
     /// </summary>
     public partial class MainWindow : Window
     {
+        Diagram diagram;
+
         public MainWindow()
         {
 
@@ -30,7 +32,7 @@ namespace P1
             circleClock.Draw();
             
             ClockCanvas.Children.Add(circleClock.Clock);
-
+            
 
         }
 
@@ -38,45 +40,27 @@ namespace P1
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             int index = int.Parse(((Button)e.Source).Uid);
-
-            switch (index)
-            {
-                case 0:
-                    //btn1.Background = Brushes.Aquamarine;
-                    break;
-                case 1:
-                    //btn2.Background = Brushes.Aquamarine;
-                    break;
-                case 2:
-                    Application.Current.Shutdown();
-                    break;
-
-            }
-
-
+            if (index == 2)
+                Application.Current.Shutdown();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void MathAnalyzerButton(object sender, RoutedEventArgs e)
         {
+            int buttonId = int.Parse(((Button)e.Source).Uid);
+            GridCursor.Margin = new Thickness((10 * (buttonId + 1)) + (150 * buttonId), 0, 0, 0);
 
-            int index = int.Parse(((Button)e.Source).Uid);
-
-            GridCursor.Margin = new Thickness((10 * (index + 1)) + (150 * index), 0, 0, 0);
-
-
-            switch (index)
+            switch(buttonId)
             {
                 case 0:
-                    GridMain.Background = Brushes.Aquamarine;
+                    diagram = new Diagram(this.Window,DrawDiagramGrid);
+                    diagram.Draw();
                     break;
                 case 1:
-                    GridMain.Background = Brushes.LightBlue;
                     break;
                 case 2:
-                    GridMain.Background = Brushes.LawnGreen;
                     break;
-            }
 
+            }
 
         }
     }

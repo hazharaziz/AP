@@ -70,7 +70,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CircleClock.cs" />
+    <Compile Include="DrawDiagramTab\Diagram.cs" />
+    <Compile Include="DiagramGrid.cs" />
+    <Compile Include="GridTextBox.cs" />
     <Compile Include="IDrawing.cs" />
+    <Compile Include="MathAnalyzerButtons.cs" />
+    <Compile Include="TextBoxLabel.cs" />
     <Compile Include="Window.xaml.cs">
       <DependentUpon>Window.xaml</DependentUpon>
       <SubType>Code</SubType>

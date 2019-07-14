@@ -6,52 +6,7 @@
         xmlns:local="clr-namespace:P1"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        mc:Ignorable="d" Height="700" Width="1000" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
-
-    <Window.Resources>
-        <Style x:Key="WindowTitle" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontFamily" Value="Berlin Sans FB"/>
-            <Setter Property="Margin" Value="10 0 10 0"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="FontWeight" Value="Light"/>
-        </Style>
-        <LinearGradientBrush x:Key="LightBlueGradientBrush" StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="#36688D" Offset="0"/>
-            <GradientStop Color="#0AAFF1" Offset="0.5"/>
-            <GradientStop Color="#36688D" Offset="1"/>
-        </LinearGradientBrush>
-        <Style x:Key="TopWindowButtons" TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
-            <Setter Property="Background" Value="{StaticResource LightBlueGradientBrush}"/>
-            <Setter Property="BorderBrush" Value="#F3CD05"/>
-            <Setter Property="BorderThickness" Value="10"/>
-            <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="Margin" Value="0 0 10 0"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-        </Style>
-        <Style x:Key="ControlTabButtons" TargetType="{x:Type Button}">
-            <Setter Property="Width" Value="150"/>
-            <Setter Property="Height" Value="42"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Background" Value="{StaticResource LightBlueGradientBrush}"/>
-            <Setter Property="BorderBrush" Value="#F3CD05"/>
-            <Setter Property="Cursor" Value="Arrow"/>
-            <Setter Property="FontFamily" Value="Berlin Sans FB"/>
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Margin" Value="10 0 0 0"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#EDF259"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-    </Window.Resources>
+        mc:Ignorable="d" Height="700" Width="1000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
     <StackPanel Orientation="Vertical">
         <Grid Height="40" Margin="0 5 0 10">
@@ -73,24 +28,23 @@
 
         <Grid Height="660">
             <StackPanel Orientation="Horizontal">
-                <Grid Width="800">
+                <Grid Width="780">
                     <StackPanel Orientation="Vertical" Margin="0 0 0 10">
                         <Grid Height="50">
                             <StackPanel Orientation="Horizontal"  VerticalAlignment="Center">
-                                <Button Uid="0" Content="DRAW DIAGRAM" Style="{StaticResource ControlTabButtons}" Click="Button_Click_1"/>
-                                <Button Uid="1" Content="EQUATIONS" Style="{StaticResource ControlTabButtons}" Click="Button_Click_1"/>
-                                <Button Uid="2" Content="FOURIER SERIES" Style="{StaticResource ControlTabButtons}" Click="Button_Click_1"/>
+                                <Button Uid="0" Content="DRAW DIAGRAM" Style="{StaticResource ControlTabButtons}" Click="MathAnalyzerButton" />
+                                <Button Uid="1" Content="EQUATIONS" Style="{StaticResource ControlTabButtons}" Click="MathAnalyzerButton"  />
+                                <Button Uid="2" Content="TAYLOR SERIES" Style="{StaticResource ControlTabButtons}" Click="MathAnalyzerButton"  />
                             </StackPanel>
 
                             <Grid x:Name="GridCursor" Width="150" Height="5" VerticalAlignment="Bottom" Background="#F3CD05" HorizontalAlignment="Left" Margin="10 0 0 0"/>
-                        </Grid> 
-                        <Grid x:Name="GridMain" VerticalAlignment="Top" Height="575" Margin="10 0 10 0">
-                            <StackPanel>
-                                
-                            </StackPanel>
-                            
+                        </Grid>
+                        <Grid x:Name="DrawDiagramGrid" VerticalAlignment="Top" Height="570" Margin="10 0 10 0">
+                            <Border CornerRadius="0 0 10 10" Width="760" Height="570" BorderBrush="#0AAFF1" BorderThickness="3"/>
+                            <!--<Grid Width="780" Height="450" Background="LightBlue" Margin="10,70,10,120"/>-->
 
                         </Grid>
+
                     </StackPanel>
                 </Grid>
                 <Grid Width="200" Margin="0 0 10 0">
@@ -124,7 +78,7 @@
 
 
                         </Grid>
-                        <Grid Height="360">
+                        <Grid Height="460">
 
 
 
