@@ -48,17 +48,14 @@ namespace EventDelegateThread
         /// </summary>
         /// <param name="notify"></param>
         public void Register(Action notify)
-        {
-            register += notify;
-        }
+            => register += notify;
+
 
         /// <summary>
         /// Unregister Method for deleting the changes occured in the files 
         /// </summary>
         /// <param name="notify"></param>
         public void Unregister(Action notify)
-        {
-            register -= notify;
-        }
+            => register -= notify;
     }
 }
