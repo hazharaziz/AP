@@ -98,7 +98,6 @@ namespace EventDelegateThread
             stopWatch.Stop();
 
             return stopWatch.ElapsedMilliseconds;
-
         }
 
         /// <summary>
