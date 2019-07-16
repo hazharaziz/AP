@@ -16,11 +16,11 @@ namespace A14
     {
         public Calculator Calc { get;  }
         public CalculatorState(Calculator calc) => this.Calc = calc;
-        public virtual IState EnterEqual() => null;
-        public virtual IState EnterZeroDigit() => null;
-        public virtual IState EnterNonZeroDigit(char c) => null;        
-        public virtual IState EnterOperator(char c) => null;
-        public virtual IState EnterPoint() => null;
+        public virtual IState EnterEqual() => this;
+        public virtual IState EnterZeroDigit() => this;
+        public virtual IState EnterNonZeroDigit(char c) => this;        
+        public virtual IState EnterOperator(char c) => this;
+        public virtual IState EnterPoint() => this;
 
         /// <summary>
         /// ProcessOperator Method for Processing the operators and returning the result display

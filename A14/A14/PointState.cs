@@ -17,7 +17,7 @@
         public PointState(Calculator calc) : base(calc) { }
 
 
-        public override IState EnterEqual() => null;
+        public override IState EnterEqual() => this;
 
         /// <summary>
         /// EnterZeroDigit Method adds a zero to the display 
@@ -42,9 +42,7 @@
         /// <param name="c"></param>
         /// <returns></returns>
         public override IState EnterOperator(char c)
-        {
-            return Operation(c);
-        }
+            => Operation(c);
 
         /// <summary>
         /// Operation Method for calculating the result using the c operator
@@ -66,18 +64,8 @@
         /// <returns></returns>
         public override IState EnterPoint()
         {
-            if (!this.Calc.Display.Contains("."))
-            {
-                this.Calc.Display += ".";
-                return new PointState(this.Calc);
-            }
-            else
-                return new PointState(this.Calc);
+            Calc.Display += !Calc.Display.Contains(".") ? "." : string.Empty;
+            return new PointState(Calc);
         }
-
-
-
-
-
     }
 }

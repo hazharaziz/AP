@@ -11,7 +11,7 @@
         public override IState EnterEqual() => null;
         public override IState EnterNonZeroDigit(char c) => null;
         public override IState EnterZeroDigit() => null;
-        public override IState EnterOperator(char c) => null;
+        public override IState EnterOperator(char c) => this;
         public override IState EnterPoint() => null;
     }
 }

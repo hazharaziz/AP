@@ -21,15 +21,7 @@ namespace A14
         /// </summary>
         /// <returns></returns>
         public override IState EnterEqual()
-        {
-            if (Calc.PendingOperator != null)
-                return Operation();
-            else
-            {
-                Calc.DisplayError("Syntax Error");
-                return new ErrorState(this.Calc);
-            }
-        }
+            => Calc.PendingOperator != null ? Operation() : new ErrorState(this.Calc);
 
         /// <summary>
         /// Operation Method for processing the operation with the c operator
@@ -63,16 +55,9 @@ namespace A14
         /// <param name="c"></param>
         /// <returns></returns>
         public override IState EnterOperator(char c)
-        {
-            if (Calc.PendingOperator != null)
-                return Operation(c);
-            else
-            {
-                var result = new ComputeState(Calc).ProcessOperator(new ComputeState(Calc), c);
-                return result;
-            }
-           
-        }
+            => Calc.PendingOperator != null ? Operation()
+            : new ComputeState(Calc).ProcessOperator(new ComputeState(Calc), c);
+
 
         /// <summary>
         /// EnterPoint Method for switching to the point state

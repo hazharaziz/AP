@@ -13,7 +13,7 @@ namespace A14
         /// <param name="calc"></param>
         public AccumulateState(Calculator calc) : base(calc) { }
 
-        public override IState EnterEqual() => null;
+        public override IState EnterEqual() => this;
 
         /// <summary>
         /// EnterZeroDigit Method adds a zero to the display
