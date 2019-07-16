@@ -27,7 +27,7 @@ namespace P1
         Diagram diagramTab;
         Equations equationsTab;
         TaylorSeries taylorSeriesTab;
-
+        CircleClock clock;
 
         public MainWindow()
         {
@@ -35,15 +35,8 @@ namespace P1
         
             InitializeComponent();
 
-            //CircleClock circleClock = new CircleClock(180, 180);
-            //circleClock.Draw();
-            //ClockCanvas.Children.Add(circleClock.Clock);
-
-            DateTime dateTime = DateTime.Now;
-            TimeZone timeZone = TimeZone.CurrentTimeZone;
-            timer.Elapsed += Timer_Elapsed;
-            timer.Enabled = true;
-
+            clock = new CircleClock(this,DateTime.Now,ClockGrid,200,200);
+            clock.Draw();
 
             equationsTab = new Equations(this.Window, MainGrid);
             diagramTab = new Diagram(this.Window, MainGrid);
@@ -52,22 +45,6 @@ namespace P1
         }
 
 
-        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            try
-            {
-                this.Dispatcher.Invoke(() =>
-                {
-                    secondHand.Angle = (DateTime.Now.Second * 6) - 90;
-                    minuteHand.Angle = (DateTime.Now.Minute * 6) - 90;
-                    hourHand.Angle = (DateTime.Now.Hour * 30) + (DateTime.Now.Minute * 0.5) - 90;
-                });
-            }
-            catch (TaskCanceledException)
-            {
-                Application.Current.Shutdown();
-            }
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

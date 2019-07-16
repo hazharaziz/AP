@@ -87,6 +87,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CircleClock.cs" />
+    <Compile Include="ClockCenterScrew.cs" />
+    <Compile Include="ClockHand.cs" />
+    <Compile Include="ClockLine.cs" />
     <Compile Include="Diagram.cs" />
     <Compile Include="DiagramGrid.cs" />
     <Compile Include="Equations.cs" />
