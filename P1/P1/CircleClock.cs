@@ -21,7 +21,7 @@ namespace P1
 
         public CircleClock(Window window, Grid parentGrid, int width, int height)
         {
-            Clock = new Ellipse() { Width = width, Height = height };
+            Clock = new Ellipse();
         }
 
         public void Draw()

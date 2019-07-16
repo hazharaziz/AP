@@ -54,12 +54,19 @@ namespace P1
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            this.Dispatcher.Invoke(() =>
+            try
             {
-                secondHand.Angle = (DateTime.Now.Second * 6) - 90;
-                minuteHand.Angle = (DateTime.Now.Minute * 6) - 90;
-                hourHand.Angle = (DateTime.Now.Hour * 30) + (DateTime.Now.Minute * 0.5) - 90;
-            });
+                this.Dispatcher.Invoke(() =>
+                {
+                    secondHand.Angle = (DateTime.Now.Second * 6) - 90;
+                    minuteHand.Angle = (DateTime.Now.Minute * 6) - 90;
+                    hourHand.Angle = (DateTime.Now.Hour * 30) + (DateTime.Now.Minute * 0.5) - 90;
+                });
+            }
+            catch (TaskCanceledException)
+            {
+                Application.Current.Shutdown();
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
