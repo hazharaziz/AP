@@ -33,7 +33,7 @@ namespace P1
             Buttons = new MathAnalyzerButtons(ButtonDetector.EquationsTab);
             EquationBorder = new GridBorder();
             EquationTextBox = new GridTextBox("EquationTextBox", 740, 250, new Thickness(10, 30, 10, 230));
-            SolutionTextBlock = new GridTextBlock(740,230, new Thickness(10, 330, 10, 10));
+            SolutionTextBlock = new GridTextBlock(740,230, new Thickness(10, 320, 10, 10));
         }
 
         public void Draw()
@@ -48,11 +48,7 @@ namespace P1
 
         public void Remove()
         {
-            foreach (Button button in Buttons.buttons)
-                ParentGrid.Children.Remove(button);
-
-            ParentGrid.Children.Remove(EquationTextBox.TextBox);
-            ParentGrid.Children.Remove(SolutionTextBlock.TextBlock);
+            ParentGrid.Children.Clear();
         }
     }
 }

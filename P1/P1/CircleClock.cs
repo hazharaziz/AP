@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 
 namespace P1
 {
-    public class CircleClock : Window, IDrawing
+    public class CircleClock : IDrawing
     {
         public Ellipse Clock;
 
-        public CircleClock(int width, int height)
+        public CircleClock(Window window, Grid parentGrid, int width, int height)
         {
             Clock = new Ellipse() { Width = width, Height = height };
         }

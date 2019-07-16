@@ -6,40 +6,60 @@
         xmlns:local="clr-namespace:P1"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        mc:Ignorable="d" Height="700" Width="1000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
-
-    <StackPanel Orientation="Vertical">
-        <Grid Height="40" Margin="0 5 0 10">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 5 0 5">
-                <TextBlock Style="{StaticResource WindowTitle}">Math Analyzer</TextBlock>
+        mc:Ignorable="d" Height="700" Width="1000" AllowsTransparency="True" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    
+    <StackPanel Orientation="Vertical" >
+        <Grid Height="40" Margin="0 5 0 10" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 5 0 5" >
+                <TextBlock Style="{StaticResource WindowTitle}" >Math Analyzer</TextBlock>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 -10">
-                <Button Uid="0" x:Name="btn1" Style="{StaticResource TopWindowButtons}" Click="Button_Click">
-                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="Black" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 -10" >
+                <Button Uid="0" x:Name="btn1" Style="{StaticResource TopWindowButtons}" Click="Button_Click" >
+                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="Black" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10" />
                 </Button>
-                <Button Uid="1" x:Name="btn2" Style="{StaticResource TopWindowButtons}" Click="Button_Click">
-                    <materialDesign:PackIcon Kind="WindowMaximize" Foreground="Black" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10"/>
+                <Button Uid="1" x:Name="btn2" Style="{StaticResource TopWindowButtons}" Click="Button_Click" >
+                    <materialDesign:PackIcon Kind="WindowMaximize" Foreground="Black" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10" />
                 </Button>
-                <Button Uid="2" x:Name="btn3" Style="{StaticResource TopWindowButtons}" Click="Button_Click">
-                    <materialDesign:PackIcon Kind="Close" Foreground="Black" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10"/>
+                <Button Uid="2" x:Name="btn3" Style="{StaticResource TopWindowButtons}" Click="Button_Click" >
+                    <materialDesign:PackIcon Kind="Close" Foreground="Black" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10" />
                 </Button>
             </StackPanel>
         </Grid>
 
-        <Grid Height="660">
-            <StackPanel Orientation="Horizontal">
-                <Grid Width="780">
-                    <StackPanel Orientation="Vertical" Margin="0 0 0 10">
-                        <Grid Height="50">
-                            <StackPanel Orientation="Horizontal"  VerticalAlignment="Center">
-                                <Button Uid="0" Content="DRAW DIAGRAM" Style="{StaticResource ControlTabButtons}" Click="MathAnalyzerButton" />
-                                <Button Uid="1" Content="EQUATIONS" Style="{StaticResource ControlTabButtons}" Click="MathAnalyzerButton"  />
-                                <Button Uid="2" Content="TAYLOR SERIES" Style="{StaticResource ControlTabButtons}" Click="MathAnalyzerButton"  />
+        <Grid Height="660" >
+            <StackPanel Orientation="Horizontal" >
+                <Grid Width="780" >
+                    <StackPanel Orientation="Vertical" Margin="0 0 0 10" >
+                        <Grid Height="50" >
+                            <StackPanel Orientation="Horizontal"  VerticalAlignment="Center" >
+                                <Button Uid="0" Content="DRAW DIAGRAM" Style="{StaticResource ControlTabButtons}" Click="MathAnalyzerButton"  />
+                                <Button Uid="1" Content="EQUATIONS" Style="{StaticResource ControlTabButtons}" Click="MathAnalyzerButton"   />
+                                <Button Uid="2" Content="TAYLOR SERIES" Style="{StaticResource ControlTabButtons}" Click="MathAnalyzerButton"   />
                             </StackPanel>
 
-                            <Grid x:Name="GridCursor" Width="150" Height="5" VerticalAlignment="Bottom" Background="#F3CD05" HorizontalAlignment="Left" Margin="10 0 0 0"/>
+                            <Grid x:Name="GridCursor" Width="150" Height="5" VerticalAlignment="Bottom" Background="#F3CD05" HorizontalAlignment="Left" Margin="10 0 0 0" />
                         </Grid>
-                        <Grid x:Name="MainGrid" VerticalAlignment="Top" Height="570" Margin="10 0 10 0">
+                        <Grid x:Name="MainGrid" VerticalAlignment="Top" Height="570" Margin="10 0 10 0" >
+                            <!--<Grid Width="740" Height="380" Margin="10, 30, 10, 100" Background="LightGreen">
+                                <Border Margin="10,10,10,10" BorderBrush="LightSeaGreen" BorderThickness="2">
+                                    <Grid Width="720" Height="360" Background="WhiteSmoke">
+                                        <Path Stroke="Black" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Path.Data>
+                                                <PathGeometry Figures="M 0,50 C 80,100 200,-100 100,90" />
+                                            </Path.Data>
+                                        </Path>
+
+                                    </Grid> 
+                                </Border>
+                            </Grid>-->
+                            <!--<TextBlock Width="740" Height="20" Foreground="Black" Margin="10,50,10,480">f(x) = Sin(x)</TextBlock>
+                            <Label Width="40" Height="40" Foreground="Black" Margin="10,85,710,445" Padding="10 10">n =</Label>
+                            <TextBox Height="40" BorderBrush="Black" BorderThickness="2" Margin="55,85,385,445"/>
+
+                            <Label Width="40" Height="40" Foreground="Black" Margin="380,85,340,445" Padding="10 10">x0 =</Label>
+                            <TextBox Height="40" BorderBrush="Black" BorderThickness="2" Margin="425,85,10,445"/>-->
+
+
                             <!--<Grid Width="780" Height="450" Background="LightBlue" Margin="10,70,10,120"/>-->
 
                             <!--<TextBox Width="740" Height="250" Padding="5 5" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Background="LightBlue" Foreground="Black" Margin="10 60 10 230"></TextBox>
@@ -49,38 +69,39 @@
 
                     </StackPanel>
                 </Grid>
-                <Grid Width="200" Margin="0 0 10 0">
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Top">
-                        <Grid x:Name="ClockGrid" Height="200" Margin="0 0 10 0">
-                            <Canvas x:Name="ClockCanvas" Width="200" Height="200">
-                                <!--<Line X1="63" X2="70" Y1="100" Y2="100" Stroke="Black" StrokeThickness="2" Fill="Black" Canvas.Top="2"/>
-                                <Line X1="237" X2="230" Y1="100" Y2="100" Stroke="Black" StrokeThickness="2" Fill="Black"/>
-                                <Line X1="150" X2="150" Y1="13" Y2="20" Stroke="Black" StrokeThickness="2" Fill="Black"/>
-                                <Line X1="150" X2="150" Y1="187" Y2="180" Stroke="Black" StrokeThickness="2" Fill="Black"/>
-                                <Ellipse Canvas.Left="60" Canvas.Top="10" Width="180" Height="180" Stroke="Black" Margin="0 0 0 0" StrokeThickness="2"/>-->
-                            </Canvas>
+                <Grid Width="200" >
+                    <StackPanel Orientation="Vertical" >
+                        <Grid x:Name="ClockGrid" Height="200" Width="200" >
+                            <Ellipse Width="200" Height="200" Stroke="Black" StrokeThickness="2" />
+                            <Line X1="4" X2="8" Y1="100" Y2="100" Stroke="Black" StrokeThickness="1" />
+                            <Line X1="100" X2="100" Y1="4" Y2="8" Stroke="Black" StrokeThickness="1" />
+                            <Line X1="196" X2="192" Y1="100" Y2="100" Stroke="Black" StrokeThickness="1" />
+                            <Line X1="100" X2="100" Y1="196" Y2="192" Stroke="Black" StrokeThickness="1" />
+
+                            <Border x:Name="hour" Width="50" CornerRadius="0 5 5 0" Height="4" Background="Black" Margin="100 98 50 98" RenderTransformOrigin="0,0.5" >
+                                <Border.RenderTransform>
+                                    <RotateTransform x:Name="hourHand" Angle="-90"/>
+                                </Border.RenderTransform>
+                            </Border>
+
+                            <Border x:Name="minute" Width="70" CornerRadius="0 5 5 0" Height="2" Background="Black" Margin="100,97,30,97" RenderTransformOrigin="0,0.5" >
+                                <Border.RenderTransform>
+                                    <RotateTransform x:Name="minuteHand" Angle="-90"/>
+                                </Border.RenderTransform>
+                            </Border>
+                            <Border x:Name="second" Width="90" CornerRadius="0 5 5 0" Height="1" Background="Red" Margin="100,99,10,99" RenderTransformOrigin="0,0.5" >
+                                <Border.RenderTransform>
+                                    <RotateTransform x:Name="secondHand" Angle="-90"/>
+                                </Border.RenderTransform>
+                            </Border>
+
+                            <Ellipse Width="5" Height="5" Fill="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="97.5 97.5 97.5 97.5" />
 
 
-                            <!--<Ellipse Width="180" Height="180"  Margin="0 0 0 0" StrokeThickness="2">
-                                <Ellipse.Stroke>
-                                    <LinearGradientBrush>
-                                        <GradientStop Color="LightBlue" Offset="0"/>
-                                        <GradientStop Color="DarkBlue" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Ellipse.Stroke>
-                            </Ellipse>
-                            <Ellipse Width="180" Height="180"  Margin="0 0 0 0" StrokeThickness="2">
-                                <Ellipse.Stroke>
-                                    <LinearGradientBrush>
-                                        <GradientStop Color="DarkBlue" Offset="0"/>
-                                        <GradientStop Color="LightBlue" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Ellipse.Stroke>
-                            </Ellipse>-->
 
 
                         </Grid>
-                        <Grid Height="460">
+                        <Grid Height="430" >
 
 
 
