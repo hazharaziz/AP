@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 namespace P1
 {
-    public class TaylorSeries : IDrawing, IRemoving
+    public class TaylorSeriesTab : IDrawing, IRemoving
     {
         public Grid ParentGrid;
         public Style style;
@@ -27,7 +27,7 @@ namespace P1
 
         public GridTextBox[] TextBoxes;
 
-        public TaylorSeries(Window window, Grid parentGrid)
+        public TaylorSeriesTab(Window window, Grid parentGrid)
         {
             ParentGrid = parentGrid;
             style = (Style)Application.Current.Resources["ControlTabButtons"];
@@ -40,7 +40,8 @@ namespace P1
                 new GridTextBox("X0", 325, 40, new Thickness(425, 90, 10, 440), "x0 =", 40, 40, new Thickness(380, 90, 340, 440))
             };
 
-            FunctionTextBlock = new GridTextBlock(740, 40, new Thickness(10, 55, 10, 485), "f(x) = Sin(x)");
+            FunctionTextBlock = new GridTextBlock(740, 40, new Thickness(10, 55, 10, 485));
+            FunctionTextBlock.TextBlock.Text = "f(x) = Sin(x)";
         }
 
         public void Draw()

@@ -49,7 +49,6 @@ namespace P1
                 Margin = new Thickness(10, 10, 10, 0),
                 Style = style,
                 Cursor = Cursors.Hand,
-                ClickMode = ClickMode.Press
             };
             return button;
         }

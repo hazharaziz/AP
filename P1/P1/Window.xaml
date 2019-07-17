@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:P1"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        mc:Ignorable="d" Height="700" Width="1000" AllowsTransparency="True" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        mc:Ignorable="d" Height="700" Width="1000" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
     <StackPanel Orientation="Vertical" >
         <Grid Height="40" Margin="0 5 0 10" >

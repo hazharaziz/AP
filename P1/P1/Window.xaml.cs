@@ -24,9 +24,9 @@ namespace P1
     public partial class MainWindow : Window
     {
         System.Timers.Timer timer = new System.Timers.Timer(1000);
-        Diagram diagramTab;
-        Equations equationsTab;
-        TaylorSeries taylorSeriesTab;
+        DiagramTab diagramTab;
+        EquationsTab equationsTab;
+        TaylorSeriesTab taylorSeriesTab;
         CircleClock clock;
 
         public MainWindow()
@@ -38,9 +38,9 @@ namespace P1
             clock = new CircleClock(this,DateTime.Now,ClockGrid,200,200);
             clock.Draw();
 
-            equationsTab = new Equations(this.Window, MainGrid);
-            diagramTab = new Diagram(this.Window, MainGrid);
-            taylorSeriesTab = new TaylorSeries(this.Window, MainGrid);
+            diagramTab = new DiagramTab(this.Window, MainGrid);
+            equationsTab = new EquationsTab(this.Window, MainGrid);
+            taylorSeriesTab = new TaylorSeriesTab(this.Window, MainGrid);
             diagramTab.Draw();
         }
 
@@ -49,8 +49,22 @@ namespace P1
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             int index = int.Parse(((Button)e.Source).Uid);
-            if (index == 2)
-                Application.Current.Shutdown();
+            switch (index)
+            {
+                case 0:
+                    this.WindowState = WindowState.Minimized;
+                    break;
+                case 1:
+                    if (this.WindowState != WindowState.Maximized)
+                        this.WindowState = WindowState.Maximized;
+                    else
+                        WindowState = WindowState.Normal;
+                    break;
+                case 2:
+                    Application.Current.Shutdown();
+                    break;
+            }
+
         }
 
         private void MathAnalyzerButton(object sender, RoutedEventArgs e)

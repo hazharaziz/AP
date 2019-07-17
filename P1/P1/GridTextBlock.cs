@@ -21,7 +21,7 @@ namespace P1
     {
         public TextBlock TextBlock;
 
-        public GridTextBlock(double width, double height, Thickness margin,string text = "")
+        public GridTextBlock(double width, double height, Thickness margin)
         {
             TextBlock = new TextBlock()
             {
@@ -29,9 +29,9 @@ namespace P1
                 Height = height,
                 Margin = margin,
                 Background = Brushes.WhiteSmoke,
-                Text = text,
+                Foreground = Brushes.Black,
                 Padding = new Thickness(5, 5, 0, 5),
-                FontSize = 14
+                FontSize = 18
             };
         }
 

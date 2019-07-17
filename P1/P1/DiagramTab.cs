@@ -17,7 +17,7 @@ using System.Runtime.CompilerServices;
 
 namespace P1
 {
-    public class Diagram : IDrawing, IRemoving
+    public class DiagramTab : IDrawing, IRemoving
     {
         public Grid ParentGrid;
         public Style style;
@@ -32,7 +32,7 @@ namespace P1
 
         public GridTextBox[] TextBoxes;
 
-        public Diagram(Window window, Grid parentGrid)
+        public DiagramTab(Window window, Grid parentGrid)
         {
             ParentGrid = parentGrid;
             style = (Style)Application.Current.Resources["ControlTabButtons"];
@@ -48,14 +48,14 @@ namespace P1
                 new GridTextBox("Function",641, 40, new Thickness(85, 515, 34, 15), "f(x) = ", 60, 40, new Thickness(20, 515, 680, 15))
             };
 
-            //Buttons.buttons[0].Click += Diagram_Click;
+            Buttons.buttons[0].Click += Diagram_Click;
         }
 
-        //private void Diagram_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var s = TextBoxes[0].TextBox.Text;
-        //    MessageBox.Show(s);
-        //}
+        private void Diagram_Click(object sender, RoutedEventArgs e)
+        {
+            var s = TextBoxes[0].TextBox.Text;
+            MessageBox.Show(s);
+        }
 
         public void Draw()
         {

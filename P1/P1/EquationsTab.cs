@@ -17,7 +17,7 @@ using System.Runtime.CompilerServices;
 
 namespace P1
 {
-    public class Equations : IDrawing, IRemoving
+    public class EquationsTab : IDrawing, IRemoving
     {
         public Grid ParentGrid;
         public Style style;
@@ -26,7 +26,9 @@ namespace P1
         public GridTextBlock SolutionTextBlock;
         public GridBorder EquationBorder;
 
-        public Equations(Window window, Grid parentGrid)
+        public EquationCalculator Equation;
+
+        public EquationsTab(Window window, Grid parentGrid)
         {
             ParentGrid = parentGrid;
             style = (Style)Application.Current.Resources["ControlTabButtons"];
@@ -34,6 +36,21 @@ namespace P1
             EquationBorder = new GridBorder();
             EquationTextBox = new GridTextBox("EquationTextBox", 740, 250, new Thickness(10, 30, 10, 230));
             SolutionTextBlock = new GridTextBlock(740,230, new Thickness(10, 320, 10, 10));
+            Buttons.buttons[0].Click += CalculateEquation;
+            Buttons.buttons[1].Click += Clear;
+        }
+
+        private void Clear(object sender, RoutedEventArgs e)
+        {
+            EquationTextBox.TextBox.Text = string.Empty;
+            SolutionTextBlock.TextBlock.Text = string.Empty;
+            Equation = null;
+        }
+
+        private void CalculateEquation(object sender, RoutedEventArgs e)
+        {
+            Equation = new EquationCalculator(EquationTextBox.TextBox.Text);
+            SolutionTextBlock.TextBlock.Text = Equation.SolutionString;
         }
 
         public void Draw()
