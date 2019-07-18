@@ -24,10 +24,12 @@ namespace P1
     public partial class MainWindow : Window
     {
         System.Timers.Timer timer = new System.Timers.Timer(1000);
-        DiagramTab diagramTab;
-        EquationsTab equationsTab;
-        TaylorSeriesTab taylorSeriesTab;
+        Tab diagramTab;
+        Tab equationsTab;
+        Tab taylorSeriesTab;
         CircleClock clock;
+
+        
 
         public MainWindow()
         {
@@ -75,21 +77,20 @@ namespace P1
             switch (buttonId)
             {
                 case 0:
-                    equationsTab.Remove();
-                    taylorSeriesTab.Remove();
+                    equationsTab.Clear();
+                    taylorSeriesTab.Clear();
                     diagramTab.Draw();
                     break;
                 case 1:
-                    diagramTab.Remove();
-                    taylorSeriesTab.Remove();
+                    diagramTab.Clear();
+                    taylorSeriesTab.Clear();
                     equationsTab.Draw();
                     break;                  
                 case 2:
-                    diagramTab.Remove();
-                    equationsTab.Remove();
+                    diagramTab.Clear();
+                    equationsTab.Clear();
                     taylorSeriesTab.Draw();
                     break;
-
             }
 
         }

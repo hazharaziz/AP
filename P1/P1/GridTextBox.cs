@@ -60,6 +60,7 @@ namespace P1
                 Background = Brushes.White,
                 Padding = new Thickness(5, 2, 0, 0),
                 AcceptsReturn = true,
+                Text = ""
             };
 
             //binding = new Binding("TextBox");

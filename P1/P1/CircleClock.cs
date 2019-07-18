@@ -16,7 +16,7 @@ using System.Timers;
 
 namespace P1
 {
-    public class CircleClock : IDrawing
+    public class CircleClock 
     {
         private Window Window;
         private Grid ParentGrid;

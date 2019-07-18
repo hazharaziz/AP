@@ -17,28 +17,32 @@ using System.Runtime.CompilerServices;
 
 namespace P1
 {
-    public class DiagramTab : IDrawing, IRemoving
+    public class DiagramTab : Tab
     {
-        public Grid ParentGrid;
-        public Style style;
-        public MathAnalyzerButtons Buttons;
-        public GridTextBox MaxX;
-        public GridTextBox MinX;
-        public GridTextBox MaxY;
-        public GridTextBox MinY;
-        public GridTextBox Function;
-        public DiagramGrid DiagramGrid;
-        public GridBorder DiagramBorder;
-
-        public GridTextBox[] TextBoxes;
-
-        public DiagramTab(Window window, Grid parentGrid)
+        public DiagramTab(Window window, Grid parentGrid) : base(window, parentGrid)
         {
-            ParentGrid = parentGrid;
-            style = (Style)Application.Current.Resources["ControlTabButtons"];
-            Buttons = new MathAnalyzerButtons(ButtonDetector.DrawDiagramTab);
-            DiagramGrid = new DiagramGrid(740, 380, new Thickness(10, 30, 10, 100));
-            DiagramBorder = new GridBorder();
+
+        }
+
+        public override void DrawButtons()
+        {
+            Buttons = new GridButton[]
+            {
+                new GridButton("DRAW",HorizontalAlignment.Left),
+                new GridButton("CLEAR",HorizontalAlignment.Right)
+            };
+
+
+            foreach (GridButton button in Buttons)
+                ParentGrid.Children.Add(button.Button);
+
+            Buttons[0].Button.Click += DrawButtonClick;
+            Buttons[1].Button.Click += ClearButtonClick;
+
+        }
+
+        public override void DrawTextBoxes()
+        {
             TextBoxes = new GridTextBox[]
             {
                 new GridTextBox("MinY",107.5, 40, new Thickness(85, 460, 560, 70),"MIN Y =",60,40,new Thickness(20, 460, 690, 70)),
@@ -48,34 +52,31 @@ namespace P1
                 new GridTextBox("Function",641, 40, new Thickness(85, 515, 34, 15), "f(x) = ", 60, 40, new Thickness(20, 515, 680, 15))
             };
 
-            Buttons.buttons[0].Click += Diagram_Click;
-        }
-
-        private void Diagram_Click(object sender, RoutedEventArgs e)
-        {
-            var s = TextBoxes[0].TextBox.Text;
-            MessageBox.Show(s);
-        }
-
-        public void Draw()
-        {
-            ParentGrid.Children.Add(DiagramBorder.Border);
-            ParentGrid.Children.Add(DiagramGrid.Grid);
-
-            foreach (Button button in Buttons.buttons)
-                ParentGrid.Children.Add(button);
-
             foreach (GridTextBox textBox in TextBoxes)
             {
                 ParentGrid.Children.Add(textBox.TextBox);
                 ParentGrid.Children.Add(textBox.TextBoxLabel.Label);
             }
-
         }
 
-        public void Remove()
+        public override void DrawDiagramGrids()
         {
-            ParentGrid.Children.Clear();
+            DiagramGrids = new DiagramGrid[] { new DiagramGrid(740, 380, new Thickness(10, 30, 10, 100))};
+            foreach (DiagramGrid grid in DiagramGrids)
+                ParentGrid.Children.Add(grid.Grid);
+        }
+
+        public override void DrawTextBlocks() { }
+
+        private void DrawButtonClick(object sender, RoutedEventArgs e)
+        {
+            var s = TextBoxes[0].TextBox.Text;
+            MessageBox.Show(s);
+        }
+
+        private void ClearButtonClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

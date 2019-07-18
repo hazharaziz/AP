@@ -17,7 +17,10 @@ using System.Runtime.CompilerServices;
 
 namespace P1
 {
-    public class EquationCalculator
+    public enum SolutionState { Unique, NoSolution, Infinite};
+
+
+    public class LinearEquations
     {
 
         public string[] Equations;
@@ -26,51 +29,72 @@ namespace P1
         public Matrix<double> CoefficientMatrix;
         public Vector<double> RightSideVector;
         public List<Matrix<double>> CrammerMatrices;
+        public Matrix<double> AugmentedMatrix;
+        public SolutionState SolutionState;
+        private double Determinant;
         public string SolutionString;
-
-
         
 
-        public EquationCalculator(string equations)
+
+
+        public LinearEquations(string equations)
         {
-            Equations = equations.Contains(',') ? equations.Split(',') : equations.Split('\n');
+            Equations = equations.Contains(',') ? equations.Split(',') : equations.Split(new char[] { '\r', '\n' });
             FindVariables();
             Parse();
+            SolveEquation();
+        }
+
+        private void SolveEquation()
+        {
+            if (Determinant != 0)
+                SolutionState = SolutionState.Unique;
+            else
+                SolutionState = AugmentedMatrixCheck();
             SolutionString = GetSolution();
+        }
+
+        private SolutionState AugmentedMatrixCheck()
+        {
+            SolutionState state = SolutionState.Infinite;
+            Matrix<double> temp = AugmentedMatrix.Copy(AugmentedMatrix.RowCount, AugmentedMatrix.ColumnCount);
+            for (int i = 0; i < AugmentedMatrix.RowCount; i++)
+            {
+                for (int j = i + 1; j < AugmentedMatrix.RowCount; j++)
+                {
+                    for (int k = i; k < AugmentedMatrix.ColumnCount; k++)
+                        AugmentedMatrix[j][k] += ((-temp[j][i] / temp[i][i]) * temp[i][k]);
+                }
+                temp = AugmentedMatrix.Copy(temp.RowCount, temp.ColumnCount);
+            }
+
+            for (int i = 0; i < temp.ColumnCount; i++)
+            {
+                if (temp[temp.RowCount - 1][temp.ColumnCount - 1] != 0)
+                    state = SolutionState.NoSolution;
+            }
+
+            return state;
         }
 
         private string GetSolution()
         {
-            string finalResult = string.Empty;
-
+            string finalResult = "";
             int size = CoefficientMatrix.RowCount;
-            double result;
-            double det = CoefficientMatrix.Determinant(CoefficientMatrix, size);
 
-            for (int i = 0; i < size; i++)
-            {
-                result = CrammerMatrices[i].Determinant(CrammerMatrices[i], size) / det;
-                if (i != size - 1)
-                    SolutionString += $"{VarCoefficients.ElementAt(i).Key} = {result},";
-                SolutionString += $"{VarCoefficients.ElementAt(i).Key} = {result}";
-            }
+            if (SolutionState == SolutionState.Unique)
+                for (int i = 0; i < size; i++)
+                {
+                    double numerator = Matrix<double>.Determinant(CrammerMatrices[i], size);
+                    finalResult += i != size - 1 ? $"{VarCoefficients.ElementAt(i).Key} = {numerator / Determinant}, "
+                                                   : $"{VarCoefficients.ElementAt(i).Key} = {numerator / Determinant}";
+                }
+            else if (SolutionState == SolutionState.Infinite)
+                finalResult = "No Unique Solution";
+            else
+                finalResult = "No Solution";
 
-            return SolutionString;
-
-        }
-
-        private void Solve(string equations)
-        {
-
-
-            //if (equations.Contains(',') && det != 0)
-            //{
-            //    SolutionString = $"{Variables[0]} = {d1.Determinant(2) / det} , {Variables[1]} = {d2.Determinant(2) / det}";
-            //}
-            //else
-            //{
-            //    SolutionString = "No unique solution";
-            //}
+            return finalResult;
         }
 
         private void RightSideParse()
@@ -89,48 +113,41 @@ namespace P1
             ParseCoefficientMatrix();
             CoefficientMatrix = GetCoefficientMatrix();
             CrammerMatrices = GetCrammerMatrices();
+            AugmentedMatrix = GetAugmentedMatrix();
+            Determinant = Matrix<double>.Determinant(CoefficientMatrix, CoefficientMatrix.RowCount);
+        }
+
+        private Matrix<double> GetAugmentedMatrix()
+        {
+            int size = CoefficientMatrix.RowCount;
+            Matrix<double> augmentedMatrix = new Matrix<double>(size , size + 1);
+
+            for (int i = 0; i < size; i++)
+                for (int j = 0; j < size; j++)
+                    augmentedMatrix[i][j] = CoefficientMatrix[i][j];
+            for (int i = 0; i < size; i++)
+                augmentedMatrix[i][size] = RightSideVector[i];
+
+            return augmentedMatrix;
         }
 
         private List<Matrix<double>> GetCrammerMatrices()
         {
-            int size = VarCoefficients.Keys.Count;
+            int size = CoefficientMatrix.RowCount;
             List<Matrix<double>> matrices = new List<Matrix<double>>();
-            //Matrix<double> temp = CoefficientMatrix;
-            double[,] temp = new double[size,size];
             Matrix<double> matrix;
-
-            for (int i = 0; i <size; i++)
-            {
-                for (int j = 0; j < size; j++)
-                {
-                    temp[i,j] = CoefficientMatrix[i][j];
-                }
-            }
                 
             int index = 0;
             while(index < size)
             {
-                matrix = new Matrix<double>(size,size);
-
-                for (int i = 0; i < size; i++)
-                {
-                    for (int j = 0; j < size; j++)
-                    {
-                        matrix[i][j] = temp[i, j];
-                    }
-                }
-
+                matrix = CoefficientMatrix.Copy(size,size);
                 for (int j = 0; j < size; j++)
-                {
                     matrix[j][index] = RightSideVector[j];
-                }
                 matrices.Add(matrix);
                 index++;
             }
 
             return matrices;
-
-
         }
 
         private void StringParse()
@@ -223,6 +240,8 @@ namespace P1
 
         private void FindVariables()
         {
+            Equations = Equations.Where(eq => eq != "" || eq != string.Empty).ToArray();
+
             foreach (string equation in Equations)
                 foreach (char ch in equation)
                     if (char.IsLetter(ch))
@@ -231,6 +250,5 @@ namespace P1
                 for(int j = 0; j < VarCoefficients.Keys.Count; j++)
                     VarCoefficients[VarCoefficients.ElementAt(i).Key].Add(0);
         }
-
     }
 }

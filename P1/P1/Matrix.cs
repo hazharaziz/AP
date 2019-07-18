@@ -152,15 +152,13 @@ namespace P1
             => (this.ToString() == (dynamic)other.ToString());
 
         /// <summary>
-        /// getCofactor Method returning the cofactor of a matrix 
+        /// getCofactor Method returning the cofactor of a double type matrix 
         /// </summary>
         /// <param name="matrix"></param>
         /// <param name="tempMatrix"></param>
         /// <param name="p"></param>
         /// <param name="q"></param>
-        private void getCofactor(Matrix<_Type> matrix,
-                    Matrix<_Type> tempMatrix,
-                    int p, int q)
+        private static void getCofactor(Matrix<double> matrix, Matrix<double> tempMatrix, int p, int q)
         {
             int i = 0; int j = 0; int n = matrix.RowCount;
 
@@ -179,29 +177,28 @@ namespace P1
         }
 
         /// <summary>
-        /// Determinant Method for calculating the determinant of a matrix
+        /// Determinant Method is a static method for calculating the determinant of the double type matrices
         /// </summary>
         /// <param name="matrix"></param>
         /// <param name="size"></param>
         /// <returns></returns>
-        public double Determinant(Matrix<_Type> matrix, int size)
+        public static double Determinant(Matrix<double> matrix, int size)
         {
             double Det = 0;
             int sign = 1;
-            Matrix<_Type> temp = new Matrix<_Type>(size - 1, size - 1);
 
             if (size == 1)
-                return (dynamic)this[0][0];
+                return matrix[0][0];
             else
             {
+                Matrix<double> temp = new Matrix<double>(size, size);
                 for (int f = 0; f < size; f++)
                 {
-                    getCofactor((dynamic)this, (dynamic)temp, 0, f);
-                    Det += (sign * (dynamic)this[0][f] * Determinant(temp, size - 1));
+                    getCofactor(matrix, temp, 0, f);
+                    Det += (sign * matrix[0][f] * Determinant(temp, size - 1));
                     sign *= -1;
                 }
             }
-
             return Det;
         }
 
@@ -261,6 +258,15 @@ namespace P1
             result += "]";
 
             return result;
+        }
+
+        public Matrix<_Type> Copy(int rowCount, int colCount)
+        {
+            Matrix<_Type> copy = new Matrix<_Type>(rowCount, colCount);
+            for (int i = 0; i < rowCount; i++)
+                for (int j = 0; j < colCount; j++)
+                    copy[i][j] = this[i][j];
+            return copy;
         }
     }
 }

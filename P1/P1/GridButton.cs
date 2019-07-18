@@ -17,31 +17,25 @@ using System.Runtime.CompilerServices;
 
 namespace P1
 {
-    public enum ButtonDetector { DrawDiagramTab = 0x01,EquationsTab = 0x02,TaylorSeriesTab = 0x04};
 
-    public class MathAnalyzerButtons
+    public class GridButton
     {
-        ButtonDetector ButtonDetector;
-        public Button[] buttons = new Button[2];
+        public Button Button;
         public Style style;
+        private string Content;
 
-        public MathAnalyzerButtons(ButtonDetector buttonDetector)
+        public GridButton(string content, HorizontalAlignment horizontalAlignment)
         {
             style = (Style)Application.Current.Resources["ControlTabButtons"];
-            ButtonDetector = buttonDetector;
-            buttons[0] = ButtonDesigner(HorizontalAlignment.Left);
-            buttons[1] = ButtonDesigner(HorizontalAlignment.Right);
-            if (ButtonDetector == ButtonDetector.EquationsTab)
-                buttons[0].Content = "CALCULATE";
-            else
-                buttons[0].Content = "DRAW";
-            buttons[1].Content = "CLEAR";
+            Content = content;
+            Button = ButtonDesign(content, horizontalAlignment);
         }
 
-        private Button ButtonDesigner(HorizontalAlignment horizontalAlignment)
+        private Button ButtonDesign(string content, HorizontalAlignment horizontalAlignment)
         {
             Button button = new Button()
             {
+                Content = content,
                 Width = 365,
                 Height = 40,
                 HorizontalAlignment = horizontalAlignment,

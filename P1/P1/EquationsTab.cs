@@ -17,55 +17,68 @@ using System.Runtime.CompilerServices;
 
 namespace P1
 {
-    public class EquationsTab : IDrawing, IRemoving
+    public class EquationsTab : Tab
     {
-        public Grid ParentGrid;
-        public Style style;
-        public MathAnalyzerButtons Buttons;
-        public GridTextBox EquationTextBox;
-        public GridTextBlock SolutionTextBlock;
-        public GridBorder EquationBorder;
+        public LinearEquations Equation;
 
-        public EquationCalculator Equation;
-
-        public EquationsTab(Window window, Grid parentGrid)
+        public EquationsTab(Window window, Grid parentGrid) : base (window, parentGrid)
         {
-            ParentGrid = parentGrid;
-            style = (Style)Application.Current.Resources["ControlTabButtons"];
-            Buttons = new MathAnalyzerButtons(ButtonDetector.EquationsTab);
-            EquationBorder = new GridBorder();
-            EquationTextBox = new GridTextBox("EquationTextBox", 740, 250, new Thickness(10, 30, 10, 230));
-            SolutionTextBlock = new GridTextBlock(740,230, new Thickness(10, 320, 10, 10));
-            Buttons.buttons[0].Click += CalculateEquation;
-            Buttons.buttons[1].Click += Clear;
         }
 
-        private void Clear(object sender, RoutedEventArgs e)
+        public override void DrawButtons()
         {
-            EquationTextBox.TextBox.Text = string.Empty;
-            SolutionTextBlock.TextBlock.Text = string.Empty;
+            Buttons = new GridButton[]
+            {
+                new GridButton("CALCULATE",HorizontalAlignment.Left),
+                new GridButton("CLEAR",HorizontalAlignment.Right)
+            };
+
+
+            foreach (GridButton button in Buttons)
+                ParentGrid.Children.Add(button.Button);
+
+            Buttons[0].Button.Click += CalculateButtonClick;
+            Buttons[1].Button.Click += ClearButtonClick;
+
+        }
+
+        public override void DrawTextBoxes()
+        {
+            TextBoxes = new GridTextBox[] { new GridTextBox("EquationTextBox", 740, 250, new Thickness(10, 30, 10, 230)) };
+
+            foreach (GridTextBox textBox in TextBoxes)
+            {
+                ParentGrid.Children.Add(textBox.TextBox);
+                ParentGrid.Children.Add(textBox.TextBoxLabel.Label);
+            }
+        }
+
+
+        private void ClearButtonClick(object sender, RoutedEventArgs e)
+        {
+            TextBoxes[0].TextBox.Text = string.Empty;
+            TextBlocks[0].TextBlock.Text = string.Empty;
             Equation = null;
         }
 
-        private void CalculateEquation(object sender, RoutedEventArgs e)
+        private void CalculateButtonClick(object sender, RoutedEventArgs e)
         {
-            Equation = new EquationCalculator(EquationTextBox.TextBox.Text);
-            SolutionTextBlock.TextBlock.Text = Equation.SolutionString;
+            if (TextBoxes[0].TextBox.Text != "")
+            {
+                Equation = new LinearEquations(TextBoxes[0].TextBox.Text);
+                TextBlocks[0].TextBlock.Text = Equation.SolutionString;
+            }
         }
 
-        public void Draw()
-        {
-            ParentGrid.Children.Add(EquationBorder.Border);
-            foreach (Button button in Buttons.buttons)
-                ParentGrid.Children.Add(button);
+        public override void DrawDiagramGrids() { }
 
-            ParentGrid.Children.Add(EquationTextBox.TextBox);
-            ParentGrid.Children.Add(SolutionTextBlock.TextBlock);
-        }
-
-        public void Remove()
+        public override void DrawTextBlocks()
         {
-            ParentGrid.Children.Clear();
+            TextBlocks = new GridTextBlock[] { new GridTextBlock(740, 230, new Thickness(10, 320, 10, 10)) };
+            foreach (GridTextBlock textBlock in TextBlocks)
+            {
+                ParentGrid.Children.Add(textBlock.TextBlock);
+            }
         }
     }
 }
