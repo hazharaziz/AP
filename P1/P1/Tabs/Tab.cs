@@ -39,7 +39,7 @@ namespace P1
         public virtual void Draw()
         {
             DrawBorder();
-            DrawDiagramGrids();
+            DrawDiagram();
             DrawButtons();
             DrawTextBoxes();
             DrawTextBlocks();
@@ -57,7 +57,7 @@ namespace P1
             ParentGrid.Children.Clear();
         }
 
-        public abstract void DrawDiagramGrids();
+        public abstract void DrawDiagram();
         public abstract void DrawButtons();
         public abstract void DrawTextBoxes();
         public abstract void DrawTextBlocks();

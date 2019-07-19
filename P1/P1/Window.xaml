@@ -17,13 +17,10 @@
                 <TextBlock Style="{StaticResource WindowTitle}" >Math Analyzer</TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 -10" >
-                <Button Uid="0" x:Name="btn1" Style="{StaticResource TopWindowButtons}" Click="Button_Click" >
+                <Button Uid="0" x:Name="btn1" Style="{StaticResource TopWindowButtons}" Click="TopWindowButtonClick" >
                     <materialDesign:PackIcon Kind="WindowMinimize" Foreground="Black" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10" />
                 </Button>
-                <Button Uid="1" x:Name="btn2" Style="{StaticResource TopWindowButtons}" Click="Button_Click" >
-                    <materialDesign:PackIcon Kind="WindowMaximize" Foreground="Black" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10" />
-                </Button>
-                <Button Uid="2" x:Name="btn3" Style="{StaticResource TopWindowButtons}" Click="Button_Click" >
+                <Button Uid="1" x:Name="btn2" Style="{StaticResource TopWindowButtons}" Click="TopWindowButtonClick" >
                     <materialDesign:PackIcon Kind="Close" Foreground="Black" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10" />
                 </Button>
             </StackPanel>
@@ -35,9 +32,9 @@
                     <StackPanel Orientation="Vertical" Margin="0 0 0 10" >
                         <Grid Height="50" >
                             <StackPanel Orientation="Horizontal"  VerticalAlignment="Center" >
-                                <Button Uid="0" Content="DRAW DIAGRAM" Style="{StaticResource ControlTabButtons}" Click="MathAnalyzerButton"  />
-                                <Button Uid="1" Content="EQUATIONS" Style="{StaticResource ControlTabButtons}" Click="MathAnalyzerButton"   />
-                                <Button Uid="2" Content="TAYLOR SERIES" Style="{StaticResource ControlTabButtons}" Click="MathAnalyzerButton"   />
+                                <Button Uid="0" Content="DRAW DIAGRAM" Style="{StaticResource ControlTabButtons}" Click="TabButtonClick"  />
+                                <Button Uid="1" Content="EQUATIONS" Style="{StaticResource ControlTabButtons}" Click="TabButtonClick"   />
+                                <Button Uid="2" Content="TAYLOR SERIES" Style="{StaticResource ControlTabButtons}" Click="TabButtonClick"   />
                             </StackPanel>
 
                             <Grid x:Name="GridCursor" Width="150" Height="5" VerticalAlignment="Bottom" Background="#F3CD05" HorizontalAlignment="Left" Margin="10 0 0 0" />

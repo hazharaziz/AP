@@ -70,7 +70,7 @@ namespace P1
             }
         }
 
-        public override void DrawDiagramGrids() { }
+        public override void DrawDiagram() { }
 
         public override void DrawTextBlocks()
         {

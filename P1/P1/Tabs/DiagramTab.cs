@@ -64,7 +64,7 @@ namespace P1
             }
         }
 
-        public override void DrawDiagramGrids()
+        public override void DrawDiagram()
         {
             ScrollViewers = new GridScrollViewer[] { new GridScrollViewer(740, 380, new Thickness(10, 30, 10, 100),
                                                                                     new Thickness(-180, -310, -180, -310)) };

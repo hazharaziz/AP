@@ -37,27 +37,49 @@ namespace P1
         }
 
         private double ParseEquation(double x)
-            => EquationType == EquationType.Normal ? ParseNormalEquation(x) : ParseTaylorSeries(x);
+            => EquationType == EquationType.Normal ? ParseNormalEquation(x,EquationString) : ParseTaylorSeries(x);
 
         private double ParseTaylorSeries(double x)
         {
-            double sign = 1;
-            for (int i = 1; i <= N; i += 2)
-            {
-                EquationString += $"{sign / Factorial(i)}x^{i}";
-                sign *= -1;
-            }
-            return ParseNormalEquation(x);
+            if (X0 == 0)
+                return ParseNormalEquation(x,EquationString);
+            else
+                return SolveTaylorSeries(x);
+        }
+
+        private double SolveTaylorSeries(double x)
+        {
+            double y = 0;
+            string[] TaylorPolinomials;
+            TaylorPolinomials = EquationString.Split(',').Where(e => e != "").ToArray();
+
+            foreach (string p in TaylorPolinomials)
+                y += ParseTaylorPolinomial(x,p);
+
+            return y;
+        }
+
+        private double ParseTaylorPolinomial(double x, string p)
+        {
+            double coefficient = 1;
+            double power = 0;
+
+            string[] splittedPolynomial = p.Split(new char[] { '(', ')','^' }).Where(s => s != "").ToArray();
+            coefficient = double.Parse(splittedPolynomial[0]);
+            double newX = ParseNormalEquation(x, splittedPolynomial[1]);
+            power = double.Parse(splittedPolynomial[2]);
+
+            return coefficient * Math.Pow(newX, power);
         }
 
         private double Factorial(int i)
             => (i == 0 || i == 1) ? 1 : i * Factorial(i - 1);
 
-        private double ParseNormalEquation(double x)
+        private double ParseNormalEquation(double x, string equation)
         {
             double y = 0;
-            EquationString = EquationString.Replace(" ", string.Empty);
-            string[] polynomials = Split(EquationString);
+            equation = equation.Replace(" ", string.Empty);
+            string[] polynomials = Split(equation);
 
             for (int i = 0; i < polynomials.Length; i++)
             {
