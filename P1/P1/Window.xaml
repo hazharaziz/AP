@@ -8,6 +8,9 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d" Height="700" Width="1000" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
+    
+    
+    
     <StackPanel Orientation="Vertical" >
         <Grid Height="40" Margin="0 5 0 10" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 5 0 5" >
@@ -39,7 +42,18 @@
 
                             <Grid x:Name="GridCursor" Width="150" Height="5" VerticalAlignment="Bottom" Background="#F3CD05" HorizontalAlignment="Left" Margin="10 0 0 0" />
                         </Grid>
-                        <Grid x:Name="MainGrid" VerticalAlignment="Top" Height="570" Margin="10 0 10 0" >
+                        <Grid x:Name="MainGrid" VerticalAlignment="Top" Height="570" Margin="10 0 10 0">
+                            <!--<Slider x:Name="sldZoom" Minimum="1" Maximum="20" Background="Red" Orientation="Horizontal" Width="400" Height="15" VerticalAlignment="Bottom"/>
+                            <ScrollViewer Width="740" Height="380" Margin="10 30 10 100" Background="LightGreen" HorizontalScrollBarVisibility="Visible">
+                                <Grid Width="1000" Height="1000" Background="WhiteSmoke" Margin="-180 -310">
+                                    <Grid.LayoutTransform>
+                                        <ScaleTransform ScaleX="{Binding ElementName=sldZoom, Path=Value}" 
+                                                        ScaleY="{Binding ElementName=sldZoom, Path=Value}"/>
+                                    </Grid.LayoutTransform>
+                                    <Button Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                            </ScrollViewer>-->
+
                             <!--<Grid Width="740" Height="380" Margin="10, 30, 10, 100" Background="LightGreen">
                                 <Border Margin="10,10,10,10" BorderBrush="LightSeaGreen" BorderThickness="2">
                                     <Grid Width="720" Height="360" Background="WhiteSmoke">
@@ -64,6 +78,9 @@
 
                             <!--<TextBox Width="740" Height="250" Padding="5 5" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Background="LightBlue" Foreground="Black" Margin="10 60 10 230"></TextBox>
                             <TextBlock Width="740" Height="230" Background="Beige" Margin="10,330,10,10"/>-->
+
+                            <!--<Grid x:Name="h" Height="410" Width="740" Background="Green" Margin="10,150,10,10"/>-->
+                            <!--<Polyline Points="" Stroke="Black" StrokeThickness="2"/>-->
 
                         </Grid>
 

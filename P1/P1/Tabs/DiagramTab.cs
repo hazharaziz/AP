@@ -19,6 +19,9 @@ namespace P1
 {
     public class DiagramTab : Tab
     {
+        public Diagram Diagram;
+        public ScaleTransform ScaleTransform;
+
         public DiagramTab(Window window, Grid parentGrid) : base(window, parentGrid)
         {
 
@@ -61,9 +64,70 @@ namespace P1
 
         public override void DrawDiagramGrids()
         {
-            DiagramGrids = new DiagramGrid[] { new DiagramGrid(740, 380, new Thickness(10, 30, 10, 100))};
-            foreach (DiagramGrid grid in DiagramGrids)
-                ParentGrid.Children.Add(grid.Grid);
+            ScrollViewer scrollViewer = new ScrollViewer()
+            {
+                Width = 740,
+                Height = 380,
+                Margin = new Thickness(10,30,10,100),
+                Background = Brushes.LightGreen,
+                HorizontalScrollBarVisibility = ScrollBarVisibility.Visible
+            };
+
+            ScaleTransform = new ScaleTransform(2,2,10,10);
+            scrollViewer.MouseWheel += ScrollViewer_MouseWheel;
+
+            Slider slider = new Slider()
+            {
+                Width = 700,
+                Height  = 30,
+                Background = Brushes.Red,
+                VerticalAlignment = VerticalAlignment.Bottom
+            };
+            
+            Button button = new Button()
+            {
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Background = Brushes.Red
+            };
+
+            
+            DiagramGrids = new DiagramGrid[] { new DiagramGrid(1000, 1000, new Thickness(-180, -310, -180, -310)) };
+            DiagramGrids[0].Grid.LayoutTransform = ScaleTransform;
+            DiagramGrids[0].Grid.Children.Add(button);
+            ParentGrid.Children.Add(slider);
+
+            scrollViewer.Content = DiagramGrids[0].Grid;
+            ParentGrid.Children.Add(scrollViewer);
+
+            //DiagramGrids = new DiagramGrid[] { new DiagramGrid(740, 380, new Thickness(10, 30, 10, 100))};
+            //foreach (DiagramGrid grid in DiagramGrids)
+            //    ParentGrid.Children.Add(grid.Grid);
+        }
+
+        private void ScrollViewer_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            var grid = sender as Grid;
+            var pos = e.GetPosition(grid);
+
+            double oldCenterX = ScaleTransform.CenterX;
+            double oldeCenterY = ScaleTransform.CenterY;
+
+            ScaleTransform.CenterY = pos.X;
+            ScaleTransform.CenterY = pos.Y;
+            if (e.Delta > 0)
+            {
+                ScaleTransform.ScaleX++;
+                ScaleTransform.ScaleY++;
+            }
+            if (e.Delta < 0)
+            {
+                if (ScaleTransform.ScaleX > 1)
+                {
+                    ScaleTransform.ScaleX--;
+                    ScaleTransform.ScaleY--;
+                }
+            }
         }
 
         public override void DrawTextBlocks() { }

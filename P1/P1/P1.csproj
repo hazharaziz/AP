@@ -90,6 +90,7 @@
     <Compile Include="ClockCenterScrew.cs" />
     <Compile Include="ClockHand.cs" />
     <Compile Include="ClockLine.cs" />
+    <Compile Include="Diagram.cs" />
     <Compile Include="DiagramTab.cs" />
     <Compile Include="DiagramGrid.cs" />
     <Compile Include="LinearEquation.cs" />

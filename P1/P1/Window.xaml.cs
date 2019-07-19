@@ -41,9 +41,9 @@ namespace P1
             clock.Draw();
 
             diagramTab = new DiagramTab(this.Window, MainGrid);
-            equationsTab = new EquationsTab(this.Window, MainGrid);
-            taylorSeriesTab = new TaylorSeriesTab(this.Window, MainGrid);
             diagramTab.Draw();
+
+
         }
 
 
@@ -51,6 +51,7 @@ namespace P1
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             int index = int.Parse(((Button)e.Source).Uid);
+
             switch (index)
             {
                 case 0:
@@ -73,10 +74,14 @@ namespace P1
         {
             int buttonId = int.Parse(((Button)e.Source).Uid);
             GridCursor.Margin = new Thickness((10 * (buttonId + 1)) + (150 * buttonId), 0, 0, 0);
+            equationsTab = new EquationsTab(this.Window, MainGrid);
+            taylorSeriesTab = new TaylorSeriesTab(this.Window, MainGrid);
+
 
             switch (buttonId)
             {
                 case 0:
+
                     equationsTab.Clear();
                     taylorSeriesTab.Clear();
                     diagramTab.Draw();
@@ -92,6 +97,11 @@ namespace P1
                     taylorSeriesTab.Draw();
                     break;
             }
+
+        }
+
+        private void ScrollViewer_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        {
 
         }
     }

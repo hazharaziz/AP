@@ -40,8 +40,8 @@ namespace P1
         {
             TextBoxes = new GridTextBox[]
             {
-                new GridTextBox("N",320,40,new Thickness(55, 90, 385, 440),"n =",40,40,new Thickness(10, 90, 710, 440)),
-                new GridTextBox("X0", 325, 40, new Thickness(425, 90, 10, 440), "x0 =", 40, 40, new Thickness(380, 90, 340, 440))
+                new GridTextBox("N",320,40,new Thickness(55, 105, 385, 420),"n =",40,40,new Thickness(10, 105, 710, 420)),
+                new GridTextBox("X0", 325, 40, new Thickness(425, 105, 10, 420), "x0 =", 40, 40, new Thickness(380, 105, 340, 420))
             };
 
             foreach (GridTextBox textBox in TextBoxes)
@@ -63,11 +63,15 @@ namespace P1
         }
 
 
-        public override void DrawDiagramGrids() { }
+        public override void DrawDiagramGrids()
+        {
+            DiagramGrids = new DiagramGrid[] { new DiagramGrid(740, 405, new Thickness(10, 155, 10, 10)) };
+            ParentGrid.Children.Add(DiagramGrids[0].Grid);
+        }
 
         public override void DrawTextBlocks()
         {
-            TextBlocks = new GridTextBlock[] { new GridTextBlock(740, 40, new Thickness(10, 55, 10, 485)) };
+            TextBlocks = new GridTextBlock[] { new GridTextBlock(740, 40, new Thickness(10, 55, 10, 470)) };
             TextBlocks[0].TextBlock.Text = "f(x) = Sin(x)";
             foreach (GridTextBlock textBlock in TextBlocks)
                 ParentGrid.Children.Add(textBlock.TextBlock);
