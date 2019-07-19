@@ -17,10 +17,12 @@ using System.Runtime.CompilerServices;
 
 namespace P1
 {
+    public enum EquationType { Normal, TaylorSeries};
+
     public class DiagramTab : Tab
     {
         public Diagram Diagram;
-        public ScaleTransform ScaleTransform;
+        public Slider Slider;
 
         public DiagramTab(Window window, Grid parentGrid) : base(window, parentGrid)
         {
@@ -48,11 +50,11 @@ namespace P1
         {
             TextBoxes = new GridTextBox[]
             {
-                new GridTextBox("MinY",107.5, 40, new Thickness(85, 460, 560, 70),"MIN Y =",60,40,new Thickness(20, 460, 690, 70)),
-                new GridTextBox("MaxY",107.5, 40, new Thickness(263, 460, 388, 70), "MAX Y =", 60, 40, new Thickness(198, 460, 502, 70)),
-                new GridTextBox("MinX",107.5, 40, new Thickness(441, 460, 210, 70), "MIN X =", 60, 40, new Thickness(376, 460, 324, 70)),
-                new GridTextBox("MaxX",107.5, 40, new Thickness(619, 460, 30, 70), "MAX X =", 60, 40, new Thickness(554, 460, 146, 70)),
-                new GridTextBox("Function",641, 40, new Thickness(85, 515, 34, 15), "f(x) = ", 60, 40, new Thickness(20, 515, 680, 15))
+                new GridTextBox("MinY",107.5, 30, new Thickness(85, 485, 560, 50),"MIN Y =",60,30,new Thickness(20, 485, 690, 50),12,HorizontalAlignment.Left,VerticalAlignment.Top),
+                new GridTextBox("MaxY",107.5, 30, new Thickness(263, 485, 388, 50), "MAX Y =", 60, 30, new Thickness(198, 485, 502, 50),12,HorizontalAlignment.Left,VerticalAlignment.Top),
+                new GridTextBox("MinX",107.5, 30, new Thickness(441, 485, 210, 50), "MIN X =", 60, 30, new Thickness(376, 485, 324, 50),12,HorizontalAlignment.Left,VerticalAlignment.Top),
+                new GridTextBox("MaxX",107.5, 30, new Thickness(619, 485, 30, 50), "MAX X =", 60, 30, new Thickness(554, 485, 146, 50),12,HorizontalAlignment.Left,VerticalAlignment.Top),
+                new GridTextBox("Function",641, 30, new Thickness(87, 525, 32, 10), "f(x) = ", 60, 30, new Thickness(20, 525, 680, 10),12,HorizontalAlignment.Left,VerticalAlignment.Top)
             };
 
             foreach (GridTextBox textBox in TextBoxes)
@@ -64,78 +66,37 @@ namespace P1
 
         public override void DrawDiagramGrids()
         {
-            ScrollViewer scrollViewer = new ScrollViewer()
-            {
-                Width = 740,
-                Height = 380,
-                Margin = new Thickness(10,30,10,100),
-                Background = Brushes.LightGreen,
-                HorizontalScrollBarVisibility = ScrollBarVisibility.Visible
-            };
+            ScrollViewers = new GridScrollViewer[] { new GridScrollViewer(740, 380, new Thickness(10, 30, 10, 100),
+                                                                                    new Thickness(-180, -310, -180, -310)) };
 
-            ScaleTransform = new ScaleTransform(2,2,10,10);
-            scrollViewer.MouseWheel += ScrollViewer_MouseWheel;
 
-            Slider slider = new Slider()
-            {
-                Width = 700,
-                Height  = 30,
-                Background = Brushes.Red,
-                VerticalAlignment = VerticalAlignment.Bottom
-            };
-            
-            Button button = new Button()
-            {
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-                Background = Brushes.Red
-            };
-
-            
-            DiagramGrids = new DiagramGrid[] { new DiagramGrid(1000, 1000, new Thickness(-180, -310, -180, -310)) };
-            DiagramGrids[0].Grid.LayoutTransform = ScaleTransform;
-            DiagramGrids[0].Grid.Children.Add(button);
-            ParentGrid.Children.Add(slider);
-
-            scrollViewer.Content = DiagramGrids[0].Grid;
-            ParentGrid.Children.Add(scrollViewer);
-
-            //DiagramGrids = new DiagramGrid[] { new DiagramGrid(740, 380, new Thickness(10, 30, 10, 100))};
-            //foreach (DiagramGrid grid in DiagramGrids)
-            //    ParentGrid.Children.Add(grid.Grid);
+            //foreach (GridScrollViewer scrollViewer in ScrollViewers)
+            //    ParentGrid.Children.Add(ScrollViewers[0].ScrollViewer);
         }
 
-        private void ScrollViewer_MouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            var grid = sender as Grid;
-            var pos = e.GetPosition(grid);
 
-            double oldCenterX = ScaleTransform.CenterX;
-            double oldeCenterY = ScaleTransform.CenterY;
 
-            ScaleTransform.CenterY = pos.X;
-            ScaleTransform.CenterY = pos.Y;
-            if (e.Delta > 0)
-            {
-                ScaleTransform.ScaleX++;
-                ScaleTransform.ScaleY++;
-            }
-            if (e.Delta < 0)
-            {
-                if (ScaleTransform.ScaleX > 1)
-                {
-                    ScaleTransform.ScaleX--;
-                    ScaleTransform.ScaleY--;
-                }
-            }
-        }
+
 
         public override void DrawTextBlocks() { }
 
         private void DrawButtonClick(object sender, RoutedEventArgs e)
         {
-            var s = TextBoxes[0].TextBox.Text;
-            MessageBox.Show(s);
+            try
+            {
+                if (TextBoxes[4].TextBox.Text != "")
+                {
+                    Diagram = new Diagram(ScrollViewers[0].Grid, TextBoxes[4].TextBox.Text, EquationType.Normal);
+                    ScrollViewers[0].ScrollViewer.Content = ScrollViewers[0].Grid;
+                    ParentGrid.Children.Add(ScrollViewers[0].ScrollViewer);
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Equation is not valid. Please Try Again");
+                TextBoxes[4].TextBox.Text = "";
+            }
         }
 
         private void ClearButtonClick(object sender, RoutedEventArgs e)

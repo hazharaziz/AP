@@ -43,41 +43,24 @@
                             <Grid x:Name="GridCursor" Width="150" Height="5" VerticalAlignment="Bottom" Background="#F3CD05" HorizontalAlignment="Left" Margin="10 0 0 0" />
                         </Grid>
                         <Grid x:Name="MainGrid" VerticalAlignment="Top" Height="570" Margin="10 0 10 0">
-                            <!--<Slider x:Name="sldZoom" Minimum="1" Maximum="20" Background="Red" Orientation="Horizontal" Width="400" Height="15" VerticalAlignment="Bottom"/>
-                            <ScrollViewer Width="740" Height="380" Margin="10 30 10 100" Background="LightGreen" HorizontalScrollBarVisibility="Visible">
-                                <Grid Width="1000" Height="1000" Background="WhiteSmoke" Margin="-180 -310">
+                            <!--<Slider x:Name="slider" Minimum="1" Maximum="100" Background="Red" Orientation="Horizontal" Width="400" Height="15" VerticalAlignment="Bottom" Margin="180,0"/>
+                            
+                            <ScrollViewer Name="scrollViewer" Width="740" Height="380" Margin="10 30 10 100" Background="LightGreen" 
+                                          HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                                <Grid Name="grid" Width="1000" Height="1000" Background="WhiteSmoke" Margin="-180 -310">
                                     <Grid.LayoutTransform>
-                                        <ScaleTransform ScaleX="{Binding ElementName=sldZoom, Path=Value}" 
-                                                        ScaleY="{Binding ElementName=sldZoom, Path=Value}"/>
+                                        <ScaleTransform  x:Name="scaleTransform"/>
                                     </Grid.LayoutTransform>
-                                    <Button Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <Line X1="0" X2="1000" Y1="500" Y2="500" Stroke="Black" StrokeThickness="2"/>
+                                    <Line X1="500" X2="500" Y1="0" Y2="1000" Stroke="Black" StrokeThickness="2"/>
                                 </Grid>
                             </ScrollViewer>-->
-
-                            <!--<Grid Width="740" Height="380" Margin="10, 30, 10, 100" Background="LightGreen">
-                                <Border Margin="10,10,10,10" BorderBrush="LightSeaGreen" BorderThickness="2">
-                                    <Grid Width="720" Height="360" Background="WhiteSmoke">
-                                        <Path Stroke="Black" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Path.Data>
-                                                <PathGeometry Figures="M 0,50 C 80,100 200,-100 100,90" />
-                                            </Path.Data>
-                                        </Path>
-
-                                    </Grid> 
-                                </Border>
-                            </Grid>-->
-                            <!--<TextBlock Width="740" Height="20" Foreground="Black" Margin="10,50,10,480">f(x) = Sin(x)</TextBlock>
-                            <Label Width="40" Height="40" Foreground="Black" Margin="10,85,710,445" Padding="10 10">n =</Label>
-                            <TextBox Height="40" BorderBrush="Black" BorderThickness="2" Margin="55,85,385,445"/>
-
-                            <Label Width="40" Height="40" Foreground="Black" Margin="380,85,340,445" Padding="10 10">x0 =</Label>
-                            <TextBox Height="40" BorderBrush="Black" BorderThickness="2" Margin="425,85,10,445"/>-->
+                            
+                            
+                            
 
 
-                            <!--<Grid Width="780" Height="450" Background="LightBlue" Margin="10,70,10,120"/>-->
 
-                            <!--<TextBox Width="740" Height="250" Padding="5 5" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Background="LightBlue" Foreground="Black" Margin="10 60 10 230"></TextBox>
-                            <TextBlock Width="740" Height="230" Background="Beige" Margin="10,330,10,10"/>-->
 
                             <!--<Grid x:Name="h" Height="410" Width="740" Background="Green" Margin="10,150,10,10"/>-->
                             <!--<Polyline Points="" Stroke="Black" StrokeThickness="2"/>-->

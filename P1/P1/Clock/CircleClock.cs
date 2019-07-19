@@ -60,9 +60,9 @@ namespace P1
         {
             ClockHands = new ClockHand[]
             {
-                new ClockHand("secondHand", 90, 1, new CornerRadius(0,5,5,0), new Thickness(100,99,10,99),Brushes.Red),
-                new ClockHand("hourHand", 50, 4, new CornerRadius(0,5,5,0), new Thickness(100,98,50,98),Brushes.Black),
-                new ClockHand("minuteHand", 70, 2, new CornerRadius(0,5,5,0), new Thickness(100,97,30,97),Brushes.Black),
+                new ClockHand("secondHand", 90, 1, new CornerRadius(0,2,2,0), new Thickness(100,99,10,99),Brushes.Red),
+                new ClockHand("minuteHand", 70, 2, new CornerRadius(0,2,2,0), new Thickness(100,97,30,97),Brushes.Black),
+                new ClockHand("hourHand", 50, 4, new CornerRadius(0,2,2,0), new Thickness(100,98,50,98),Brushes.Black),
             };
         }
 

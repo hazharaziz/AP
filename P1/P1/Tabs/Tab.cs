@@ -23,11 +23,10 @@ namespace P1
         public Grid ParentGrid;
         public Style Style;
         public GridBorder Border;
-        public DiagramGrid[] DiagramGrids;
+        public GridScrollViewer[] ScrollViewers;
         public GridButton[] Buttons;
         public GridTextBox[] TextBoxes;
         public GridTextBlock[] TextBlocks;
-
         
         public Tab(Window window, Grid parentGrid)
         {
@@ -45,6 +44,7 @@ namespace P1
             DrawTextBoxes();
             DrawTextBlocks();
         }
+
 
         public virtual void DrawBorder()
         {

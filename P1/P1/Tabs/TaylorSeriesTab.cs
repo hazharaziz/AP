@@ -65,8 +65,8 @@ namespace P1
 
         public override void DrawDiagramGrids()
         {
-            DiagramGrids = new DiagramGrid[] { new DiagramGrid(740, 405, new Thickness(10, 155, 10, 10)) };
-            ParentGrid.Children.Add(DiagramGrids[0].Grid);
+            ScrollViewers = new GridScrollViewer[] { new GridScrollViewer(740, 405, new Thickness(10, 155, 10, 10), new Thickness()) };
+            ParentGrid.Children.Add(ScrollViewers[0].Grid);
         }
 
         public override void DrawTextBlocks()

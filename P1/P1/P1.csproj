@@ -86,23 +86,25 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CircleClock.cs" />
-    <Compile Include="ClockCenterScrew.cs" />
-    <Compile Include="ClockHand.cs" />
-    <Compile Include="ClockLine.cs" />
+    <Compile Include="Axis.cs" />
+    <Compile Include="Clock\CircleClock.cs" />
+    <Compile Include="Clock\ClockCenterScrew.cs" />
+    <Compile Include="Clock\ClockHand.cs" />
+    <Compile Include="Clock\ClockLine.cs" />
     <Compile Include="Diagram.cs" />
-    <Compile Include="DiagramTab.cs" />
+    <Compile Include="Equation.cs" />
+    <Compile Include="Tabs\DiagramTab.cs" />
     <Compile Include="DiagramGrid.cs" />
     <Compile Include="LinearEquation.cs" />
-    <Compile Include="EquationsTab.cs" />
+    <Compile Include="Tabs\EquationsTab.cs" />
     <Compile Include="GridBorder.cs" />
     <Compile Include="GridTextBlock.cs" />
     <Compile Include="GridTextBox.cs" />
     <Compile Include="GridButton.cs" />
     <Compile Include="Matrix.cs" />
     <Compile Include="SquareMatrix.cs" />
-    <Compile Include="Tab.cs" />
-    <Compile Include="TaylorSeriesTab.cs" />
+    <Compile Include="Tabs\Tab.cs" />
+    <Compile Include="Tabs\TaylorSeriesTab.cs" />
     <Compile Include="TextBoxLabel.cs" />
     <Compile Include="Vector.cs" />
     <Compile Include="Window.xaml.cs">
