@@ -17,14 +17,22 @@ namespace P1
 {
     public class TaylorSeriesTab : Tab
     {
-        public Diagram Diagram;
-        public Polyline SinusDiagram;
-        public string Equation = "";
-        public int N;
-        public int X0;
+        public Diagram Diagram { get; private set; }
+        public Polyline SinusDiagram { get; private set; }
+        public string Equation { get; private set; } = "";
+        private int N;
+        private int X0;
 
+        /// <summary>
+        /// TaylorSeriesTab Class Constructor
+        /// </summary>
+        /// <param name="window"></param>
+        /// <param name="parentGrid"></param>
         public TaylorSeriesTab(Window window, Grid parentGrid) : base (window, parentGrid) { }
 
+        /// <summary>
+        /// DrawContent Method for drawing the content of the tab
+        /// </summary>
         public override void DrawContent()
         {
             DrawSinusDiagram();
@@ -35,12 +43,17 @@ namespace P1
             DrawTextBlocks();
         }
 
+        /// <summary>
+        /// RemoveContent Method for removing the content of the tab
+        /// </summary>
         public override void RemoveContent()
         {
             ParentGrid.Children.Clear();
         }
 
-
+        /// <summary>
+        /// DrawSinusDiagram Method for drawing the sinus diagram
+        /// </summary>
         private void DrawSinusDiagram()
         {
             SinusDiagram = new Polyline() { Stroke = Brushes.Green, StrokeThickness = 2 };
@@ -56,6 +69,67 @@ namespace P1
             }
         }
 
+        /// <summary>
+        /// DrawDiagram Method for drawing the diagram of the tab
+        /// </summary>
+        public override void DrawDiagram()
+        {
+            ScrollViewers = new GridScrollViewer[] { new GridScrollViewer(740, 405, new Thickness(10, 155, 10, 10),
+                                                                                    new Thickness(-130,-297.5,-130,-297.5)) };
+            ParentGrid.Children.Add(ScrollViewers[0].ScrollViewer);
+        }
+
+        /// <summary>
+        /// DrawButton Method for drawing the buttons of the tab
+        /// </summary>
+        public override void DrawButtons()
+        {
+            Buttons = new GridButton[]
+            {
+                new GridButton("DRAW",HorizontalAlignment.Left),
+                new GridButton("CLEAR",HorizontalAlignment.Right)
+            };
+
+
+            foreach (GridButton button in Buttons)
+                ParentGrid.Children.Add(button.Button);
+
+            Buttons[0].Button.Click += DrawButtonClick;
+            Buttons[1].Button.Click += ClearButtonClick;
+        }
+
+        /// <summary>
+        /// DrawTextBoxes Method for drawing the textboxes of the tab
+        /// </summary>s
+        public override void DrawTextBoxes()
+        {
+            TextBoxes = new GridTextBox[]
+            {
+                new GridTextBox("N",320,40,new Thickness(55, 105, 385, 420),"n =",40,40,new Thickness(10, 105, 710, 420)),
+                new GridTextBox("X0", 325, 40, new Thickness(425, 105, 10, 420), "x0 =", 40, 40, new Thickness(380, 105, 340, 420))
+            };
+
+            foreach (GridTextBox textBox in TextBoxes)
+            {
+                ParentGrid.Children.Add(textBox.TextBox);
+                ParentGrid.Children.Add(textBox.TextBoxLabel.Label);
+            }
+        }
+
+        /// <summary>
+        /// DrawTextBlocks Method for drawing the textblocks of the tab
+        /// </summary>
+        public override void DrawTextBlocks()
+        {
+            TextBlocks = new GridTextBlock[] { new GridTextBlock(740, 40, new Thickness(10, 55, 10, 470)) };
+            TextBlocks[0].TextBlock.Text = "f(x) = Sin(x)";
+            foreach (GridTextBlock textBlock in TextBlocks)
+                ParentGrid.Children.Add(textBlock.TextBlock);
+        }
+
+        /// <summary>
+        /// ExtractEquation Method extracting the taylor series equation
+        /// </summary>
         private void ExtractEquation()
         {
             Equation = "";
@@ -93,51 +167,21 @@ namespace P1
             }
         }
 
+        /// <summary>
+        /// Factorial returning the factorial of an integer
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
         private double Factorial(int i)
             => (i == 0 || i == 1) ? 1 : i * Factorial(i - 1);
 
 
-        public override void DrawButtons()
-        {
-            Buttons = new GridButton[]
-            {
-                new GridButton("DRAW",HorizontalAlignment.Left),
-                new GridButton("CLEAR",HorizontalAlignment.Right)
-            };
 
-
-            foreach (GridButton button in Buttons)
-                ParentGrid.Children.Add(button.Button);
-
-            Buttons[0].Button.Click += DrawButtonClick;
-            Buttons[1].Button.Click += ClearButtonClick;
-
-        }
-
-        public override void DrawTextBoxes()
-        {
-            TextBoxes = new GridTextBox[]
-            {
-                new GridTextBox("N",320,40,new Thickness(55, 105, 385, 420),"n =",40,40,new Thickness(10, 105, 710, 420)),
-                new GridTextBox("X0", 325, 40, new Thickness(425, 105, 10, 420), "x0 =", 40, 40, new Thickness(380, 105, 340, 420))
-            };
-
-            foreach (GridTextBox textBox in TextBoxes)
-            {
-                ParentGrid.Children.Add(textBox.TextBox);
-                ParentGrid.Children.Add(textBox.TextBoxLabel.Label);
-            }
-
-        }
-
-
-        private void ClearButtonClick(object sender, RoutedEventArgs e)
-        {
-            ScrollViewers[0].Grid.Children.Remove(Diagram.Polyline);
-            for (int i = 0; i < TextBoxes.Length; i++)
-                TextBoxes[i].TextBox.Text = "";
-        }
-
+        /// <summary>
+        /// CalculateButtonClick Method occurs when the draw button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DrawButtonClick(object sender, RoutedEventArgs e)
         {
             try
@@ -164,21 +208,16 @@ namespace P1
             catch (Exception exception) { MessageBox.Show(exception.Message); TextBoxes.All(t => t.TextBox.Text == ""); }
         }
 
-
-        public override void DrawDiagram()
+        /// <summary>
+        /// ClearButtonClick Method occurs when the clear button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClearButtonClick(object sender, RoutedEventArgs e)
         {
-            ScrollViewers = new GridScrollViewer[] { new GridScrollViewer(740, 405, new Thickness(10, 155, 10, 10),
-                                                                                    new Thickness(-130,-297.5,-130,-297.5)) };
-            ParentGrid.Children.Add(ScrollViewers[0].ScrollViewer);
+            ScrollViewers[0].Grid.Children.Remove(Diagram.Polyline);
+            for (int i = 0; i < TextBoxes.Length; i++)
+                TextBoxes[i].TextBox.Text = "";
         }
-
-        public override void DrawTextBlocks()
-        {
-            TextBlocks = new GridTextBlock[] { new GridTextBlock(740, 40, new Thickness(10, 55, 10, 470)) };
-            TextBlocks[0].TextBlock.Text = "f(x) = Sin(x)";
-            foreach (GridTextBlock textBlock in TextBlocks)
-                ParentGrid.Children.Add(textBlock.TextBlock);
-        }
-
     }
 }

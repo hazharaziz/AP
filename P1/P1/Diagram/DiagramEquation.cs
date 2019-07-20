@@ -13,6 +13,13 @@ namespace P1
         public int N { get; private set; }
         public int X0 { get; private set; }
 
+        /// <summary>
+        /// DiagramEquation Class Constructor
+        /// </summary>
+        /// <param name="equation"></param>
+        /// <param name="equationType"></param>
+        /// <param name="n"></param>
+        /// <param name="x0"></param>
         public DiagramEquation(string equation, EquationType equationType, int n = 1, int x0 = 0)
         {
             EquationString = equation.Replace(" ", string.Empty);
@@ -23,6 +30,9 @@ namespace P1
             DrawDiagram();
         }
 
+        /// <summary>
+        /// DrawDiagram Method for adding the points to the polyline 
+        /// </summary>
         private void DrawDiagram()
         {
             Point point;
@@ -31,13 +41,18 @@ namespace P1
             {
                 point = new Point();
                 point.X = (j * 20) + 520;
-                point.Y = -(ParseEquation(j) * 20) + 520;
+                point.Y = -(CheckEquationType(j) * 20) + 520;
                 Points.Add(point);
                 j += 0.1;
             }
         }
 
-        public double ParseEquation(double x)
+        /// <summary>
+        /// CheckEquationType Method for checking the type of the equation
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public double CheckEquationType(double x)
             => EquationType == EquationType.Normal ? ParseNormalEquation(x,EquationString) : ParseTaylorSeries(x);
 
         public double ParseTaylorSeries(double x)
@@ -48,6 +63,11 @@ namespace P1
                 return SolveTaylorSeries(x);
         }
 
+        /// <summary>
+        /// SolveTaylorSeries Method returning the y coordinate of a point in a taylor series equation
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
         public double SolveTaylorSeries(double x)
         {
             double y = 0;
@@ -60,6 +80,12 @@ namespace P1
             return y;
         }
 
+        /// <summary>
+        /// ParseTaylorPolinomial Method for parsing the a taylor polynomial
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public double ParseTaylorPolinomial(double x, string p)
         {
             double coefficient = 1;
@@ -73,9 +99,20 @@ namespace P1
             return coefficient * Math.Pow(newX, power);
         }
 
+        /// <summary>
+        /// Factorial Method returning the factorial of an integer
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
         public double Factorial(int i)
             => (i == 0 || i == 1) ? 1 : i * Factorial(i - 1);
 
+        /// <summary>
+        /// ParseNormalEquation Method parsing a normal equation
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="equation"></param>
+        /// <returns></returns>
         public double ParseNormalEquation(double x, string equation)
         {
             double y = 0;
@@ -97,6 +134,12 @@ namespace P1
             return y;
         }
 
+        /// <summary>
+        /// ParsePolynomial Method for parsing a polynomial
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="equation"></param>
+        /// <returns></returns>
         public double ParsePolynomial(double x, string equation)
         {
             string coefficient = "";
@@ -125,6 +168,11 @@ namespace P1
             return (double.Parse(coefficient) * Math.Pow(x, double.Parse(power)));
         }
 
+        /// <summary>
+        /// Split Method for splitting the polynomials of an equation
+        /// </summary>
+        /// <param name="equation"></param>
+        /// <returns></returns>
         public string[] Split(string equation)
         {
             equation = equation.Replace(" ", string.Empty);

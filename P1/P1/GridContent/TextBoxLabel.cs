@@ -19,8 +19,15 @@ namespace P1
 {
     public class TextBoxLabel
     {
-        public Label Label;
+        public Label Label { get; private set; }
 
+        /// <summary>
+        /// TextBoxLabel Class Constructor
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="labelMargin"></param>
         public TextBoxLabel(string content, double width, double height, Thickness labelMargin)
         {
             Label = new Label()

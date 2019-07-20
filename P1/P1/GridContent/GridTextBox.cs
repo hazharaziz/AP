@@ -19,9 +19,23 @@ namespace P1
 {
     public class GridTextBox
     {
-        public TextBoxLabel TextBoxLabel;
-        public TextBox TextBox;
+        public TextBoxLabel TextBoxLabel { get; private set; }
+        public TextBox TextBox { get; private set; }
 
+        /// <summary>
+        /// GridTextBox Constructor
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="textBoxThickness"></param>
+        /// <param name="labelContent"></param>
+        /// <param name="labelWidth"></param>
+        /// <param name="labelHeight"></param>
+        /// <param name="labelMargin"></param>
+        /// <param name="fontSize"></param>
+        /// <param name="horizontalAlignment"></param>
+        /// <param name="verticalAlignment"></param>
         public GridTextBox(string name, double width, double height, Thickness textBoxThickness, string labelContent = "",
             double labelWidth = 0, double labelHeight = 0, Thickness labelMargin = new Thickness(), double fontSize = 18, 
             HorizontalAlignment horizontalAlignment = HorizontalAlignment.Left, 

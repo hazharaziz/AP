@@ -260,6 +260,12 @@ namespace P1
             return result;
         }
 
+        /// <summary>
+        /// Copy Method for making a copy of this matrix
+        /// </summary>
+        /// <param name="rowCount"></param>
+        /// <param name="colCount"></param>
+        /// <returns></returns>
         public Matrix<_Type> Copy(int rowCount, int colCount)
         {
             Matrix<_Type> copy = new Matrix<_Type>(rowCount, colCount);

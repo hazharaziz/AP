@@ -19,8 +19,14 @@ namespace P1
 {
     public class GridTextBlock
     {
-        public TextBlock TextBlock;
+        public TextBlock TextBlock { get; private set; }
 
+        /// <summary>
+        /// GridTextBlock Class Constructor
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="margin"></param>
         public GridTextBlock(double width, double height, Thickness margin)
         {
             TextBlock = new TextBlock()

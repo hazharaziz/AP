@@ -27,6 +27,13 @@ namespace P1
         private Point? lastMousePositionOnTarget;
         private Point? lastDragPoint;
 
+        /// <summary>
+        /// GridScrollViewer Class Constructor
+        /// </summary>
+        /// <param name="viewerWidth"></param>
+        /// <param name="viewerHeight"></param>
+        /// <param name="viewerMargin"></param>
+        /// <param name="gridMargin"></param>
         public GridScrollViewer(int viewerWidth , int viewerHeight, Thickness viewerMargin, Thickness gridMargin)
         {
             DrawScrollViewer(viewerMargin);
@@ -34,6 +41,10 @@ namespace P1
             DrawGrid(gridMargin);
         }
 
+        /// <summary>
+        /// DrawGrid Method for drawing the grid
+        /// </summary>
+        /// <param name="gridMargin"></param>
         private void DrawGrid(Thickness gridMargin)
         {
             Grid = new Grid()
@@ -48,6 +59,9 @@ namespace P1
             ScrollViewer.Content = Grid;
         }
 
+        /// <summary>
+        /// DrawSlider Method for drawing the slider
+        /// </summary>
         private void DrawSlider()
         {
             Slider = new Slider()
@@ -67,6 +81,10 @@ namespace P1
             Slider.ValueChanged += Slider_ValueChanged;
         }
 
+        /// <summary>
+        /// DrawScrollViewer Method for drawing the scrollviewer 
+        /// </summary>
+        /// <param name="viewerMargin"></param>
         private void DrawScrollViewer(Thickness viewerMargin)
         {
             ScrollViewer = new ScrollViewer()
@@ -78,16 +96,23 @@ namespace P1
                 HorizontalScrollBarVisibility = ScrollBarVisibility.Visible,
             };
 
+            ScrollViewerEventHandler();
+        }
+
+        /// <summary>
+        /// ScrollViewerEventHandler Method for handling drag-and-drop and zooming in and out of the scrollviewer
+        /// </summary>
+        private void ScrollViewerEventHandler()
+        {
             ScrollViewer.ScrollChanged += ScrollViewer_ScrollChanged; ;
             ScrollViewer.MouseLeftButtonUp += ScrollViewer_MouseLeftButtonUp;
             ScrollViewer.PreviewMouseLeftButtonUp += ScrollViewer_MouseLeftButtonUp;
             ScrollViewer.PreviewMouseWheel += ScrollViewer_PreviewMouseWheel;
-            
-
             ScrollViewer.PreviewMouseLeftButtonDown += ScrollViewer_PreviewMouseLeftButtonDown;
             ScrollViewer.MouseMove += ScrollViewer_MouseMove;
         }
 
+        //Slider_ValueChanged Method for handling the change of slider range
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             ScaleTransform.ScaleX = e.NewValue;
@@ -98,6 +123,7 @@ namespace P1
             lastCenterPositionOnTarget = ScrollViewer.TranslatePoint(centerOfViewport, Grid);
         }
 
+        //ScrollViewer_MouseMove occurs when the mouse moves over the scrollviewer
         private void ScrollViewer_MouseMove(object sender, MouseEventArgs e)
         {
             if (lastDragPoint.HasValue)
@@ -114,6 +140,7 @@ namespace P1
             }
         }
 
+        //ScrollViewer_PreviewMouseLeftButtonDown Method occurs when the mouse left button pressed over the scrollviewer
         private void ScrollViewer_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var mousePos = e.GetPosition(ScrollViewer);
@@ -126,6 +153,7 @@ namespace P1
             }
         }
 
+        //ScrollViewer_PreviewMouseWheel Method occurs when the user rotates the mouse wheel over the scrollviewer
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             lastMousePositionOnTarget = Mouse.GetPosition(Grid);
@@ -142,6 +170,7 @@ namespace P1
             e.Handled = true;
         }
 
+        //ScrollViewer_MouseLeftButtonUp Method occurs when the mouse left button is released while is on the scrollviewer
         private void ScrollViewer_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             ScrollViewer.Cursor = Cursors.Arrow;
@@ -149,6 +178,7 @@ namespace P1
             lastDragPoint = null;
         }
 
+        //ScrollViewer_ScrollChanged Method occurs when the scroll changes
         private void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             if (e.ExtentHeightChange != 0 || e.ExtentWidthChange != 0)

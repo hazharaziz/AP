@@ -19,15 +19,24 @@ namespace P1
 {
     public class Diagram
     {
-        public Grid ParentGrid;
-        public Axis XAxis;
-        public Axis YAxis;
-        public List<Line> Lines = new List<Line>();
-        public DiagramEquation Equation;
-        public EquationType EquationType;
-        public Polyline Polyline;
-        public Polyline SinusDiagram;
+        public Grid ParentGrid { get; private set; }
+        public Axis XAxis { get; private set; }
+        public Axis YAxis { get; private set; }
+        public List<Line> Lines { get; private set; }
+        public DiagramEquation Equation { get; private set; }
+        public EquationType EquationType { get; private set; }
+        public Polyline Polyline { get; private set; }
+        public Polyline SinusDiagram { get; private set; }
 
+        /// <summary>
+        /// Diagram Class Constructor
+        /// </summary>
+        /// <param name="parentGrid"></param>
+        /// <param name="equation"></param>
+        /// <param name="equationType"></param>
+        /// <param name="n"></param>
+        /// <param name="x0"></param>
+        /// <param name="sinusDiagram"></param>
         public Diagram(Grid parentGrid, string equation, EquationType equationType, 
                         int n = 1, int x0 = 0, Polyline sinusDiagram = null)
         {
@@ -40,6 +49,9 @@ namespace P1
             DrawDiagram();
         }
 
+        /// <summary>
+        /// DrawDiagram Method for drawing the diagram on the parent grid
+        /// </summary>
         private void DrawDiagram()
         {
             if (SinusDiagram != null && !ParentGrid.Children.Contains(SinusDiagram))
@@ -49,8 +61,12 @@ namespace P1
             ParentGrid.Children.Add(Polyline);
         }
 
+        /// <summary>
+        /// DrawLines Method for drawing the diagram scale
+        /// </summary>
         private void DrawLines()
         {
+            Lines = new List<Line>();
             Line VerticalLine;
             Line HorizontalLine;
 
@@ -66,6 +82,9 @@ namespace P1
                 ParentGrid.Children.Add(line);
         }
 
+        /// <summary>
+        /// DrawAxises Method for drawing the diagram axises
+        /// </summary>
         private void DrawAxises()
         {
             XAxis = new Axis(0, 1000, 520, 520);

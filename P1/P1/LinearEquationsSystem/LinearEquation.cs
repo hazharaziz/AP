@@ -33,7 +33,10 @@ namespace P1
         public double Determinant { get; private set; }
         public string SolutionString { get; private set; }
 
-
+        /// <summary>
+        /// LinearEquations Class Constructor
+        /// </summary>
+        /// <param name="equations"></param>
         public LinearEquations(string equations)
         {
             Equations = equations.Contains(',') ? equations.Split(',') : equations.Split(new char[] { '\r', '\n' });
@@ -42,6 +45,9 @@ namespace P1
             SolveEquation();
         }
 
+        /// <summary>
+        /// FindVariables Method for extracting the variables out of the equation 
+        /// </summary>
         private void FindVariables()
         {
             Equations = Equations.Where(eq => eq != "" || eq != string.Empty).ToArray();
@@ -56,16 +62,22 @@ namespace P1
                     VarCoefficients[VarCoefficients.ElementAt(i).Key].Add(0);
         }
 
+        /// <summary>
+        /// Parse Method for parsing the equation
+        /// </summary>
         private void Parse()
         {
             StringParse();
             ParseCoefficientMatrix();
             CoefficientMatrix = GetCoefficientMatrix();
-            CrammerMatrices = GetCrammerMatrices();
+            CrammerMatrices = GetCramerMatrices();
             AugmentedMatrix = GetAugmentedMatrix();
             Determinant = Matrix<double>.Determinant(CoefficientMatrix, CoefficientMatrix.RowCount);
         }
 
+        /// <summary>
+        /// SolveEquation Method solving the equation according to the solution state of the equation
+        /// </summary>
         private void SolveEquation()
         {
             if (Determinant != 0)
@@ -75,6 +87,10 @@ namespace P1
             SolutionString = GetSolution();
         }
 
+        /// <summary>
+        /// AugmentedMatrixCheck Method returning an the solution state of the equation
+        /// </summary>
+        /// <returns></returns>
         private SolutionState AugmentedMatrixCheck()
         {
             SolutionState state = SolutionState.Infinite;
@@ -98,6 +114,10 @@ namespace P1
             return state;
         }
 
+        /// <summary>
+        /// GetSolution Method returning the equation solution
+        /// </summary>
+        /// <returns></returns>
         private string GetSolution()
         {
             string finalResult = "";
@@ -118,7 +138,9 @@ namespace P1
             return finalResult;
         }
 
-
+        /// <summary>
+        /// StringParse Method for parsing both sides of the equation 
+        /// </summary>
         private void StringParse()
         {
             RightSideVector = new Vector<double>(VarCoefficients.Keys.Count);
@@ -127,6 +149,9 @@ namespace P1
             RightSideParse();
         }
 
+        /// <summary>
+        /// RightSideParse Method extracting the right side numbers of the equation
+        /// </summary>
         private void RightSideParse()
         {
             List<string> rightSide;
@@ -152,6 +177,9 @@ namespace P1
             }
         }
 
+        /// <summary>
+        /// LeftSideParse Method parsing the left side equations
+        /// </summary>
         private void LeftSideParse()
         {
             List<string> leftSide;
@@ -175,7 +203,9 @@ namespace P1
             }
         }
 
-
+        /// <summary>
+        /// ParseCoefficientMatrix Method for extracting the coefficient of the equation variables
+        /// </summary>
         private void ParseCoefficientMatrix()
         {
             for (int i = 0; i < LeftSideEquations.Count; i++)
@@ -186,6 +216,11 @@ namespace P1
             }
         }
 
+        /// <summary>
+        /// Split Method returning an array of splitted polynomials
+        /// </summary>
+        /// <param name="polynomial"></param>
+        /// <returns></returns>
         private string[] Split(string polynomial)
         {
             string[] polynomials;
@@ -205,6 +240,11 @@ namespace P1
             return polynomials;
         }
 
+        /// <summary>
+        /// ParsePolynomial Method for parsing the polynomial
+        /// </summary>
+        /// <param name="variable"></param>
+        /// <param name="i"></param>
         private void ParsePolynomial(string variable, int i)
         {
             string coefficient = string.Empty;
@@ -223,7 +263,10 @@ namespace P1
             VarCoefficients[variable[variable.Length - 1]][i] = double.Parse(coefficient);
         }
 
-
+        /// <summary>
+        /// GetCoefficientMatrix Method returning the coefficient matrix of the equation
+        /// </summary>
+        /// <returns></returns>
         private Matrix<double> GetCoefficientMatrix()
         {
             int length = VarCoefficients.Keys.Count;
@@ -237,6 +280,9 @@ namespace P1
             return result;
         }
 
+        /// <summary>
+        /// CoefficientParseCompletion Method for completing the coefficient matrix 
+        /// </summary>
         private void CoefficientParseCompletion()
         {
             int length = VarCoefficients.Keys.Count;
@@ -255,7 +301,11 @@ namespace P1
             }
         }
 
-        private List<Matrix<double>> GetCrammerMatrices()
+        /// <summary>
+        /// GetCrammerMatrices Method returning the Cramer Matrices
+        /// </summary>
+        /// <returns></returns>
+        private List<Matrix<double>> GetCramerMatrices()
         {
             int size = CoefficientMatrix.RowCount;
             List<Matrix<double>> matrices = new List<Matrix<double>>();
@@ -273,6 +323,10 @@ namespace P1
             return matrices;
         }
 
+        /// <summary>
+        /// GetAugmentedMatrix Method returning the augmented matrix of the equation
+        /// </summary>
+        /// <returns></returns>
         private Matrix<double> GetAugmentedMatrix()
         {
             int size = CoefficientMatrix.RowCount;

@@ -22,24 +22,37 @@ namespace P1
         private Grid ParentGrid;
         private Ellipse Clock;
         private ClockLine[] ClockLines;
-        public ClockHand[] ClockHands;
+        private ClockHand[] ClockHands;
         private Timer Timer;
         private ClockCenterScrew ClockCenterScrew;
 
+        /// <summary>
+        /// CircleClock Class Constructor
+        /// </summary>
+        /// <param name="window"></param>
+        /// <param name="dateTime"></param>
+        /// <param name="parentGrid"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
         public CircleClock(Window window, DateTime dateTime ,Grid parentGrid, int width, int height)
         {
             Window = window;
             ParentGrid = parentGrid;
             Clock = new Ellipse() { Width = width, Height = height };
             Timer = new Timer(1000);
-            Timer.Elapsed += Timer_Elapsed;
+            Timer.Elapsed += TimerElapsed;
             Timer.Enabled = true;
             ClockCenterScrew = new ClockCenterScrew(5, 5, new Thickness(97.5, 97.5, 97.5, 97.5));
             DrawClockLines();
             DrawClockHands();
         }
 
-        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        /// <summary>
+        /// TimerElapsed Method for rotating the clock hands 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
             try
             {
@@ -56,6 +69,9 @@ namespace P1
             }
         }
 
+        /// <summary>
+        /// DrawClockHands Method for drawing the clock hands
+        /// </summary>
         private void DrawClockHands()
         {
             ClockHands = new ClockHand[]
@@ -66,6 +82,9 @@ namespace P1
             };
         }
 
+        /// <summary>
+        /// Draw Method for drawing the clock on the parent grid
+        /// </summary>
         public void Draw()
         {
             Clock.Stroke = Brushes.Black;
@@ -78,7 +97,10 @@ namespace P1
             ParentGrid.Children.Add(ClockCenterScrew.CenterScrew);
         }
 
-        public void DrawClockLines()
+        /// <summary>
+        /// DrawClockLines Method for drawing the clock ticks
+        /// </summary>
+        private void DrawClockLines()
         {
             ClockLines = new ClockLine[]
             {
@@ -96,7 +118,5 @@ namespace P1
                 new ClockLine(179.12,175.68,44,46, new Thickness(4.5,7.5,0,0)),
             };
         }
-
-        
     }
 }

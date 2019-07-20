@@ -19,10 +19,18 @@ namespace P1
 {
     public class EquationsTab : Tab
     {
-        public LinearEquations Equation;
+        public LinearEquations Equation { get; private set; }
 
+        /// <summary>
+        /// EquationsTab Class Constructor
+        /// </summary>
+        /// <param name="window"></param>
+        /// <param name="parentGrid"></param>
         public EquationsTab(Window window, Grid parentGrid) : base (window, parentGrid) { }
 
+        /// <summary>
+        /// DrawContent Method for drawing the content of the tab
+        /// </summary>
         public override void DrawContent()
         {
             DrawBorder();
@@ -32,11 +40,19 @@ namespace P1
             DrawTextBlocks();
         }
 
+        /// <summary>
+        /// RemoveContent Method for removing the content of the tab
+        /// </summary>
         public override void RemoveContent()
         {
             ParentGrid.Children.Clear();
         }
 
+        public override void DrawDiagram() { }
+
+        /// <summary>
+        /// DrawButton Method for drawing the buttons of the tab
+        /// </summary>
         public override void DrawButtons()
         {
             Buttons = new GridButton[]
@@ -54,6 +70,9 @@ namespace P1
 
         }
 
+        /// <summary>
+        /// DrawTextBoxes Method for drawing the textboxes of the tab
+        /// </summary>
         public override void DrawTextBoxes()
         {
             TextBoxes = new GridTextBox[] { new GridTextBox("EquationTextBox", 740, 250, new Thickness(10, 30, 10, 230)) };
@@ -65,14 +84,23 @@ namespace P1
             }
         }
 
-
-        private void ClearButtonClick(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// DrawTextBlocks Method for drawing the textblocks of the tab
+        /// </summary>
+        public override void DrawTextBlocks()
         {
-            TextBoxes[0].TextBox.Text = string.Empty;
-            TextBlocks[0].TextBlock.Text = string.Empty;
-            Equation = null;
+            TextBlocks = new GridTextBlock[] { new GridTextBlock(740, 230, new Thickness(10, 320, 10, 10)) };
+            foreach (GridTextBlock textBlock in TextBlocks)
+            {
+                ParentGrid.Children.Add(textBlock.TextBlock);
+            }
         }
 
+        /// <summary>
+        /// CalculateButtonClick Method occurs when the calculate button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CalculateButtonClick(object sender, RoutedEventArgs e)
         {
             try
@@ -86,16 +114,16 @@ namespace P1
             catch (Exception exception) { MessageBox.Show(exception.Message); }
         }
 
-        public override void DrawDiagram() { }
-
-        public override void DrawTextBlocks()
+        /// <summary>
+        /// ClearButtonClick Method occurs when the clear button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClearButtonClick(object sender, RoutedEventArgs e)
         {
-            TextBlocks = new GridTextBlock[] { new GridTextBlock(740, 230, new Thickness(10, 320, 10, 10)) };
-            foreach (GridTextBlock textBlock in TextBlocks)
-            {
-                ParentGrid.Children.Add(textBlock.TextBlock);
-            }
+            TextBoxes[0].TextBox.Text = string.Empty;
+            TextBlocks[0].TextBlock.Text = string.Empty;
+            Equation = null;
         }
-
     }
 }

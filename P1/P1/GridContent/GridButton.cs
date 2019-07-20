@@ -20,17 +20,28 @@ namespace P1
 
     public class GridButton
     {
-        public Button Button;
-        public Style style;
-        private string Content;
+        public Button Button { get; private set; }
+        public Style Style { get; private set; }
+        private string Content { get; }
 
+        /// <summary>
+        /// GridButton Class Constructor
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="horizontalAlignment"></param>
         public GridButton(string content, HorizontalAlignment horizontalAlignment)
         {
-            style = (Style)Application.Current.Resources["ControlTabButtons"];
+            Style = (Style)Application.Current.Resources["ControlTabButtons"];
             Content = content;
             Button = ButtonDesign(content, horizontalAlignment);
         }
 
+        /// <summary>
+        /// ButtonDesign Method for designing the button
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="horizontalAlignment"></param>
+        /// <returns></returns>
         private Button ButtonDesign(string content, HorizontalAlignment horizontalAlignment)
         {
             Button button = new Button()
@@ -41,7 +52,7 @@ namespace P1
                 HorizontalAlignment = horizontalAlignment,
                 VerticalAlignment = VerticalAlignment.Top,
                 Margin = new Thickness(10, 10, 10, 0),
-                Style = style,
+                Style = Style,
                 Cursor = Cursors.Hand,
             };
             return button;

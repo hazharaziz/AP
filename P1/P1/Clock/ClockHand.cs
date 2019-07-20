@@ -17,9 +17,18 @@ namespace P1
 {
     public class ClockHand
     {
-        public Border Hand;
-        public RotateTransform RotateTransform;
-        
+        public Border Hand { get; private set; }
+        public RotateTransform RotateTransform { get; private set; }
+
+        /// <summary>
+        /// ClockHand Class Constructor
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="cornerRadius"></param>
+        /// <param name="margin"></param>
+        /// <param name="color"></param>
         public ClockHand(string name,int width, int height, CornerRadius cornerRadius, Thickness margin, Brush color)
         {
             RotateTransform = new RotateTransform(-90);

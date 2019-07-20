@@ -11,7 +11,7 @@ using System.Windows;
 namespace P1Tests
 {
     [TestClass()]
-    public class LinearEquationsTests
+    public class Tests
     {
         public LinearEquations[] linearEquations = new LinearEquations[]
         {

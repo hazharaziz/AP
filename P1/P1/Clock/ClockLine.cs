@@ -17,8 +17,16 @@ namespace P1
 {
     public class ClockLine
     {
-        public Line Line;
+        public Line Line { get; private set; }
 
+        /// <summary>
+        /// ClockLine Class Constructor
+        /// </summary>
+        /// <param name="x1"></param>
+        /// <param name="x2"></param>
+        /// <param name="y1"></param>
+        /// <param name="y2"></param>
+        /// <param name="margin"></param>
         public ClockLine(double x1, double x2, double y1, double y2, Thickness margin = new Thickness())
         {
             Line = new Line()

@@ -18,8 +18,14 @@ namespace P1
 {
     public class ClockCenterScrew
     {
-        public Ellipse CenterScrew;
+        public Ellipse CenterScrew { get; private set; }
 
+        /// <summary>
+        /// ClockCenterScrew Class Constructor
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="margin"></param>
         public ClockCenterScrew(int width, int height, Thickness margin)
         {
             CenterScrew = new Ellipse()

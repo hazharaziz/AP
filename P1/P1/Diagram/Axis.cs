@@ -7,8 +7,14 @@ namespace P1
     public class Axis
     {
         public Line Line { get; private set; }
-        private int X1;
 
+        /// <summary>
+        /// Axis Class Constructor
+        /// </summary>
+        /// <param name="x1"></param>
+        /// <param name="x2"></param>
+        /// <param name="y1"></param>
+        /// <param name="y2"></param>
         public Axis(int x1, int x2, int y1, int y2)
         {
             Line = new Line()

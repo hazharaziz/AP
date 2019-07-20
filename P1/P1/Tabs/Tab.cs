@@ -28,6 +28,11 @@ namespace P1
         public GridTextBox[] TextBoxes;
         public GridTextBlock[] TextBlocks;
         
+        /// <summary>
+        /// Tab Class Constructor
+        /// </summary>
+        /// <param name="window"></param>
+        /// <param name="parentGrid"></param>
         public Tab(Window window, Grid parentGrid)
         {
             Window = window;
@@ -35,13 +40,14 @@ namespace P1
             Style = (Style)Application.Current.Resources["ControlTabButtons"];
         }
 
-
+        /// <summary>
+        /// DrawBorder for drawing the border of the tab
+        /// </summary>
         public virtual void DrawBorder()
         {
             Border = new GridBorder();
             ParentGrid.Children.Add(Border.Border);
         }
-
 
         public abstract void DrawContent();
         public abstract void DrawDiagram();

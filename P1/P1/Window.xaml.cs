@@ -19,11 +19,10 @@ using System.Threading;
 namespace P1
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Window.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        
         CircleClock Clock;
         Tab DiagramTab;
         Tab EquationsTab;
@@ -33,16 +32,28 @@ namespace P1
         {
             InitializeComponent();
 
-            Clock = new CircleClock(this,DateTime.Now,ClockGrid,200,200);
-            DiagramTab = new DiagramTab(this.Window, MainGrid);
-            EquationsTab = new EquationsTab(this.Window, MainGrid);
-            TaylorSeriesTab = new TaylorSeriesTab(this.Window, MainGrid);
+            InitializeClock();
+            InitializeTabs();
 
             Clock.Draw();
             DiagramTab.DrawContent();
         }
 
+        //InitializeClock Method intializing the clock
+        private void InitializeClock()
+        {
+            Clock = new CircleClock(this, DateTime.Now, ClockGrid, 200, 200);
+        }
 
+        //InitializeTabs Method initializing the tabs
+        private void InitializeTabs()
+        {
+            DiagramTab = new DiagramTab(this.Window, MainGrid);
+            EquationsTab = new EquationsTab(this.Window, MainGrid);
+            TaylorSeriesTab = new TaylorSeriesTab(this.Window, MainGrid);
+        }
+
+        //TopWindowButtonClick Method occurs when top window buttons are pressed
         private void TopWindowButtonClick(object sender, RoutedEventArgs e)
         {
             int index = int.Parse(((Button)e.Source).Uid);
@@ -57,6 +68,7 @@ namespace P1
             }
         }
 
+        //TabButtonClick Method occurs whenever the tab buttons are clicked
         private void TabButtonClick(object sender, RoutedEventArgs e)
         {
             int buttonId = int.Parse(((Button)e.Source).Uid);
@@ -81,6 +93,7 @@ namespace P1
             }
         }
 
+        //Window_MouseDown Method for dragging the window
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)

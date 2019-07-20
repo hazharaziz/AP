@@ -19,8 +19,11 @@ namespace P1
 {
     public class GridBorder
     {
-        public Border Border;
+        public Border Border { get; private set; }
 
+        /// <summary>
+        /// GridBorder Class Constructor
+        /// </summary>
         public GridBorder()
         {
             Border = new Border()

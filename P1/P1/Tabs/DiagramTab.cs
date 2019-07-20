@@ -21,11 +21,18 @@ namespace P1
 
     public class DiagramTab : Tab
     {
-        public Diagram Diagram;
-        public Slider Slider;
-
+        public Diagram Diagram { get; private set; }
+        
+        /// <summary>
+        /// DiagramTab Class Constructor
+        /// </summary>
+        /// <param name="window"></param>
+        /// <param name="parentGrid"></param>
         public DiagramTab(Window window, Grid parentGrid) : base(window, parentGrid) { }
 
+        /// <summary>
+        /// DrawContent Method for drawing the content of the tab
+        /// </summary>
         public override void DrawContent()
         {
             DrawBorder();
@@ -35,11 +42,29 @@ namespace P1
             DrawTextBlocks();
         }
 
+        /// <summary>
+        /// RemoveContent Method for removing the content of the tab
+        /// </summary>
         public override void RemoveContent()
         {
             ParentGrid.Children.Clear();
         }
 
+        /// <summary>
+        /// DrawDiagram Method for drawing the diagram of the tab
+        /// </summary>
+        public override void DrawDiagram()
+        {
+            ScrollViewers = new GridScrollViewer[] { new GridScrollViewer(740, 380, new Thickness(10, 30, 10, 100),
+                                                                                    new Thickness(-180, -310, -180, -310)) };
+            ParentGrid.Children.Add(ScrollViewers[0].ScrollViewer);
+            ParentGrid.Children.Add(ScrollViewers[0].Slider);
+        }
+
+
+        /// <summary>
+        /// DrawButton Method for drawing the buttons of the tab
+        /// </summary>
         public override void DrawButtons()
         {
             Buttons = new GridButton[]
@@ -55,6 +80,9 @@ namespace P1
             Buttons[1].Button.Click += ClearButtonClick;
         }
 
+        /// <summary>
+        /// DrawTextBoxes Method for drawing the textboxes of the tab
+        /// </summary>
         public override void DrawTextBoxes()
         {
             TextBoxes = new GridTextBox[]
@@ -73,16 +101,14 @@ namespace P1
             }
         }
 
-        public override void DrawDiagram()
-        {
-            ScrollViewers = new GridScrollViewer[] { new GridScrollViewer(740, 380, new Thickness(10, 30, 10, 100),
-                                                                                    new Thickness(-180, -310, -180, -310)) };
-            ParentGrid.Children.Add(ScrollViewers[0].ScrollViewer);
-            ParentGrid.Children.Add(ScrollViewers[0].Slider);
-        }
 
         public override void DrawTextBlocks() { }
 
+        /// <summary>
+        /// DrawButtonClick Method occurs when the draw button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DrawButtonClick(object sender, RoutedEventArgs e)
         {
             try
@@ -102,12 +128,16 @@ namespace P1
             }
         }
 
+        /// <summary>
+        /// ClearButtonClick Method occurs when the clear button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClearButtonClick(object sender, RoutedEventArgs e)
         {
             ScrollViewers[0].Grid.Children.Remove(Diagram.Polyline);
             for (int i = 0; i < TextBoxes.Length; i++)
                 TextBoxes[i].TextBox.Text = "";
         }
-
     }
 }

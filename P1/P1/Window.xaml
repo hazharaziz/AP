@@ -41,29 +41,12 @@
                             <Grid x:Name="GridCursor" Width="150" Height="5" VerticalAlignment="Bottom" Background="#F3CD05" HorizontalAlignment="Left" Margin="10 0 0 0" />
                         </Grid>
                         <Grid x:Name="MainGrid" VerticalAlignment="Top" Height="570" Margin="10 0 10 0">
-                            <!--<Slider x:Name="slider"  Minimum="1" Maximum="50" Foreground="Green" 
-                                    Background="LightGreen" Orientation="Horizontal" VerticalContentAlignment="Center" 
-                                    HorizontalContentAlignment="Center" Margin="10,445,10,107" Height="18"/>
-
-                            <ScrollViewer Name="scrollViewer" Width="740" Height="380" Margin="10 30 10 100" Background="LightGreen" 
-                                          HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
-                                <Grid Name="grid" Width="1000" Height="1000" Background="WhiteSmoke" Margin="-180 -310">
-                                    <Grid.LayoutTransform>
-                                        <ScaleTransform  x:Name="scaleTransform"/>
-                                    </Grid.LayoutTransform>
-                                    <Line X1="0" X2="1000" Y1="500" Y2="500" Stroke="Black" StrokeThickness="2"/>
-                                    <Line X1="500" X2="500" Y1="0" Y2="1000" Stroke="Black" StrokeThickness="2"/>
-                                </Grid>
-                            </ScrollViewer>-->
+                            
 
 
 
 
 
-
-
-                            <!--<Grid x:Name="h" Height="410" Width="740" Background="Green" Margin="10,150,10,10"/>-->
-                            <!--<Polyline Points="" Stroke="Black" StrokeThickness="2"/>-->
 
                         </Grid>
 
@@ -72,62 +55,9 @@
                 <Grid Width="220" >
                     <StackPanel Orientation="Vertical" >
                         <Grid x:Name="ClockGrid" Width="200" Height="200" Margin="5 10 10 0">
-                            <!--<Ellipse Stroke="Black" StrokeThickness="2"/>
-                            <Line X1="3" X2="7" Y1="100" Y2="100" Stroke="Black" StrokeThickness="1" />
-                            <Line X1="100" X2="100" Y1="3" Y2="7" Stroke="Black" StrokeThickness="1" />
-                            <Line X1="197" X2="193" Y1="100" Y2="100" Stroke="Black" StrokeThickness="1" />
-                            <Line X1="100" X2="100" Y1="197" Y2="193" Stroke="Black" StrokeThickness="1" />-->
-
-                            <!--<Border Width="4" Background="Black" Margin="180,53,16,146" RenderTransformOrigin="0 0.5">
-                                <Border.RenderTransform>
-                                    <RotateTransform Angle="-30"/>
-                                </Border.RenderTransform>
-                            </Border>-->
-
-
-                            <!--<Border Width="4" Background="Black" Margin="147,19,49,180" RenderTransformOrigin="0 0.5">
-                                <Border.RenderTransform>
-                                    <RotateTransform Angle="-60"/>
-                                </Border.RenderTransform>
-                            </Border>-->
-
-
-
-                            <!--<Border x:Name="hour" Width="50" CornerRadius="0 5 5 0" Height="4" Background="Black" Margin="100 98 50 98" RenderTransformOrigin="0,0.5" >
-                                <Border.RenderTransform>
-                                    <RotateTransform x:Name="hourHand" Angle="-90"/>
-                                </Border.RenderTransform>
-                            </Border>
-
-                            <Border x:Name="minute" Width="70" CornerRadius="0 5 5 0" Height="2" Background="Black" Margin="100,97,30,97" RenderTransformOrigin="0,0.5" >
-                                <Border.RenderTransform>
-                                    <RotateTransform x:Name="minuteHand" Angle="-90"/>
-                                </Border.RenderTransform>
-                            </Border>
-                            <Border x:Name="second" Width="90" CornerRadius="0 5 5 0" Height="1" Background="Red" Margin="100,99,10,99" RenderTransformOrigin="0,0.5" >
-                                <Border.RenderTransform>
-                                    <RotateTransform x:Name="secondHand" Angle="150"/>
-                                </Border.RenderTransform>
-                            </Border>-->
-
-                            <!--<Ellipse Width="5" Height="5" Fill="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="97.5 97.5 97.5 97.5" />
-                            <Line X1="146" X2="144" Y1="16.88" Y2="20.32" Stroke="Black" Margin="2.5,-1,0,0" />
-                            <Line X1="144" X2="146" Y1="16.88" Y2="20.32" Stroke="Black" Margin="-92,-1,0,0" />
-                            <Line X1="20.88" X2="24.32" Y1="44" Y2="46" Stroke="Black" Margin="-5,7.5,5,-8"  />
-                            <Line X1="179.12" X2="175.68" Y1="144" Y2="142" Stroke="Black" Margin="5,4,-5,-4"/>
-                            <Line X1="144" X2="146" Y1="171.68" Y2="175.12" Stroke="Black" Margin="2.5,9,-3,-9"/>
-                            <Line X1="52" X2="50" Y1="171.68" Y2="175.12" Stroke="Black" Margin="2,8,0,0"/>
-                            <Line X1="16.88" X2="20.32" Y1="146" Y2="144" Stroke="Black" Margin="-0.5,2,0,-2"/>
-                            <Line X1="179.12" X2="175.68" Y1="44" Y2="46" Stroke="Black" Margin="4.5,7.5,0,0" />-->
-
-
-
-
 
                         </Grid>
                         <Grid Height="430" >
-
-
 
                         </Grid>
 
