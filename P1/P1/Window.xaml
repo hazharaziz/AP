@@ -9,9 +9,9 @@
         mc:Ignorable="d" Height="700" Width="1000" ResizeMode="NoResize" 
         MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
-    
-    
-    
+
+
+
     <StackPanel Orientation="Vertical" >
         <Grid Height="40" Margin="0 5 0 10">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 5 0 5" >
@@ -41,8 +41,10 @@
                             <Grid x:Name="GridCursor" Width="150" Height="5" VerticalAlignment="Bottom" Background="#F3CD05" HorizontalAlignment="Left" Margin="10 0 0 0" />
                         </Grid>
                         <Grid x:Name="MainGrid" VerticalAlignment="Top" Height="570" Margin="10 0 10 0">
-                            <!--<Slider x:Name="slider" Minimum="1" Maximum="100" Background="Red" Orientation="Horizontal" Width="400" Height="15" VerticalAlignment="Bottom" Margin="180,0"/>
-                            
+                            <!--<Slider x:Name="slider"  Minimum="1" Maximum="50" Foreground="Green" 
+                                    Background="LightGreen" Orientation="Horizontal" VerticalContentAlignment="Center" 
+                                    HorizontalContentAlignment="Center" Margin="10,445,10,107" Height="18"/>
+
                             <ScrollViewer Name="scrollViewer" Width="740" Height="380" Margin="10 30 10 100" Background="LightGreen" 
                                           HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
                                 <Grid Name="grid" Width="1000" Height="1000" Background="WhiteSmoke" Margin="-180 -310">
@@ -53,9 +55,9 @@
                                     <Line X1="500" X2="500" Y1="0" Y2="1000" Stroke="Black" StrokeThickness="2"/>
                                 </Grid>
                             </ScrollViewer>-->
-                            
-                            
-                            
+
+
+
 
 
 

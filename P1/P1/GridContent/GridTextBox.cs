@@ -21,31 +21,11 @@ namespace P1
     {
         public TextBoxLabel TextBoxLabel;
         public TextBox TextBox;
-        public Binding binding;
-
-        //public TextBox TextBox
-        //{
-        //    get { return _TextBox; }
-        //    set
-        //    {
-        //        _TextBox = value;
-        //        OnPropertyChanged("TextBox.Text");
-        //    }
-        //}
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //protected void OnPropertyChanged(string v)
-        //{
-        //    PropertyChangedEventHandler handler = PropertyChanged;
-        //    if (handler != null)
-        //        handler(this, new PropertyChangedEventArgs(TextBox.Text));
-        //}
 
         public GridTextBox(string name, double width, double height, Thickness textBoxThickness, string labelContent = "",
             double labelWidth = 0, double labelHeight = 0, Thickness labelMargin = new Thickness(), double fontSize = 18, 
             HorizontalAlignment horizontalAlignment = HorizontalAlignment.Left, 
-            VerticalAlignment verticalAlignment = VerticalAlignment.Top, string text = "")
+            VerticalAlignment verticalAlignment = VerticalAlignment.Top)
         {
             TextBoxLabel = new TextBoxLabel(labelContent, labelWidth, labelHeight, labelMargin);
             TextBox = new TextBox()
@@ -62,17 +42,7 @@ namespace P1
                 Background = Brushes.White,
                 Padding = new Thickness(5, 0, 0, 0),
                 AcceptsReturn = true,
-                Text = text
             };
-
-            //binding = new Binding("TextBox");
-            //binding.Mode = BindingMode.TwoWay;
-            //binding.UpdateSourceTrigger = UpdateSourceTrigger.LostFocus;
-            //BindingOperations.SetBinding(TextBox, TextBox.TextProperty, binding);
         }
-
-
-
-
     }
 }

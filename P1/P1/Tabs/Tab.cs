@@ -33,16 +33,6 @@ namespace P1
             Window = window;
             ParentGrid = parentGrid;
             Style = (Style)Application.Current.Resources["ControlTabButtons"];
-            Draw();
-        }
-
-        public virtual void Draw()
-        {
-            DrawBorder();
-            DrawDiagram();
-            DrawButtons();
-            DrawTextBoxes();
-            DrawTextBlocks();
         }
 
 
@@ -52,14 +42,12 @@ namespace P1
             ParentGrid.Children.Add(Border.Border);
         }
 
-        public virtual void Clear()
-        {
-            ParentGrid.Children.Clear();
-        }
 
+        public abstract void DrawContent();
         public abstract void DrawDiagram();
         public abstract void DrawButtons();
         public abstract void DrawTextBoxes();
         public abstract void DrawTextBlocks();
+        public abstract void RemoveContent();
     }
 }

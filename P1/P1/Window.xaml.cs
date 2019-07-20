@@ -23,30 +23,29 @@ namespace P1
     /// </summary>
     public partial class MainWindow : Window
     {
-        System.Timers.Timer timer = new System.Timers.Timer(1000);
-        Tab diagramTab;
-        Tab equationsTab;
-        Tab taylorSeriesTab;
-        CircleClock clock;
-
-
+        
+        CircleClock Clock;
+        Tab DiagramTab;
+        Tab EquationsTab;
+        Tab TaylorSeriesTab;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            clock = new CircleClock(this,DateTime.Now,ClockGrid,200,200);
-            clock.Draw();
+            Clock = new CircleClock(this,DateTime.Now,ClockGrid,200,200);
+            DiagramTab = new DiagramTab(this.Window, MainGrid);
+            EquationsTab = new EquationsTab(this.Window, MainGrid);
+            TaylorSeriesTab = new TaylorSeriesTab(this.Window, MainGrid);
 
-            diagramTab = new DiagramTab(this.Window, MainGrid);
-            diagramTab.Draw();
+            Clock.Draw();
+            DiagramTab.DrawContent();
         }
 
 
         private void TopWindowButtonClick(object sender, RoutedEventArgs e)
         {
             int index = int.Parse(((Button)e.Source).Uid);
-
             switch (index)
             {
                 case 0:
@@ -56,32 +55,28 @@ namespace P1
                     Application.Current.Shutdown();
                     break;
             }
-
         }
 
         private void TabButtonClick(object sender, RoutedEventArgs e)
         {
             int buttonId = int.Parse(((Button)e.Source).Uid);
             GridCursor.Margin = new Thickness((10 * (buttonId + 1)) + (150 * buttonId), 0, 0, 0);
-            equationsTab = new EquationsTab(this.Window, MainGrid);
-            taylorSeriesTab = new TaylorSeriesTab(this.Window, MainGrid);
-
             switch (buttonId)
             {
                 case 0:
-                    equationsTab.Clear();
-                    taylorSeriesTab.Clear();
-                    diagramTab.Draw();
+                    TaylorSeriesTab.RemoveContent();
+                    EquationsTab.RemoveContent();
+                    DiagramTab.DrawContent();
                     break;
                 case 1:
-                    diagramTab.Clear();
-                    taylorSeriesTab.Clear();
-                    equationsTab.Draw();
+                    DiagramTab.RemoveContent();
+                    TaylorSeriesTab.RemoveContent();
+                    EquationsTab.DrawContent();
                     break;                  
                 case 2:
-                    diagramTab.Clear();
-                    equationsTab.Clear();
-                    taylorSeriesTab.Draw();
+                    DiagramTab.RemoveContent();
+                    EquationsTab.RemoveContent();
+                    TaylorSeriesTab.DrawContent();
                     break;
             }
         }

@@ -23,6 +23,20 @@ namespace P1
 
         public EquationsTab(Window window, Grid parentGrid) : base (window, parentGrid) { }
 
+        public override void DrawContent()
+        {
+            DrawBorder();
+            DrawDiagram();
+            DrawButtons();
+            DrawTextBoxes();
+            DrawTextBlocks();
+        }
+
+        public override void RemoveContent()
+        {
+            ParentGrid.Children.Clear();
+        }
+
         public override void DrawButtons()
         {
             Buttons = new GridButton[]
@@ -82,5 +96,6 @@ namespace P1
                 ParentGrid.Children.Add(textBlock.TextBlock);
             }
         }
+
     }
 }

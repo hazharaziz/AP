@@ -22,7 +22,7 @@ namespace P1
         public ScrollViewer ScrollViewer { get; private set; }
         public Grid Grid { get; private set; }
         public Slider Slider { get; private set; }
-        private ScaleTransform ScaleTransform;
+        public ScaleTransform ScaleTransform { get; private set; }
         private Point? lastCenterPositionOnTarget;
         private Point? lastMousePositionOnTarget;
         private Point? lastDragPoint;
@@ -43,7 +43,7 @@ namespace P1
                 Margin = gridMargin,
                 Background = Brushes.LightBlue,
             };
-            ScaleTransform = new ScaleTransform(2, 2, 10, 10);
+            ScaleTransform = new ScaleTransform(1, 1, ScrollViewer.Width / 2, ScrollViewer.Height / 2);
             Grid.LayoutTransform = ScaleTransform;
             ScrollViewer.Content = Grid;
         }
@@ -52,15 +52,18 @@ namespace P1
         {
             Slider = new Slider()
             {
-                Name = "Zoom",
-                Width = 700,
-                Height = 30,
+                Width = 740,
+                Height = 18,
                 Minimum = 1,
-                Maximum = 100,
-                Background = Brushes.Red,
-                VerticalAlignment = VerticalAlignment.Bottom,
-                Orientation = Orientation.Horizontal
+                Maximum = 20,
+                Background = Brushes.Yellow,
+                Foreground = Brushes.Blue,
+                Orientation = Orientation.Horizontal,
+                Margin = new Thickness(10, 455, 10, 97),
+                HorizontalContentAlignment = HorizontalAlignment.Center,
+                VerticalContentAlignment = VerticalAlignment.Center
             };
+
             Slider.ValueChanged += Slider_ValueChanged;
         }
 
@@ -79,6 +82,8 @@ namespace P1
             ScrollViewer.MouseLeftButtonUp += ScrollViewer_MouseLeftButtonUp;
             ScrollViewer.PreviewMouseLeftButtonUp += ScrollViewer_MouseLeftButtonUp;
             ScrollViewer.PreviewMouseWheel += ScrollViewer_PreviewMouseWheel;
+            
+
             ScrollViewer.PreviewMouseLeftButtonDown += ScrollViewer_PreviewMouseLeftButtonDown;
             ScrollViewer.MouseMove += ScrollViewer_MouseMove;
         }
@@ -88,8 +93,8 @@ namespace P1
             ScaleTransform.ScaleX = e.NewValue;
             ScaleTransform.ScaleY = e.NewValue;
 
-            var centerOfViewport = new Point(ScrollViewer.ViewportWidth,
-                                             ScrollViewer.ViewportHeight);
+            var centerOfViewport = new Point(ScrollViewer.ViewportWidth / 2,
+                                             ScrollViewer.ViewportHeight / 2);
             lastCenterPositionOnTarget = ScrollViewer.TranslatePoint(centerOfViewport, Grid);
         }
 
@@ -181,9 +186,9 @@ namespace P1
                     double multiplicatorY = e.ExtentHeight / Grid.Height;
 
                     double newOffsetX = ScrollViewer.HorizontalOffset -
-                                        dXInTargetPixels + multiplicatorX;
+                                        dXInTargetPixels / multiplicatorX;
                     double newOffsetY = ScrollViewer.VerticalOffset -
-                                        dYInTargetPixels + multiplicatorY;
+                                        dYInTargetPixels / multiplicatorY;
 
                     if (double.IsNaN(newOffsetX) || double.IsNaN(newOffsetY))
                     {

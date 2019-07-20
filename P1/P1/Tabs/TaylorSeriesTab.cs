@@ -25,11 +25,21 @@ namespace P1
 
         public TaylorSeriesTab(Window window, Grid parentGrid) : base (window, parentGrid) { }
 
-        public override void Draw()
+        public override void DrawContent()
         {
-            base.Draw();
             DrawSinusDiagram();
+            DrawBorder();
+            DrawDiagram();
+            DrawButtons();
+            DrawTextBoxes();
+            DrawTextBlocks();
         }
+
+        public override void RemoveContent()
+        {
+            ParentGrid.Children.Clear();
+        }
+
 
         private void DrawSinusDiagram()
         {
@@ -64,8 +74,21 @@ namespace P1
                 {
                     if (i != 0 && i % 2 == 0)
                         sign *= -1;
-                    Equation += (sign * Math.Sin(X0) > 0) ? $"+{(sign * Math.Sin(X0)) / Factorial(i)}(x-{X0})^{i}," 
+                    Equation += (sign * Math.Sin(X0) > 0 && i % 2 == 0)
+                                          ? $"+{(sign * Math.Sin(X0)) / Factorial(i)}(x-{X0})^{i},"
                                           : $"{(sign * Math.Sin(X0)) / Factorial(i)}(x-{X0})^{i},";
+                    if (i % 2 == 0)
+                    {
+                        Equation += (sign * Math.Sin(X0) > 0)
+                                    ? $"+{(sign * Math.Sin(X0)) / Factorial(i)}(x-{X0})^{i},"
+                                    : $"{(sign * Math.Sin(X0)) / Factorial(i)}(x-{X0})^{i},";
+                    }
+                    else
+                    {
+                        Equation += (sign * Math.Cos(X0) > 0)
+                                    ? $"+{(sign * Math.Cos(X0)) / Factorial(i)}(x-{X0})^{i},"
+                                    : $"{(sign * Math.Cos(X0)) / Factorial(i)}(x-{X0})^{i},";
+                    }
                 }
             }
         }
@@ -104,6 +127,7 @@ namespace P1
                 ParentGrid.Children.Add(textBox.TextBox);
                 ParentGrid.Children.Add(textBox.TextBoxLabel.Label);
             }
+
         }
 
 
@@ -137,7 +161,7 @@ namespace P1
                     ScrollViewers[0].ScrollViewer.Content = ScrollViewers[0].Grid;
                 }
             }
-            catch (Exception exception) { MessageBox.Show(exception.Message); }
+            catch (Exception exception) { MessageBox.Show(exception.Message); TextBoxes.All(t => t.TextBox.Text == ""); }
         }
 
 
@@ -155,5 +179,6 @@ namespace P1
             foreach (GridTextBlock textBlock in TextBlocks)
                 ParentGrid.Children.Add(textBlock.TextBlock);
         }
+
     }
 }

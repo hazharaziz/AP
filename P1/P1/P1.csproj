@@ -86,27 +86,27 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Axis.cs" />
+    <Compile Include="Diagram\Axis.cs" />
     <Compile Include="Clock\CircleClock.cs" />
     <Compile Include="Clock\ClockCenterScrew.cs" />
     <Compile Include="Clock\ClockHand.cs" />
     <Compile Include="Clock\ClockLine.cs" />
-    <Compile Include="Diagram.cs" />
-    <Compile Include="DiagramEquation.cs" />
+    <Compile Include="Diagram\Diagram.cs" />
+    <Compile Include="Diagram\DiagramEquation.cs" />
     <Compile Include="Tabs\DiagramTab.cs" />
-    <Compile Include="DiagramGrid.cs" />
-    <Compile Include="LinearEquation.cs" />
+    <Compile Include="GridContent\GridScrollViewer.cs" />
+    <Compile Include="LinearEquationsSystem\LinearEquation.cs" />
     <Compile Include="Tabs\EquationsTab.cs" />
-    <Compile Include="GridBorder.cs" />
-    <Compile Include="GridTextBlock.cs" />
-    <Compile Include="GridTextBox.cs" />
-    <Compile Include="GridButton.cs" />
-    <Compile Include="Matrix.cs" />
-    <Compile Include="SquareMatrix.cs" />
+    <Compile Include="GridContent\GridBorder.cs" />
+    <Compile Include="GridContent\GridTextBlock.cs" />
+    <Compile Include="GridContent\GridTextBox.cs" />
+    <Compile Include="GridContent\GridButton.cs" />
+    <Compile Include="LinearEquationsSystem\Matrix.cs" />
+    <Compile Include="LinearEquationsSystem\SquareMatrix.cs" />
     <Compile Include="Tabs\Tab.cs" />
     <Compile Include="Tabs\TaylorSeriesTab.cs" />
-    <Compile Include="TextBoxLabel.cs" />
-    <Compile Include="Vector.cs" />
+    <Compile Include="GridContent\TextBoxLabel.cs" />
+    <Compile Include="LinearEquationsSystem\Vector.cs" />
     <Compile Include="Window.xaml.cs">
       <DependentUpon>Window.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -151,5 +151,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -24,9 +24,20 @@ namespace P1
         public Diagram Diagram;
         public Slider Slider;
 
-        public DiagramTab(Window window, Grid parentGrid) : base(window, parentGrid)
-        {
+        public DiagramTab(Window window, Grid parentGrid) : base(window, parentGrid) { }
 
+        public override void DrawContent()
+        {
+            DrawBorder();
+            DrawDiagram();
+            DrawButtons();
+            DrawTextBoxes();
+            DrawTextBlocks();
+        }
+
+        public override void RemoveContent()
+        {
+            ParentGrid.Children.Clear();
         }
 
         public override void DrawButtons()
@@ -37,13 +48,11 @@ namespace P1
                 new GridButton("CLEAR",HorizontalAlignment.Right)
             };
 
-
             foreach (GridButton button in Buttons)
                 ParentGrid.Children.Add(button.Button);
 
             Buttons[0].Button.Click += DrawButtonClick;
             Buttons[1].Button.Click += ClearButtonClick;
-
         }
 
         public override void DrawTextBoxes()
@@ -69,6 +78,7 @@ namespace P1
             ScrollViewers = new GridScrollViewer[] { new GridScrollViewer(740, 380, new Thickness(10, 30, 10, 100),
                                                                                     new Thickness(-180, -310, -180, -310)) };
             ParentGrid.Children.Add(ScrollViewers[0].ScrollViewer);
+            ParentGrid.Children.Add(ScrollViewers[0].Slider);
         }
 
         public override void DrawTextBlocks() { }
@@ -77,8 +87,10 @@ namespace P1
         {
             try
             {
-                if (TextBoxes.All(t => t.TextBox.Text != ""))
+                if (TextBoxes[4].TextBox.Text != "")
                 {
+                    if (Diagram != null && Diagram.Polyline != null)
+                        Diagram.Polyline.Points = null;
                     Diagram = new Diagram(ScrollViewers[0].Grid, TextBoxes[4].TextBox.Text, EquationType.Normal);
                     ScrollViewers[0].ScrollViewer.Content = ScrollViewers[0].Grid;
                 }
@@ -92,9 +104,10 @@ namespace P1
 
         private void ClearButtonClick(object sender, RoutedEventArgs e)
         {
-            ScrollViewers[0].Grid.Children.Clear();
+            ScrollViewers[0].Grid.Children.Remove(Diagram.Polyline);
             for (int i = 0; i < TextBoxes.Length; i++)
                 TextBoxes[i].TextBox.Text = "";
         }
+
     }
 }
