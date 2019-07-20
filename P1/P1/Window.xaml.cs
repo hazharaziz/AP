@@ -29,15 +29,10 @@ namespace P1
         Tab taylorSeriesTab;
         CircleClock clock;
 
-        Point? lastCenterPositionOnTarget;
-        Point? lastMousePositionOnTarget;
-        Point? lastDragPoint;
 
 
         public MainWindow()
         {
-            
-        
             InitializeComponent();
 
             clock = new CircleClock(this,DateTime.Now,ClockGrid,200,200);
@@ -58,7 +53,7 @@ namespace P1
                     this.WindowState = WindowState.Minimized;
                     break;
                 case 1:
-                    Application.Current.Shutdown(); break;
+                    Application.Current.Shutdown();
                     break;
             }
 
@@ -70,7 +65,6 @@ namespace P1
             GridCursor.Margin = new Thickness((10 * (buttonId + 1)) + (150 * buttonId), 0, 0, 0);
             equationsTab = new EquationsTab(this.Window, MainGrid);
             taylorSeriesTab = new TaylorSeriesTab(this.Window, MainGrid);
-
 
             switch (buttonId)
             {

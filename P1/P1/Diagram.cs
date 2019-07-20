@@ -23,15 +23,18 @@ namespace P1
         public Axis XAxis;
         public Axis YAxis;
         public List<Line> Lines = new List<Line>();
-        public Equation Equation;
+        public DiagramEquation Equation;
         public EquationType EquationType;
         public Polyline Polyline;
+        public Polyline SinusDiagram;
 
-        public Diagram(Grid parentGrid, string equation, EquationType equationType, int n = 1, int x0 = 0)
+        public Diagram(Grid parentGrid, string equation, EquationType equationType, 
+                        int n = 1, int x0 = 0, Polyline sinusDiagram = null)
         {
             ParentGrid = parentGrid;
             EquationType = equationType;
-            Equation = new Equation(equation, equationType,n,x0);
+            Equation = new DiagramEquation(equation, equationType,n,x0);
+            SinusDiagram = sinusDiagram;
             DrawLines();
             DrawAxises();
             DrawDiagram();
@@ -39,6 +42,8 @@ namespace P1
 
         private void DrawDiagram()
         {
+            if (SinusDiagram != null && !ParentGrid.Children.Contains(SinusDiagram))
+                ParentGrid.Children.Add(SinusDiagram);
             Polyline = new Polyline() { Stroke = Brushes.Red, StrokeThickness = 2 };
             Polyline.Points = new PointCollection(Equation.Points);
             ParentGrid.Children.Add(Polyline);

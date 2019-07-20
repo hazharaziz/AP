@@ -68,15 +68,8 @@ namespace P1
         {
             ScrollViewers = new GridScrollViewer[] { new GridScrollViewer(740, 380, new Thickness(10, 30, 10, 100),
                                                                                     new Thickness(-180, -310, -180, -310)) };
-
-
-            //foreach (GridScrollViewer scrollViewer in ScrollViewers)
-            //    ParentGrid.Children.Add(ScrollViewers[0].ScrollViewer);
+            ParentGrid.Children.Add(ScrollViewers[0].ScrollViewer);
         }
-
-
-
-
 
         public override void DrawTextBlocks() { }
 
@@ -84,24 +77,24 @@ namespace P1
         {
             try
             {
-                if (TextBoxes[4].TextBox.Text != "")
+                if (TextBoxes.All(t => t.TextBox.Text != ""))
                 {
                     Diagram = new Diagram(ScrollViewers[0].Grid, TextBoxes[4].TextBox.Text, EquationType.Normal);
                     ScrollViewers[0].ScrollViewer.Content = ScrollViewers[0].Grid;
-                    ParentGrid.Children.Add(ScrollViewers[0].ScrollViewer);
                 }
-
             }
-            catch
+            catch(Exception exception)
             {
-                MessageBox.Show("Equation is not valid. Please Try Again");
-                TextBoxes[4].TextBox.Text = "";
+                MessageBox.Show(exception.Message);
+                TextBoxes.All(t => t.TextBox.Text == "");
             }
         }
 
         private void ClearButtonClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            ScrollViewers[0].Grid.Children.Clear();
+            for (int i = 0; i < TextBoxes.Length; i++)
+                TextBoxes[i].TextBox.Text = "";
         }
     }
 }

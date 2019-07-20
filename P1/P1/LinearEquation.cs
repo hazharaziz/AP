@@ -109,8 +109,8 @@ namespace P1
                 for (int i = 0; i < size; i++)
                 {
                     double numerator = Matrix<double>.Determinant(CrammerMatrices[i], size);
-                    finalResult += i != size - 1 ? $"{VarCoefficients.ElementAt(i).Key} = {numerator / Determinant} , "
-                                                   : $"{VarCoefficients.ElementAt(i).Key} = {numerator / Determinant}";
+                    finalResult += i != size - 1 ? string.Format("{0} = {1:0.0} , ",VarCoefficients.ElementAt(i).Key,numerator / Determinant)
+                                                 : string.Format("{0} = {1:0.0}", VarCoefficients.ElementAt(i).Key, numerator / Determinant);
                 }
             else if (SolutionState == SolutionState.Infinite)
                 finalResult = "No Unique Solution";

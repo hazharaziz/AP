@@ -35,8 +35,8 @@ namespace P1
         {
             SinusDiagram = new Polyline() { Stroke = Brushes.Green, StrokeThickness = 2 };
             Point point;
-            double j = -20;
-            while (j < 20)
+            double j = -30;
+            while (j < 30)
             {
                 point = new Point();
                 point.X = (j * 20) + 520;
@@ -48,6 +48,7 @@ namespace P1
 
         private void ExtractEquation()
         {
+            Equation = "";
             double sign = 1;
             if (X0 == 0)
             {
@@ -63,7 +64,7 @@ namespace P1
                 {
                     if (i != 0 && i % 2 == 0)
                         sign *= -1;
-                    Equation += sign == 1 ? $"+{(sign * Math.Sin(X0)) / Factorial(i)}(x-{X0})^{i}," 
+                    Equation += (sign * Math.Sin(X0) > 0) ? $"+{(sign * Math.Sin(X0)) / Factorial(i)}(x-{X0})^{i}," 
                                           : $"{(sign * Math.Sin(X0)) / Factorial(i)}(x-{X0})^{i},";
                 }
             }
@@ -108,32 +109,43 @@ namespace P1
 
         private void ClearButtonClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            ScrollViewers[0].Grid.Children.Remove(Diagram.Polyline);
+            for (int i = 0; i < TextBoxes.Length; i++)
+                TextBoxes[i].TextBox.Text = "";
         }
 
         private void DrawButtonClick(object sender, RoutedEventArgs e)
         {
             try
             {
-                N = int.Parse(TextBoxes[0].TextBox.Text);
-                X0 = int.Parse(TextBoxes[1].TextBox.Text);
-                ExtractEquation();
-                Diagram = new Diagram(ScrollViewers[0].Grid,Equation, EquationType.TaylorSeries,
-                                        int.Parse(TextBoxes[0].TextBox.Text),int.Parse(TextBoxes[1].TextBox.Text));
-                ScrollViewers[0].Grid.Children.Add(SinusDiagram);
-                ScrollViewers[0].ScrollViewer.Content = ScrollViewers[0].Grid;
-                ParentGrid.Children.Add(ScrollViewers[0].ScrollViewer);
+                if (TextBoxes.All(t => t.TextBox.Text != ""))
+                {
+                    N = int.Parse(TextBoxes[0].TextBox.Text);
+                    X0 = int.Parse(TextBoxes[1].TextBox.Text);
+                    ExtractEquation();
+
+                    if (Diagram != null && Diagram.Polyline != null)
+                    {
+                        Diagram.Polyline.Points = null;
+                        SinusDiagram = null;
+                        DrawSinusDiagram();
+                    }
+                    Diagram = new Diagram(ScrollViewers[0]. Grid, Equation, EquationType.TaylorSeries,
+                                              int.Parse(TextBoxes[0].TextBox.Text), int.Parse(TextBoxes[1].TextBox.Text),
+                                              SinusDiagram);
+
+                    ScrollViewers[0].ScrollViewer.Content = ScrollViewers[0].Grid;
+                }
             }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
+            catch (Exception exception) { MessageBox.Show(exception.Message); }
         }
 
 
         public override void DrawDiagram()
         {
-            ScrollViewers = new GridScrollViewer[] { new GridScrollViewer(740, 405, new Thickness(10, 155, 10, 10), new Thickness(-130,-297.5,-130,-297.5)) };
+            ScrollViewers = new GridScrollViewer[] { new GridScrollViewer(740, 405, new Thickness(10, 155, 10, 10),
+                                                                                    new Thickness(-130,-297.5,-130,-297.5)) };
+            ParentGrid.Children.Add(ScrollViewers[0].ScrollViewer);
         }
 
         public override void DrawTextBlocks()
