@@ -1,0 +1,73 @@
+﻿<Window x:Name="Window" x:Class="P1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:P1"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d" Height="700" Width="1000" ResizeMode="NoResize" 
+        MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen" WindowStyle="None">
+
+
+
+
+    <StackPanel Orientation="Vertical" >
+        <Grid Height="40" Margin="0 5 0 10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 5 0 5" >
+                <TextBlock Style="{StaticResource WindowTitle}" >Math Analyzer</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 -10" >
+                <Button Uid="0" x:Name="btn1" Style="{StaticResource TopWindowButtons}" Click="TopWindowButtonClick" >
+                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="Black" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10" />
+                </Button>
+                <Button Uid="1" x:Name="btn2" Style="{StaticResource TopWindowButtons}" Click="TopWindowButtonClick" >
+                    <materialDesign:PackIcon Kind="Close" Foreground="Black" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10" />
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Height="660" >
+            <StackPanel Orientation="Horizontal" >
+                <Grid Width="780" >
+                    <StackPanel Orientation="Vertical" Margin="0 0 0 10" >
+                        <Grid Height="50" >
+                            <StackPanel Orientation="Horizontal"  VerticalAlignment="Center" >
+                                <Button Uid="0" Content="DRAW DIAGRAM" Style="{StaticResource ControlTabButtons}" Click="TabButtonClick"  />
+                                <Button Uid="1" Content="EQUATIONS" Style="{StaticResource ControlTabButtons}" Click="TabButtonClick"   />
+                                <Button Uid="2" Content="TAYLOR SERIES" Style="{StaticResource ControlTabButtons}" Click="TabButtonClick"   />
+                            </StackPanel>
+
+                            <Grid x:Name="GridCursor" Width="150" Height="5" VerticalAlignment="Bottom" Background="#F3CD05" HorizontalAlignment="Left" Margin="10 0 0 0" />
+                        </Grid>
+                        <Grid x:Name="MainGrid" VerticalAlignment="Top" Height="570" Margin="10 0 10 0">
+                            
+
+
+
+
+
+
+                        </Grid>
+
+                    </StackPanel>
+                </Grid>
+                <Grid Width="220" >
+                    <StackPanel Orientation="Vertical" >
+                        <Grid x:Name="ClockGrid" Width="200" Height="200" Margin="5 10 10 0">
+
+                        </Grid>
+                        <Grid Height="430" >
+
+                        </Grid>
+
+                    </StackPanel>
+
+                </Grid>
+            </StackPanel>
+
+        </Grid>
+    </StackPanel>
+
+</Window>
+
