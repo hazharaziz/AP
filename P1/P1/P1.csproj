@@ -92,7 +92,7 @@
     <Compile Include="Clock\ClockHand.cs" />
     <Compile Include="Clock\ClockLine.cs" />
     <Compile Include="Diagram.cs" />
-    <Compile Include="Equation.cs" />
+    <Compile Include="DiagramEquation.cs" />
     <Compile Include="Tabs\DiagramTab.cs" />
     <Compile Include="DiagramGrid.cs" />
     <Compile Include="LinearEquation.cs" />

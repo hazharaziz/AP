@@ -21,9 +21,7 @@ namespace P1
     {
         public LinearEquations Equation;
 
-        public EquationsTab(Window window, Grid parentGrid) : base (window, parentGrid)
-        {
-        }
+        public EquationsTab(Window window, Grid parentGrid) : base (window, parentGrid) { }
 
         public override void DrawButtons()
         {
@@ -63,11 +61,15 @@ namespace P1
 
         private void CalculateButtonClick(object sender, RoutedEventArgs e)
         {
-            if (TextBoxes[0].TextBox.Text != "")
+            try
             {
-                Equation = new LinearEquations(TextBoxes[0].TextBox.Text);
-                TextBlocks[0].TextBlock.Text = Equation.SolutionString;
+                if (TextBoxes[0].TextBox.Text != "")
+                {
+                    Equation = new LinearEquations(TextBoxes[0].TextBox.Text);
+                    TextBlocks[0].TextBlock.Text = Equation.SolutionString;
+                }
             }
+            catch (Exception exception) { MessageBox.Show(exception.Message); }
         }
 
         public override void DrawDiagram() { }

@@ -22,19 +22,16 @@ namespace P1
 
     public class LinearEquations
     {
-
-        public string[] Equations;
-        public List<string> LeftSideEquations = new List<string>();
-        public Dictionary<char, List<double>> VarCoefficients = new Dictionary<char, List<double>>();
-        public Matrix<double> CoefficientMatrix;
-        public Vector<double> RightSideVector;
-        public List<Matrix<double>> CrammerMatrices;
-        public Matrix<double> AugmentedMatrix;
-        public SolutionState SolutionState;
-        private double Determinant;
-        public string SolutionString;
-        
-
+        public string[] Equations { get; private set; }
+        public List<string> LeftSideEquations { get; private set; }
+        public Dictionary<char, List<double>> VarCoefficients { get; private set; }
+        public Matrix<double> CoefficientMatrix { get; private set; }
+        public Vector<double> RightSideVector { get; private set; }
+        public List<Matrix<double>> CrammerMatrices { get; private set; }
+        public Matrix<double> AugmentedMatrix { get; private set; }
+        public SolutionState SolutionState { get; private set; }
+        public double Determinant { get; private set; }
+        public string SolutionString { get; private set; }
 
 
         public LinearEquations(string equations)
@@ -48,6 +45,7 @@ namespace P1
         private void FindVariables()
         {
             Equations = Equations.Where(eq => eq != "" || eq != string.Empty).ToArray();
+            VarCoefficients = new Dictionary<char, List<double>>();
 
             foreach (string equation in Equations)
                 foreach (char ch in equation)
@@ -123,27 +121,57 @@ namespace P1
 
         private void StringParse()
         {
-            RightSideParse();
+            RightSideVector = new Vector<double>(VarCoefficients.Keys.Count);
+            LeftSideEquations = new List<string>();
             LeftSideParse();
+            RightSideParse();
         }
 
         private void RightSideParse()
         {
-            RightSideVector = new Vector<double>(VarCoefficients.Keys.Count);
+            List<string> rightSide;
+            int i = 0;
             foreach (string equation in Equations)
             {
-                string[] s = equation.Split('=');
-                RightSideVector.Add(double.Parse(s[1]));
+                rightSide = Split(equation.Split('=')[1].Replace(" ", string.Empty)).ToList();
+                RightSideVector[i] += rightSide.Where(p => !p.Any(char.IsLetter)).Select(n => double.Parse(n)).ToList().Sum();
+
+                rightSide = rightSide.Where(p => p.Any(char.IsLetter)).ToList();
+                for (int j = 0; j < rightSide.Count; j++)
+                {
+                    if (rightSide[j].Contains("+"))
+                        rightSide[j] = rightSide[j].Replace("+", "-");
+                    else if (rightSide[j].Contains("-"))
+                        rightSide[j] = rightSide[j].Replace("-", "+");
+
+                    else
+                        rightSide[j] = rightSide[j].Insert(0, "-");
+                }
+                LeftSideEquations[i] += string.Join("", rightSide);
+                i++;
             }
         }
 
         private void LeftSideParse()
         {
-            string leftSide = string.Empty;
+            List<string> leftSide;
+            int i = 0;
             foreach (string equation in Equations)
             {
-                leftSide = equation.Split('=')[0];
-                LeftSideEquations.Add(leftSide);
+                leftSide = Split(equation.Split('=')[0].Replace(" ",string.Empty)).ToList();
+                
+                RightSideVector[i] -= leftSide.Where(p => !p.Any(char.IsLetter)).Select(n => double.Parse(n)).ToList().Sum();
+                leftSide = leftSide.Where(p => p.Any(char.IsLetter)).ToList();
+
+                for (int j = 0; j < leftSide.Count; j++)
+                {
+                    if (!leftSide[j].Contains("+") && !leftSide[j].Contains("-"))
+                        leftSide[j] = leftSide[j].Insert(0, "+");
+                }
+
+                LeftSideEquations.Add("");
+                LeftSideEquations[i] += string.Join("",leftSide);
+                i++;
             }
         }
 
@@ -172,7 +200,6 @@ namespace P1
                     counter++;
                 }
             }
-            newStr = newStr.Replace(" ", string.Empty);
             polynomials = newStr.Split(',');
 
             return polynomials;

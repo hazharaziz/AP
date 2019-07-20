@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:P1"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        mc:Ignorable="d" Height="700" Width="1000" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        mc:Ignorable="d" Height="700" Width="1000" ResizeMode="NoResize" 
+        MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
     
     
     
     <StackPanel Orientation="Vertical" >
-        <Grid Height="40" Margin="0 5 0 10" >
+        <Grid Height="40" Margin="0 5 0 10">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 5 0 5" >
                 <TextBlock Style="{StaticResource WindowTitle}" >Math Analyzer</TextBlock>
             </StackPanel>
