@@ -87,11 +87,7 @@ namespace P1
         {
             TextBoxes = new GridTextBox[]
             {
-                new GridTextBox("MinY",107.5, 30, new Thickness(85, 485, 560, 50),"MIN Y =",60,30,new Thickness(20, 485, 690, 50),12,HorizontalAlignment.Left,VerticalAlignment.Top),
-                new GridTextBox("MaxY",107.5, 30, new Thickness(263, 485, 388, 50), "MAX Y =", 60, 30, new Thickness(198, 485, 502, 50),12,HorizontalAlignment.Left,VerticalAlignment.Top),
-                new GridTextBox("MinX",107.5, 30, new Thickness(441, 485, 210, 50), "MIN X =", 60, 30, new Thickness(376, 485, 324, 50),12,HorizontalAlignment.Left,VerticalAlignment.Top),
-                new GridTextBox("MaxX",107.5, 30, new Thickness(619, 485, 30, 50), "MAX X =", 60, 30, new Thickness(554, 485, 146, 50),12,HorizontalAlignment.Left,VerticalAlignment.Top),
-                new GridTextBox("Function",641, 30, new Thickness(87, 525, 32, 10), "f(x) = ", 60, 30, new Thickness(20, 525, 680, 10),12,HorizontalAlignment.Left,VerticalAlignment.Top)
+                new GridTextBox("Function",641, 30, new Thickness(87, 480, 32, 10), "f(x) = ", 60, 30, new Thickness(20, 480, 680, 10),12,HorizontalAlignment.Left,VerticalAlignment.Top)
             };
 
             foreach (GridTextBox textBox in TextBoxes)
@@ -113,11 +109,11 @@ namespace P1
         {
             try
             {
-                if (TextBoxes[4].TextBox.Text != "")
+                if (TextBoxes[0].TextBox.Text != "")
                 {
                     if (Diagram != null && Diagram.Polyline != null)
                         Diagram.Polyline.Points = null;
-                    Diagram = new Diagram(ScrollViewers[0].Grid, TextBoxes[4].TextBox.Text, EquationType.Normal);
+                    Diagram = new Diagram(ScrollViewers[0].Grid, TextBoxes[0].TextBox.Text, EquationType.Normal);
                     ScrollViewers[0].ScrollViewer.Content = ScrollViewers[0].Grid;
                 }
             }
